@@ -18,7 +18,9 @@
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^10.4.16",
+    "postcss-mixins": "^9.0.4",
     "postcss-nested": "^6.0.1",
+    "postcss-simple-vars": "^7.0.1",
     "vite": "^5.0.0",
     "vite-plugin-handlebars": "^1.6.0"
   },

@@ -1,5 +1,8 @@
-const config = {
-  plugins: [require("autoprefixer"), require("postcss-nested")],
+module.exports = {
+  plugins: {
+    "postcss-mixins": {},
+    autoprefixer: {},
+    "postcss-nested": {},
+    "postcss-simple-vars": {},
+  },
 };
-
-module.exports = config;

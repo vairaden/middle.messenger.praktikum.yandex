@@ -1,0 +1,57 @@
+@import "./variables.css";
+
+@define-mixin position-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@define-mixin flex-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.error-container {
+  @mixin position-center;
+  @mixin flex-container;
+  align-items: center;
+}
+
+.card {
+  @mixin position-center;
+  @mixin flex-container;
+  align-items: center;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.14);
+  padding: 24px;
+  width: 20rem;
+}
+
+.form {
+  @mixin flex-container;
+  width: 100%;
+
+  &__input {
+    @mixin flex-container;
+    margin-bottom: 1rem;
+
+    input {
+      outline: none;
+      border: none;
+      border-bottom: 1px solid black;
+    }
+  }
+}
+
+.button_primary {
+  height: 2rem;
+  border-radius: 8px;
+  color: white;
+  border: none;
+  background-color: $color-primary;
+}
+
+.link {
+}

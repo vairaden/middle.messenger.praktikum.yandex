@@ -6,8 +6,20 @@ const pageData = {
   "/index.html": {
     title: "Main Page",
   },
-  "/pages/login/index.html": {
+  "/pages/login.html": {
     title: "Login",
+  },
+  "/pages/register.html": {
+    title: "Register",
+  },
+  "/pages/settings.html": {
+    title: "Settings",
+  },
+  "/pages/404.html": {
+    title: "404",
+  },
+  "/pages/500.html": {
+    title: "500",
   },
 };
 
@@ -27,7 +39,11 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, "/index.html"),
-        login: resolve(__dirname, "/pages/login/index.html"),
+        login: resolve(__dirname, "/pages/login.html"),
+        register: resolve(__dirname, "/pages/register.html"),
+        settings: resolve(__dirname, "/pages/settings.html"),
+        404: resolve(__dirname, "/pages/404.html"),
+        500: resolve(__dirname, "/pages/500.html"),
       },
     },
   },
