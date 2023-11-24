@@ -1,4 +1,12 @@
-@import "./variables.css";
+@import "variables.pcss";
+@import "chats.pcss";
+@import "settings.pcss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 @define-mixin position-center {
   position: absolute;
@@ -12,7 +20,7 @@
   flex-direction: column;
 }
 
-.error-container {
+.container_center {
   @mixin position-center;
   @mixin flex-container;
   align-items: center;
@@ -24,7 +32,7 @@
   align-items: center;
   border-radius: 12px;
   background: #fff;
-  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.14);
   padding: 24px;
   width: 20rem;
 }
@@ -40,7 +48,7 @@
     input {
       outline: none;
       border: none;
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid $color-primary;
     }
   }
 }
@@ -51,7 +59,23 @@
   color: white;
   border: none;
   background-color: $color-primary;
+  margin-bottom: 1rem;
 }
 
 .link {
+  color: $color-primary;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &_alert {
+    color: $color-alert;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

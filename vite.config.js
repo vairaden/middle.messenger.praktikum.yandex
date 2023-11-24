@@ -1,6 +1,6 @@
 import handlebars from "vite-plugin-handlebars";
-import { resolve } from "path";
-import { defineConfig } from "vite";
+import {resolve} from "path";
+import {defineConfig} from "vite";
 
 const pageData = {
   "/index.html": {
@@ -24,6 +24,7 @@ const pageData = {
 };
 
 export default defineConfig({
+  publicDir: resolve(__dirname, "public"),
   plugins: [
     handlebars({
       partialDirectory: resolve(__dirname, "src/partials"),
