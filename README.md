@@ -5,7 +5,10 @@
 ## Макеты в Figma
 https://www.figma.com/file/Pelka2T12iSogai8WSTOcG/Yandex-practicum-messenger?type=design&node-id=0%3A1&mode=dev
 
-## ССылки на PR
+## Ссылка на Netlify
+https://656359f5e348be7ca44d51e7--inspiring-sunshine-dd6aa5.netlify.app/
+
+## Сcылки на PR
 - 1 Спринт - https://github.com/vairaden/middle.messenger.praktikum.yandex/pull/4
 
 ## Запуск
