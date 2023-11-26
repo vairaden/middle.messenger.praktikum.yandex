@@ -1,6 +1,7 @@
 # Я.Практикум / Мессенджер
 
 ## Описание
+Проектная работа по написанию веб мессенджера на шаблонизаторе Handlebars
 
 ## Макеты в Figma
 https://www.figma.com/file/Pelka2T12iSogai8WSTOcG/Yandex-practicum-messenger?type=design&node-id=0%3A1&mode=dev

@@ -1,7 +1,7 @@
 .page-wrapper {
   display: grid;
   grid-template-columns: 4rem auto;
-  height: 100vh;
+  grid-template-rows: 100vh;
 
   .back-button {
     background: #FBFBFB;
@@ -56,7 +56,7 @@
 
 .settings {
   width: 30rem;
-  margin: 8rem auto 0 auto;
+  margin: 2rem auto 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -68,7 +68,8 @@
   &__form {
     width: 100%;
     list-style-type: none;
-    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
 
     label {
       &:not(:last-child) {
@@ -78,11 +79,22 @@
       display: flex;
       justify-content: space-between;
       padding: 6px;
+      margin-bottom: 6px;
 
       input {
         border: none;
         text-align: right;
       }
+    }
+
+    button {
+      width: 20rem;
+      margin: 2rem auto;
+    }
+
+    h2 {
+      font-size: 16px;
+      margin-top: 2rem;
     }
   }
 }

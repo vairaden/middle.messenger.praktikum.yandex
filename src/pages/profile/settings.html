@@ -9,8 +9,8 @@
 </head>
 <body>
 <div class="page-wrapper">
-  <a class="back-button" href="../../index.html"><img src="/avatar.png" alt="Стрелка назад"/></a>
-  <div class="settings">
+  <a class="back-button" href="../../index.html"><img src="/back.svg" alt="Стрелка назад"/></a>
+  <main class="settings">
     <img class="settings__avatar" src="/avatar.png" alt="Avatar"/>
     <form class="settings__form">
       {{> SettingsItemInput/SettingsItemInput label="Почта" placeholder="pochta@yandex.ru" type="email" name="email" }}
@@ -19,9 +19,14 @@
       {{> SettingsItemInput/SettingsItemInput label="Фамилия" placeholder="Иванов" type="text" name="second_name" }}
       {{> SettingsItemInput/SettingsItemInput label="Имя в чате" placeholder="Иван" type="text" name="display_name" }}
       {{> SettingsItemInput/SettingsItemInput label="Телефон" placeholder="+7 (909) 967 30 30" type="tel" name="phone" }}
+      <h2>Смена аватара</h2>
+      {{> SettingsItemInput/SettingsItemInput label="Аватар" type="file" name="avatar" }}
+      <h2>Смаена пароля</h2>
+      {{> SettingsItemInput/SettingsItemInput label="Новый пароль" placeholder="********" type="password" name="newPassword" }}
+      {{> SettingsItemInput/SettingsItemInput label="Старый пароль" placeholder="*********" type="password" name="newPassword" }}
+      <button class="button_primary" type="submit">Сохранить</button>
     </form>
-    <button class="button_primary">Сохранить</button>
-  </div>
+  </main>
 </div>
 </body>
 </html>

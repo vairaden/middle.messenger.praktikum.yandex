@@ -15,6 +15,7 @@
   grid-template-columns: repeat(2, min-content) auto;
   align-items: center;
   border-bottom: 1px solid #EAEAEA;
+  padding: 6px;
 
   &__avatar {
     height: 2rem;
@@ -26,6 +27,19 @@
 
   &__etc-button {
     margin-left: auto;
+    width: 2rem;
+    aspect-ratio: 1;
+    padding: 6px;
+    align-items: center;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 2rem;
+
+    &:hover {
+      background-color: #EAEAEA;
+    }
   }
 }
 
