@@ -9,6 +9,15 @@ https://www.figma.com/file/Pelka2T12iSogai8WSTOcG/Yandex-practicum-messenger?typ
 ## Ссылка на Netlify
 https://656382071fd77717e312aa31--inspiring-sunshine-dd6aa5.netlify.app/
 
+**Пути до страниц:**
+- /pages/main/main.html
+- /pages/error/404.html
+- /pages/error/500.html
+- /pages/auth/login.html
+- /pages/auth/register.html
+- /pages/profile/profile.html
+- /pages/profile/settings.html
+
 ## Сcылки на PR
 - 1 Спринт - https://github.com/vairaden/middle.messenger.praktikum.yandex/pull/4
 
