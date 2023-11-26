@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="../../styles/index.pcss"/>
+  <link rel="stylesheet" type="text/css" href="./profile.pcss"/>
+  <title>Document</title>
+</head>
+<body>
+<div class="page-wrapper">
+  <a class="back-button" href="../../index.html"><img src="/avatar.png" alt="Стрелка назад"/></a>
+  <div class="profile">
+    <img class="profile__avatar" src="/avatar.png" alt="Avatar"/>
+    <h1 class="profile__login">Иван</h1>
+    <ul class="profile__section">
+      {{> ProfileItem/ProfileItem label="Почта" value="pochta@yandex.ru" }}
+      {{> ProfileItem/ProfileItem label="Логин" value="ivanivanov" }}
+      {{> ProfileItem/ProfileItem label="Имя" value="Иван" }}
+      {{> ProfileItem/ProfileItem label="Фамилия" value="Иванов" }}
+      {{> ProfileItem/ProfileItem label="Имя в чате" value="Иван" }}
+      {{> ProfileItem/ProfileItem label="Телефон" value="+7 (909) 967 30 30" }}
+    </ul>
+    <ul class="profile__section">
+      <li>
+        <a class="link">Изменить данные</a>
+      </li>
+      <li>
+        <a class="link">Изменить пароль</a>
+      </li>
+      <li>
+        <a class="link_alert">Выйти</a>
+      </li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

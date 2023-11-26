@@ -1,0 +1,46 @@
+.message-controls {
+  display: grid;
+  grid-template-columns: min-content auto min-content;
+  align-items: center;
+  border-top: 1px solid #EAEAEA;
+  padding: 10px 0;
+
+  &__attach-button {
+    display: flex;
+    height: fit-content;
+    padding: 6px;
+    align-items: center;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 2rem;
+
+    &:hover {
+      background-color: #EAEAEA;
+    }
+  }
+
+  &__input {
+    border: none;
+    border-radius: 30px;
+    background: #EFEFEF;
+    margin: 0 12px;
+    padding: 10px 20px;
+  }
+
+  &__input-label {
+    display: none;
+  }
+
+  &__send-button {
+    display: flex;
+    height: fit-content;
+    padding: 6px;
+    align-items: center;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+}

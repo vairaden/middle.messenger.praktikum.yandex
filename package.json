@@ -7,10 +7,10 @@
     "node": "18.18.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "vite build && npm run serve",
     "build": "vite build",
-    "start": "vite",
     "preview": "vite preview",
+    "dev": "vite",
     "serve": "node ./server.js"
   },
   "keywords": [],

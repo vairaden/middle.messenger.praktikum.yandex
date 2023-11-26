@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" type="text/css" href="../../styles/index.pcss"/>
+  <link rel="stylesheet" type="text/css" href="./profile.pcss"/>
+  <title>{{title}}</title>
+</head>
+<body>
+<div class="page-wrapper">
+  <a class="back-button" href="../../index.html"><img src="/avatar.png" alt="Стрелка назад"/></a>
+  <div class="settings">
+    <img class="settings__avatar" src="/avatar.png" alt="Avatar"/>
+    <form class="settings__form">
+      {{> SettingsItemInput/SettingsItemInput label="Почта" placeholder="pochta@yandex.ru" type="email" name="email" }}
+      {{> SettingsItemInput/SettingsItemInput label="Логин" placeholder="ivanivanov" type="text" name="login" }}
+      {{> SettingsItemInput/SettingsItemInput label="Имя" placeholder="Иван" type="text" name="first_name" }}
+      {{> SettingsItemInput/SettingsItemInput label="Фамилия" placeholder="Иванов" type="text" name="second_name" }}
+      {{> SettingsItemInput/SettingsItemInput label="Имя в чате" placeholder="Иван" type="text" name="display_name" }}
+      {{> SettingsItemInput/SettingsItemInput label="Телефон" placeholder="+7 (909) 967 30 30" type="tel" name="phone" }}
+    </form>
+    <button class="button_primary">Сохранить</button>
+  </div>
+</div>
+</body>
+</html>

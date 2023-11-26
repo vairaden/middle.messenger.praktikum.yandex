@@ -1,56 +1,9 @@
 @import "variables.pcss";
-@import "chats.pcss";
-@import "settings.pcss";
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-@define-mixin position-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-@define-mixin flex-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.container_center {
-  @mixin position-center;
-  @mixin flex-container;
-  align-items: center;
-}
-
-.card {
-  @mixin position-center;
-  @mixin flex-container;
-  align-items: center;
-  border-radius: 12px;
-  background: #fff;
-  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.14);
-  padding: 24px;
-  width: 20rem;
-}
-
-.form {
-  @mixin flex-container;
-  width: 100%;
-
-  &__input {
-    @mixin flex-container;
-    margin-bottom: 1rem;
-
-    input {
-      outline: none;
-      border: none;
-      border-bottom: 1px solid $color-primary;
-    }
-  }
 }
 
 .button_primary {
@@ -71,11 +24,16 @@
     text-decoration: underline;
   }
 
-  &_alert {
-    color: $color-alert;
+  &_centered {
+    color: $color-primary;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 0 auto;
+  }
 
-    &:hover {
-      text-decoration: underline;
-    }
+  &_alert {
+    text-decoration: none;
+    cursor: pointer;
+    color: $color-alert;
   }
 }

@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" type="text/css" href="../styles/index.pcss"/>
+  <link rel="stylesheet" type="text/css" href="../../styles/index.pcss"/>
+  <link rel="stylesheet" type="text/css" href="./auth.pcss"/>
   <title>{{title}}</title>
 </head>
 <body>
@@ -12,34 +13,34 @@
   <form class="form">
     <label class="form__input">
       Почта
-      <input/>
+      <input name="email" type="email"/>
     </label>
     <label class="form__input">
       Логин
-      <input/>
+      <input name="login" type="text"/>
     </label>
     <label class="form__input">
       Имя
-      <input/>
+      <input name="first_name" type="text"/>
     </label>
     <label class="form__input">
       Фамилия
-      <input/>
+      <input name="second_name" type="text"/>
     </label>
     <label class="form__input">
       Телефон
-      <input/>
+      <input name="phone" type="tel"/>
     </label>
     <label class="form__input">
       Пароль
-      <input/>
+      <input name="password" type="password"/>
     </label>
     <label class="form__input">
       Пароль (ещё раз)
-      <input/>
+      <input name="password_repeat" type="password"/>
     </label>
     <button class="button_primary">Зарегистрироваться</button>
-    <a href="./login.html" class="link">Вход</a>
+    <a href="login.html" class="link_centered">Вход</a>
   </form>
 </div>
 </body>

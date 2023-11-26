@@ -1,40 +1,35 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" type="text/css" href="styles/index.pcss"/>
-  <title>{{title}}</title>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Index</title>
 </head>
 <body>
-<div class="raw-container">
-  <div class="chat-list">
-    <a href="./pages/settings.html" class="link">Профиль</a>
-    <div class="search">
-      <label for="search">Поиск</label>
-      <input id="search"/>
-    </div>
-    <div>{{> ChatItem}}</div>
-  </div>
-  <div class="chat">
-    <div class="chat-info">
-      <img class="chat-info__avatar" src="/avatar.png" alt="Avatar"/>
-      <p class="chat-info__name">Вадим</p>
-      <button class="chat-info__etc-button">etc</button>
-    </div>
-    <ul class="chat-thread">
-      <li class="chat-thread__date-separator">
-        <span>19 июня</span>
-      </li>
-      {{> Message }}
-    </ul>
-    <div class="message-controls">
-      <button class="message-controls__attach-button">Attach</button>
-      <label for="message" class="message-controls__input-label">Сообщение</label>
-      <input id="message" class="message-controls__input"/>
-      <button class="message-controls__send-button">Send</button>
-    </div>
-  </div>
-</div>
+<ul>
+  <li>
+    <a href="pages/main/main.html">Main</a>
+  </li>
+  <li>
+    <a href="pages/error/404.html">404</a>
+  </li>
+  <li>
+    <a href="pages/error/500.html">500</a>
+  </li>
+  <li>
+    <a href="pages/auth/login.html">Login</a>
+  </li>
+  <li>
+    <a href="pages/auth/register.html">Register</a>
+  </li>
+  <li>
+    <a href="pages/profile/profile.html">Profile</a>
+  </li>
+  <li>
+    <a href="pages/profile/settings.html">Settings</a>
+  </li>
+</ul>
 </body>
 </html>

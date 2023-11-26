@@ -3,22 +3,25 @@ import {resolve} from "path";
 import {defineConfig} from "vite";
 
 const pageData = {
-  "/index.html": {
+  "/pages/main/main.html": {
     title: "Main Page",
   },
-  "/pages/login.html": {
+  "/pages/auth/login.html": {
     title: "Login",
   },
-  "/pages/register.html": {
+  "/pages/auth/register.html": {
     title: "Register",
   },
-  "/pages/settings.html": {
+  "/pages/profile/settings.html": {
     title: "Settings",
   },
-  "/pages/404.html": {
+  "/pages/profile/profile.html": {
+    title: "Profile",
+  },
+  "/pages/error/404.html": {
     title: "404",
   },
-  "/pages/500.html": {
+  "/pages/error/500.html": {
     title: "500",
   },
 };
@@ -39,12 +42,14 @@ export default defineConfig({
     outDir: resolve(__dirname, "dist"),
     rollupOptions: {
       input: {
-        main: resolve(__dirname, "/index.html"),
-        login: resolve(__dirname, "/pages/login.html"),
-        register: resolve(__dirname, "/pages/register.html"),
-        settings: resolve(__dirname, "/pages/settings.html"),
-        404: resolve(__dirname, "/pages/404.html"),
-        500: resolve(__dirname, "/pages/500.html"),
+        index: resolve(__dirname, "/index.html"),
+        main: resolve(__dirname, "/pages/main/main.html"),
+        login: resolve(__dirname, "/pages/auth/login.html"),
+        register: resolve(__dirname, "/pages/auth/register.html"),
+        settings: resolve(__dirname, "/pages/profile/settings.html"),
+        profile: resolve(__dirname, "/pages/profile/profile.html"),
+        404: resolve(__dirname, "/pages/error/404.html"),
+        500: resolve(__dirname, "/pages/error/500.html"),
       },
     },
   },
