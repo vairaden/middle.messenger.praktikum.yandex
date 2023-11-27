@@ -7,7 +7,7 @@
 https://www.figma.com/file/Pelka2T12iSogai8WSTOcG/Yandex-practicum-messenger?type=design&node-id=0%3A1&mode=dev
 
 ## Ссылка на Netlify
-https://656382071fd77717e312aa31--inspiring-sunshine-dd6aa5.netlify.app/
+https://inspiring-sunshine-dd6aa5.netlify.app/
 
 **Пути до страниц:**
 - /pages/main/main.html
