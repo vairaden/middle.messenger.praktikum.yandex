@@ -1,19 +1,24 @@
-import EventBus from "../lib/eventBus";
-import {nanoid} from 'nanoid';
+import { nanoid } from 'nanoid';
+import EventBus from '../lib/eventBus';
 
 abstract class Block {
   static EVENTS = {
-    INIT: "init",
-    FLOW_CDM: "flow:component-did-mount",
-    FLOW_CDU: "flow:component-did-update",
-    FLOW_RENDER: "flow:render"
+    INIT: 'init',
+    FLOW_CDM: 'flow:component-did-mount',
+    FLOW_CDU: 'flow:component-did-update',
+    FLOW_RENDER: 'flow:render',
   };
 
   public id = nanoid(6);
+
   protected props: any;
+
   protected refs: Record<string, Block> = {};
+
   public children: Record<string, Block | Block[]>;
+
   private eventBus: () => EventBus;
+
   private _element: HTMLElement | null = null;
 
   // private _meta: { props: any; };
@@ -21,7 +26,7 @@ abstract class Block {
   constructor(propsWithChildren: any = {}) {
     const eventBus = new EventBus();
 
-    const {props, children} = this._getChildrenAndProps(propsWithChildren);
+    const { props, children } = this._getChildrenAndProps(propsWithChildren);
 
     // this._meta = {
     //   props
@@ -48,13 +53,13 @@ abstract class Block {
       }
     });
 
-    return {props, children};
+    return { props, children };
   }
 
   _addEvents() {
-    const {events = {}} = this.props as { events: Record<string, () => void> };
+    const { events = {} } = this.props as { events: Record<string, () => void> };
 
-    Object.keys(events).forEach(eventName => {
+    Object.keys(events).forEach((eventName) => {
       this._element?.addEventListener(eventName, events[eventName]);
     });
   }
@@ -86,14 +91,13 @@ abstract class Block {
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
 
-    Object.values(this.children).forEach(child => {
-          if (Array.isArray(child)) {
-            child.forEach((item) => item.dispatchComponentDidMount());
-            return;
-          }
-          child.dispatchComponentDidMount();
-        }
-    );
+    Object.values(this.children).forEach((child) => {
+      if (Array.isArray(child)) {
+        child.forEach((item) => item.dispatchComponentDidMount());
+        return;
+      }
+      child.dispatchComponentDidMount();
+    });
   }
 
   private _componentDidUpdate(oldProps: any, newProps: any) {
@@ -133,17 +137,15 @@ abstract class Block {
   }
 
   protected compile(template: (context: any) => string, props: any) {
-    const contextAndStubs = {...props, __refs: this.refs};
+    const contextAndStubs = { ...props, __refs: this.refs };
 
     Object.entries(this.children).forEach(([name, component]) => {
       if (Array.isArray(component)) {
-        contextAndStubs[name] = component.map((item) =>
-            `<div data-id="${item.id}"></div>`
-        );
+        contextAndStubs[name] = component.map((item) => `<div data-id="${item.id}"></div>`);
       } else {
         contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
       }
-    })
+    });
 
     const html = template(contextAndStubs);
 
@@ -152,30 +154,28 @@ abstract class Block {
     temp.innerHTML = html;
 
     Object.entries(this.children).forEach(([_, component]) => {
-          if (Array.isArray(component)) {
-            component.forEach((item) => {
-                  const stub = temp.content.querySelector(`[data-id="${item.id}"]`);
+      if (Array.isArray(component)) {
+        component.forEach((item) => {
+          const stub = temp.content.querySelector(`[data-id="${item.id}"]`);
 
-                  if (!stub) {
-                    return;
-                  }
-
-                  item.getContent()?.append(...Array.from(stub.childNodes));
-                  stub.replaceWith(item.getContent()!)
-                }
-            );
-          } else {
-            const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
-
-            if (!stub) {
-              return;
-            }
-
-            component.getContent()?.append(...Array.from(stub.childNodes));
-            stub.replaceWith(component.getContent()!)
+          if (!stub) {
+            return;
           }
+
+          item.getContent()?.append(...Array.from(stub.childNodes));
+          stub.replaceWith(item.getContent()!);
+        });
+      } else {
+        const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
+
+        if (!stub) {
+          return;
         }
-    )
+
+        component.getContent()?.append(...Array.from(stub.childNodes));
+        stub.replaceWith(component.getContent()!);
+      }
+    });
 
     // contextAndStubs.__children?.forEach(({embed}: any) => {
     //   embed(temp.content);
@@ -199,10 +199,10 @@ abstract class Block {
     return new Proxy(props, {
       get(target, prop) {
         const value = target[prop];
-        return typeof value === "function" ? value.bind(target) : value;
+        return typeof value === 'function' ? value.bind(target) : value;
       },
       set(target, prop, value) {
-        const oldTarget = {...target}
+        const oldTarget = { ...target };
 
         target[prop] = value;
 
@@ -210,8 +210,8 @@ abstract class Block {
         return true;
       },
       deleteProperty() {
-        throw new Error("Нет доступа");
-      }
+        throw new Error('Нет доступа');
+      },
     });
   }
 
@@ -220,11 +220,11 @@ abstract class Block {
   }
 
   show() {
-    this.getContent()!.style.display = "block";
+    this.getContent()!.style.display = 'block';
   }
 
   hide() {
-    this.getContent()!.style.display = "none";
+    this.getContent()!.style.display = 'none';
   }
 }
 

@@ -14,13 +14,13 @@ interface Options {
 }
 
 function queryStringify(data: Record<string, any>) {
-  return Object.entries(data).reduce((acc, [key, value], index, arr) => {
-    return acc + key + '=' + value.toString() + (arr.length - 1 === index ? '' : '&');
-  }, '?');
+  return Object.entries(data).reduce((acc, [key, value], index, arr) => `${acc + key}=${value.toString()}${arr.length - 1 === index ? '' : '&'}`, '?');
 }
 
 export async function request(url: string, options: Options): Promise<XMLHttpRequest> {
-  const {method = 'GET', data, headers = {}, timeout = 5000} = options;
+  const {
+    method = 'GET', data, headers = {}, timeout = 5000,
+  } = options;
 
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
@@ -29,7 +29,7 @@ export async function request(url: string, options: Options): Promise<XMLHttpReq
 
     Object.entries(headers).forEach(([key, value]) => {
       xhr.setRequestHeader(key, value);
-    })
+    });
 
     xhr.onload = function () {
       resolve(xhr);
@@ -53,7 +53,7 @@ export async function fetchWithRetry(url: string, options: Options): Promise<XML
       throw err;
     }
 
-    return fetchWithRetry(url, {...options, retries: options.retries - 1});
+    return fetchWithRetry(url, { ...options, retries: options.retries - 1 });
   }
 
   try {

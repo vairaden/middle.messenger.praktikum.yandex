@@ -1,5 +1,5 @@
-import Handlebars from "handlebars";
-import {PluginOption} from "vite";
+import Handlebars from 'handlebars';
+import { PluginOption } from 'vite';
 
 export default function handlebars(): PluginOption {
   const fileRegexp = /\.hbs$|\.handlebars$/;
@@ -19,7 +19,7 @@ export default function handlebars(): PluginOption {
 
       return {
         code,
-      }
-    }
-  }
+      };
+    },
+  };
 }

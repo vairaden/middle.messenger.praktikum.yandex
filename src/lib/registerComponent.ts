@@ -1,6 +1,5 @@
-import Handlebars from 'handlebars';
-import Block from "../components/Block";
-import {HelperOptions} from "handlebars";
+import Handlebars, { HelperOptions } from 'handlebars';
+import Block from '../components/Block';
 
 class T extends Block {}
 
@@ -9,7 +8,7 @@ export function registerComponent(name: string, Component: typeof T) {
     throw `The ${name} component is already registered!`;
   }
 
-  Handlebars.registerHelper(name, function (this: unknown, {hash, data, fn}: HelperOptions) {
+  Handlebars.registerHelper(name, function (this: unknown, { hash, data, fn }: HelperOptions) {
     const component = new Component(hash);
     const dataAttribute = `data-id="${component.id}"`;
 
@@ -29,7 +28,7 @@ export function registerComponent(name: string, Component: typeof T) {
         component.getContent()?.append(...Array.from(stub.childNodes));
 
         stub.replaceWith(component.getContent()!);
-      }
+      },
     });
 
     const contents = fn ? fn(this) : '';

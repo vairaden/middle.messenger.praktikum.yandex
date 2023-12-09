@@ -1,18 +1,9 @@
 import template from './ChatItem.hbs';
-import Block from "../../components/Block";
-// import {render} from "../../lib/render";
-// import {Button} from "../../components/Button/Button";
+import Block from '../../components/Block';
 
 export default class ChatItem extends Block {
   constructor() {
-    super({
-      // Button: new Button({
-      //   class: 'button_primary',
-      //   events: {
-      //     click: () => null,
-      //   }, text: 'Авторизоваться'
-      // })
-    });
+    super();
   }
 
   render() {

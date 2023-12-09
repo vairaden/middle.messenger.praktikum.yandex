@@ -13,8 +13,8 @@ export class Button extends Block {
     super({
       ...props,
       events: {
-        click: props.onClick
-      }
+        click: props.onClick,
+      },
     });
   }
 
