@@ -12,19 +12,20 @@ abstract class Block {
   public id = nanoid(6);
   protected props: any;
   protected refs: Record<string, Block> = {};
-  public children: Record<string, Block>;
+  public children: Record<string, Block | Block[]>;
   private eventBus: () => EventBus;
   private _element: HTMLElement | null = null;
-  private _meta: { props: any; };
+
+  // private _meta: { props: any; };
 
   constructor(propsWithChildren: any = {}) {
     const eventBus = new EventBus();
 
     const {props, children} = this._getChildrenAndProps(propsWithChildren);
 
-    this._meta = {
-      props
-    };
+    // this._meta = {
+    //   props
+    // };
     this.children = children;
     this.props = this._makePropsProxy(props);
 
@@ -37,10 +38,10 @@ abstract class Block {
 
   _getChildrenAndProps(childrenAndProps: any) {
     const props: Record<string, any> = {};
-    const children: Record<string, Block> = {};
+    const children: Record<string, Block | Block[]> = {};
 
     Object.entries(childrenAndProps).forEach(([key, value]) => {
-      if (value instanceof Block) {
+      if (value instanceof Block || Array.isArray(value) && value.every((item) => item instanceof Block)) {
         children[key] = value;
       } else {
         props[key] = value;
@@ -85,7 +86,14 @@ abstract class Block {
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
 
-    Object.values(this.children).forEach(child => child.dispatchComponentDidMount());
+    Object.values(this.children).forEach(child => {
+          if (Array.isArray(child)) {
+            child.forEach((item) => item.dispatchComponentDidMount());
+            return;
+          }
+          child.dispatchComponentDidMount();
+        }
+    );
   }
 
   private _componentDidUpdate(oldProps: any, newProps: any) {
@@ -95,8 +103,7 @@ abstract class Block {
   }
 
   protected componentDidUpdate(oldProps: any, newProps: any) {
-    // return oldProps !== newProps;
-    return true;
+    return true || oldProps !== newProps;
   }
 
   setProps = (nextProps: any) => {
@@ -129,7 +136,13 @@ abstract class Block {
     const contextAndStubs = {...props, __refs: this.refs};
 
     Object.entries(this.children).forEach(([name, component]) => {
-      contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
+      if (Array.isArray(component)) {
+        contextAndStubs[name] = component.map((item) =>
+            `<div data-id="${item.id}"></div>`
+        );
+      } else {
+        contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
+      }
     })
 
     const html = template(contextAndStubs);
@@ -139,15 +152,30 @@ abstract class Block {
     temp.innerHTML = html;
 
     Object.entries(this.children).forEach(([_, component]) => {
-      const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
+          if (Array.isArray(component)) {
+            component.forEach((item) => {
+                  const stub = temp.content.querySelector(`[data-id="${item.id}"]`);
 
-      if (!stub) {
-        return;
-      }
+                  if (!stub) {
+                    return;
+                  }
 
-      component.getContent()?.append(...Array.from(stub.childNodes));
-      stub.replaceWith(component.getContent()!)
-    })
+                  item.getContent()?.append(...Array.from(stub.childNodes));
+                  stub.replaceWith(item.getContent()!)
+                }
+            );
+          } else {
+            const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
+
+            if (!stub) {
+              return;
+            }
+
+            component.getContent()?.append(...Array.from(stub.childNodes));
+            stub.replaceWith(component.getContent()!)
+          }
+        }
+    )
 
     // contextAndStubs.__children?.forEach(({embed}: any) => {
     //   embed(temp.content);
@@ -156,7 +184,8 @@ abstract class Block {
     return temp.content;
   }
 
-  protected render(): DocumentFragment {
+  protected render():
+      DocumentFragment {
     return new DocumentFragment();
   }
 

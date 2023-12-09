@@ -1,19 +1,18 @@
 import Block from '../Block';
-import template from './button.hbs';
+import template from './input.hbs';
 
 interface Props {
-  text: string;
-  class?: 'button_primary';
-  type?: 'submit' | 'button';
-  onClick?: () => void;
+  name: string;
+  type: string;
+  onBlur?: (event: FocusEvent) => void;
 }
 
-export class Button extends Block {
+export class Input extends Block {
   constructor(props: Props) {
     super({
       ...props,
       events: {
-        click: props.onClick
+        blur: props.onBlur
       }
     });
   }

@@ -2,14 +2,9 @@
 <main class="card">
   <h1>Вход</h1>
   <form class="form">
-    <label class="form__input">
-      Логин
-      <input name="login" type="text"/>
-    </label>
-    <label class="form__input">
-      Пароль
-      <input name="password" type="password"/>
-    </label>
+    {{# each Inputs }}
+      {{{ this }}}
+    {{/each}}
     {{{Button}}}
     <a href="register.hbs" class="link_centered">Нет аккаунта?</a>
   </form>

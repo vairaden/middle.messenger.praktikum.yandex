@@ -1,9 +1,9 @@
-import template from './error.hbs';
+import template from './register.hbs';
 import Block from "../../components/Block";
 // import {render} from "../../lib/render";
 // import {Button} from "../../components/Button/Button";
 
-export default class ErrorPage extends Block {
+export default class RegisterPage extends Block {
   constructor() {
     super({
       // Button: new Button({
