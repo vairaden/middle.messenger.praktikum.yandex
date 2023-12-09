@@ -11,20 +11,31 @@
     "build": "vite build",
     "preview": "vite preview",
     "dev": "vite",
-    "serve": "node ./server.js"
+    "serve": "node src/server.ts",
+    "lint": "eslint . && stylelint \"**/*.pcss\"",
+    "lint:fix": "eslint . --fix && stylelint \"**/*.pcss\" --fix"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.10.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
     "autoprefixer": "^10.4.16",
+    "eslint": "^8.54.0",
+    "eslint-config-airbnb": "^19.0.4",
     "postcss-mixins": "^9.0.4",
     "postcss-nested": "^6.0.1",
     "postcss-simple-vars": "^7.0.1",
+    "stylelint": "^15.11.0",
+    "typescript": "^5.3.2",
     "vite": "^5.0.0",
     "vite-plugin-handlebars": "^1.6.0"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "handlebars": "^4.7.8"
   }
 }
