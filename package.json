@@ -1,0 +1,30 @@
+{
+  "name": "middle.messenger.praktikum.yandex",
+  "version": "1.0.0",
+  "description": "Messenger app",
+  "main": "index.js",
+  "engines": {
+    "node": "18.18.2"
+  },
+  "scripts": {
+    "start": "vite build && npm run serve",
+    "build": "vite build",
+    "preview": "vite preview",
+    "dev": "vite",
+    "serve": "node ./server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "postcss-mixins": "^9.0.4",
+    "postcss-nested": "^6.0.1",
+    "postcss-simple-vars": "^7.0.1",
+    "vite": "^5.0.0",
+    "vite-plugin-handlebars": "^1.6.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" type="text/css" href="../../styles/index.pcss"/>
+  <link rel="stylesheet" type="text/css" href="../../partials/MessageControls/MessageControls.pcss"/>
+  <link rel="stylesheet" type="text/css" href="../../partials/ChatBrowser/ChatBrowser.pcss"/>
+  <link rel="stylesheet" type="text/css" href="./main.pcss"/>
+  <title>{{title}}</title>
+</head>
+<body>
+<div class="raw-container">
+{{> ChatBrowser/ChatBrowser}}
+  <main class="chat">
+    <div class="chat-info">
+      <img class="chat-info__avatar" src="/avatar.png" alt="Avatar"/>
+      <p class="chat-info__name">Вадим</p>
+      <button class="chat-info__etc-button"><img src="/etc.svg" alt="Еще"/></button>
+    </div>
+    <ul class="chat-thread">
+      <li class="chat-thread__date-separator">
+        <span>19 июня</span>
+      </li>
+      {{> Message/Message }}
+      {{> Message/Message }}
+      {{> Message/Message }}
+      {{> Message/Message }}
+      <li class="chat-thread__date-separator">
+        <span>20 июня</span>
+      </li>
+      {{> Message/Message }}
+      {{> Message/Message }}
+      {{> Message/Message }}
+    </ul>
+    {{> MessageControls/MessageControls}}
+  </main>
+</div>
+</body>
+</html>
