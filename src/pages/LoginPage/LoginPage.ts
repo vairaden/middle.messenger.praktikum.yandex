@@ -1,9 +1,9 @@
 import template from './login.hbs';
 import Block from '../../components/Block';
-import { render } from '../../lib/render';
-import { Button } from '../../components/Button/Button';
-import { checkLogin, checkPassword } from '../../lib/validators';
-import { AuthFormInput } from '../../components/AuthFormInput/AuthFormInput';
+import {render} from '../../lib/render';
+import {Button} from '../../components/Button/Button';
+import {checkLogin, checkPassword} from '../../lib/validators';
+import {AuthFormInput} from '../../components/AuthFormInput/AuthFormInput';
 import {Link} from "../../components/Link/Link";
 
 export default class LoginPage extends Block {
@@ -15,12 +15,12 @@ export default class LoginPage extends Block {
           type: 'text',
           name: 'login',
           onBlur: (event: FocusEvent) => {
-            console.log('blur');
-
-            const { value } = (event.target as HTMLInputElement);
+            const {value} = (event.target as HTMLInputElement);
 
             if (!checkLogin(value)) {
-              console.log('Login err');
+              this.setError('login', true);
+            } else {
+              this.setError('login', false);
             }
           },
         }),
@@ -29,11 +29,12 @@ export default class LoginPage extends Block {
           type: 'password',
           name: 'password',
           onBlur: (event: FocusEvent) => {
-            console.log('blur');
-            const { value } = (event.target as HTMLInputElement);
+            const {value} = (event.target as HTMLInputElement);
 
             if (!checkPassword(value)) {
-              console.log('Login err');
+              this.setError('password', true);
+            } else {
+              this.setError('password', false);
             }
           },
         }),
@@ -55,18 +56,32 @@ export default class LoginPage extends Block {
           const values = Object.fromEntries(formData as any);
 
           if (!checkLogin(values.login)) {
-            console.log('Login err');
+            this.setError('login', true);
             return;
           }
           if (!checkPassword(values.password)) {
-            console.log('Login err');
+            this.setError('password', true);
             return;
           }
+
+          console.log(values);
 
           render('home');
         },
       },
     });
+  }
+
+  setError(name: string, state: boolean) {
+    switch (name) {
+      case 'login':
+        (this.children.Inputs as Block[])[0].setProps({error: state});
+        break;
+      case 'password':
+        (this.children.Inputs as Block[])[1].setProps({error: state});
+        break;
+
+    }
   }
 
   render() {

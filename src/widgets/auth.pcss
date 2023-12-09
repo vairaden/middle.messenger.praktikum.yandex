@@ -27,6 +27,20 @@
     flex-direction: column;
     margin-bottom: 1rem;
 
+    &_error {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+      color: $color-alert;
+
+      input {
+        margin: 6px 0;
+        outline: none;
+        border: none;
+        border-bottom: 1px solid $color-alert;
+      }
+    }
+
     input {
       margin: 6px 0;
       outline: none;
