@@ -3,15 +3,17 @@
   "version": "1.0.0",
   "description": "Messenger app",
   "main": "index.js",
+  "type": "module",
   "engines": {
     "node": "18.18.2"
   },
   "scripts": {
-    "start": "vite build && npm run serve",
+    "start": "vite build && npm run build:server && npm run serve",
     "build": "vite build",
+    "build:server": "tsc src/server.ts --target esnext --moduleResolution node --esModuleInterop --outDir dist",
     "preview": "vite preview",
     "dev": "vite",
-    "serve": "node src/server.ts",
+    "serve": "node dist/server.js",
     "lint": "eslint . && stylelint \"**/*.pcss\"",
     "lint:fix": "eslint . --fix && stylelint \"**/*.pcss\" --fix"
   },
