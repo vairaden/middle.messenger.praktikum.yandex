@@ -7,7 +7,7 @@ export function checkLogin(word: string) {
 }
 
 export function checkEmail(word: string) {
-  return /^[A-Za-z\d\-_]+@[A-Za-z\d\-_]+\.$/.test(word);
+  return /^[A-Za-z\d\-_]+@[A-Za-z\d\-_]+\.[A-Za-z\d\-_]+$/.test(word);
 }
 
 export function checkPassword(word: string) {
@@ -19,5 +19,5 @@ export function checkPhone(word: string) {
 }
 
 export function checkNotEmpty(word: string) {
-  return /.+/.test(word);
+  return word.length > 0;
 }

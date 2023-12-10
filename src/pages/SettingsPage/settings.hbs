@@ -3,18 +3,16 @@
   <main class="settings">
     <img class="settings__avatar" src="/avatar.png" alt="Avatar"/>
     <form class="settings__form">
-      {{> SettingsItemInput/SettingsItemInput label="Почта" placeholder="pochta@yandex.ru" type="email" name="email" }}
-      {{> SettingsItemInput/SettingsItemInput label="Логин" placeholder="ivanivanov" type="text" name="login" }}
-      {{> SettingsItemInput/SettingsItemInput label="Имя" placeholder="Иван" type="text" name="first_name" }}
-      {{> SettingsItemInput/SettingsItemInput label="Фамилия" placeholder="Иванов" type="text" name="second_name" }}
-      {{> SettingsItemInput/SettingsItemInput label="Имя в чате" placeholder="Иван" type="text" name="display_name" }}
-      {{> SettingsItemInput/SettingsItemInput label="Телефон" placeholder="+7 (909) 967 30 30" type="tel" name="phone" }}
+        {{#each ProfileDataInputs }}
+          {{{this}}}
+        {{/each}}
       <h2>Смена аватара</h2>
-      {{> SettingsItemInput/SettingsItemInput label="Аватар" type="file" name="avatar" }}
+        {{{ AvatarInput }}}
       <h2>Смаена пароля</h2>
-      {{> SettingsItemInput/SettingsItemInput label="Новый пароль" placeholder="********" type="password" name="newPassword" }}
-      {{> SettingsItemInput/SettingsItemInput label="Старый пароль" placeholder="*********" type="password" name="newPassword" }}
-      <button class="button_primary" type="submit">Сохранить</button>
+      {{#each PasswordInputs }}
+        {{{this}}}
+      {{/each}}
+      {{{Button}}}
     </form>
   </main>
 </div>

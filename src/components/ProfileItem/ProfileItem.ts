@@ -1,9 +1,18 @@
 import template from './ProfileItem.hbs';
 import Block from '../../components/Block';
 
+interface Props {
+  label: string;
+  value: string;
+}
+
 export default class ProfileItem extends Block {
-  constructor() {
-    super();
+  constructor(props: Props) {
+    super(
+        {
+          ...props
+        }
+    );
   }
 
   render() {

@@ -6,15 +6,18 @@ interface Props {
   label: string;
   name: string;
   type: string;
+  class: string;
   error?: boolean;
+  placeholder?: string;
   onBlur?: (event: FocusEvent) => void;
 }
 
-export class AuthFormInput extends Block {
+export class FormInput extends Block {
   constructor(props: Props) {
     super({
       error: props.error,
       label: props.label,
+      class: props.class,
       Input: new Input(props),
     });
   }

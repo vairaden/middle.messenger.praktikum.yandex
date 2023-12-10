@@ -3,7 +3,7 @@ import template from './button.hbs';
 
 interface Props {
   text: string;
-  class?: 'button_primary';
+  class?: string;
   type?: 'submit' | 'button';
   onClick?: () => void;
 }

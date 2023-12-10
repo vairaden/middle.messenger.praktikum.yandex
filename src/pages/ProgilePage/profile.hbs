@@ -1,26 +1,23 @@
 <div class="page-wrapper">
-  <a class="back-button" href="../../index.html"><img src="/back.svg" alt="Стрелка назад"/></a>
+  {{{ Link}}}
   <main class="profile">
     <img class="profile__avatar" src="/avatar.png" alt="Avatar"/>
     <h1 class="profile__login">Иван</h1>
     <ul class="profile__section">
-      {{> ProfileItem/ProfileItem label="Почта" value="pochta@yandex.ru" }}
-      {{> ProfileItem/ProfileItem label="Логин" value="ivanivanov" }}
-      {{> ProfileItem/ProfileItem label="Имя" value="Иван" }}
-      {{> ProfileItem/ProfileItem label="Фамилия" value="Иванов" }}
-      {{> ProfileItem/ProfileItem label="Имя в чате" value="Иван" }}
-      {{> ProfileItem/ProfileItem label="Телефон" value="+7 (909) 967 30 30" }}
+      {{# each ProfileItems}}
+        {{{this}}}
+      {{/each}}
     </ul>
     <nav class="profile__nav">
       <ul class="profile__section">
         <li>
-          <a class="link" href="../SettingsPage/settings.hbs">Изменить данные</a>
+          {{{ SettingsLink }}}
         </li>
         <li>
-          <a class="link" href="../SettingsPage/settings.hbs">Изменить пароль</a>
+          {{{ ChangePasswordLink }}}
         </li>
         <li>
-          <a class="link_alert" href="../LoginPage/login.hbs">Выйти</a>
+          {{{ ExitLink }}}
         </li>
       </ul>
     </nav>

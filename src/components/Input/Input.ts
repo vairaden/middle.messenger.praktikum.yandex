@@ -2,8 +2,11 @@ import Block from '../Block';
 import template from './input.hbs';
 
 interface Props {
+  id?: string;
   name: string;
   type: string;
+  class?: string;
+  placeholder?: string;
   onBlur?: (event: FocusEvent) => void;
 }
 
