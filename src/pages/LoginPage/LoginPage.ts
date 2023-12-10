@@ -1,10 +1,10 @@
 import template from './login.hbs';
 import Block from '../../components/Block';
-import {render} from '../../lib/render';
-import {Button} from '../../components/Button/Button';
-import {checkLogin, checkPassword} from '../../lib/validators';
-import {FormInput} from '../../components/FormInput/FormInput';
-import {Link} from "../../components/Link/Link";
+import { render } from '../../lib/render';
+import { Button } from '../../components/Button/Button';
+import { checkLogin, checkPassword } from '../../lib/validators';
+import { FormInput } from '../../components/FormInput/FormInput';
+import { Link } from '../../components/Link/Link';
 
 export default class LoginPage extends Block {
   constructor() {
@@ -16,7 +16,7 @@ export default class LoginPage extends Block {
           name: 'login',
           class: 'form__input',
           onBlur: (event: FocusEvent) => {
-            const {value} = (event.target as HTMLInputElement);
+            const { value } = (event.target as HTMLInputElement);
 
             if (!checkLogin(value)) {
               this.setError('login', true);
@@ -31,7 +31,7 @@ export default class LoginPage extends Block {
           name: 'password',
           class: 'form__input',
           onBlur: (event: FocusEvent) => {
-            const {value} = (event.target as HTMLInputElement);
+            const { value } = (event.target as HTMLInputElement);
 
             if (!checkPassword(value)) {
               this.setError('password', true);
@@ -50,7 +50,7 @@ export default class LoginPage extends Block {
         Content: 'Нет аккаунта?',
         onClick: () => {
           render('register');
-        }
+        },
       }),
       events: {
         submit: (event: SubmitEvent) => {
@@ -79,19 +79,18 @@ export default class LoginPage extends Block {
   setError(name: string, state: boolean) {
     switch (name) {
       case 'login':
-        (this.children.Inputs as Block[])[0].setProps({class: 'form__input' + (state ? '_error' : '')});
+        (this.children.Inputs as Block[])[0].setProps({ class: `form__input${state ? '_error' : ''}` });
         break;
       case 'password':
-        (this.children.Inputs as Block[])[1].setProps({class: 'form__input' + (state ? '_error' : '')});
+        (this.children.Inputs as Block[])[1].setProps({ class: `form__input${state ? '_error' : ''}` });
         break;
-
     }
   }
 
   resetFormErrors() {
     (this.children.Inputs as Block[]).forEach((child) => {
-      child.setProps({class: 'form__input'});
-    })
+      child.setProps({ class: 'form__input' });
+    });
   }
 
   render() {

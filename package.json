@@ -13,7 +13,8 @@
     "preview": "vite preview",
     "dev": "vite",
     "serve": "node dist/server.js",
-    "lint": "eslint . && stylelint \"**/*.pcss\"",
+    "lint:typescript": "tsc --noEmit",
+    "lint": "eslint \"**/*.{js,ts}\" && stylelint \"**/*.pcss\"",
     "lint:fix": "eslint . --fix && stylelint \"**/*.pcss\" --fix"
   },
   "keywords": [],

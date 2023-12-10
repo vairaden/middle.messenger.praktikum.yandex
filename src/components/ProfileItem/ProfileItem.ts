@@ -9,9 +9,9 @@ interface Props {
 export default class ProfileItem extends Block {
   constructor(props: Props) {
     super(
-        {
-          ...props
-        }
+      {
+        ...props,
+      },
     );
   }
 

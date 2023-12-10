@@ -1,10 +1,12 @@
 import template from './register.hbs';
 import Block from '../../components/Block';
-import {FormInput} from "../../components/FormInput/FormInput";
-import {checkEmail, checkLogin, checkName, checkPassword, checkPhone} from "../../lib/validators";
-import {Link} from "../../components/Link/Link";
-import {render} from "../../lib/render";
-import {Button} from "../../components/Button/Button";
+import { FormInput } from '../../components/FormInput/FormInput';
+import {
+  checkEmail, checkLogin, checkName, checkPassword, checkPhone,
+} from '../../lib/validators';
+import { Link } from '../../components/Link/Link';
+import { render } from '../../lib/render';
+import { Button } from '../../components/Button/Button';
 
 export default class RegisterPage extends Block {
   constructor() {
@@ -13,7 +15,7 @@ export default class RegisterPage extends Block {
         Content: 'Войти',
         onClick: () => {
           render('login');
-        }
+        },
       }),
       Button: new Button({
         type: 'submit',
@@ -27,7 +29,7 @@ export default class RegisterPage extends Block {
           name: 'email',
           class: 'form__input',
           onBlur: (event: FocusEvent) => {
-            const {value} = (event.target as HTMLInputElement);
+            const { value } = (event.target as HTMLInputElement);
 
             if (!checkEmail(value)) {
               this.setError('email', true);
@@ -41,7 +43,7 @@ export default class RegisterPage extends Block {
           name: 'login',
           class: 'form__input',
           onBlur: (event: FocusEvent) => {
-            const {value} = (event.target as HTMLInputElement);
+            const { value } = (event.target as HTMLInputElement);
 
             if (!checkLogin(value)) {
               this.setError('login', true);
@@ -55,7 +57,7 @@ export default class RegisterPage extends Block {
           name: 'first_name',
           class: 'form__input',
           onBlur: (event: FocusEvent) => {
-            const {value} = (event.target as HTMLInputElement);
+            const { value } = (event.target as HTMLInputElement);
 
             if (!checkName(value)) {
               this.setError('first_name', true);
@@ -69,7 +71,7 @@ export default class RegisterPage extends Block {
           name: 'second_name',
           class: 'form__input',
           onBlur: (event: FocusEvent) => {
-            const {value} = (event.target as HTMLInputElement);
+            const { value } = (event.target as HTMLInputElement);
 
             if (!checkName(value)) {
               this.setError('second_name', true);
@@ -83,7 +85,7 @@ export default class RegisterPage extends Block {
           name: 'phone',
           class: 'form__input',
           onBlur: (event: FocusEvent) => {
-            const {value} = (event.target as HTMLInputElement);
+            const { value } = (event.target as HTMLInputElement);
 
             if (!checkPhone(value)) {
               this.setError('phone', true);
@@ -97,7 +99,7 @@ export default class RegisterPage extends Block {
           name: 'password',
           class: 'form__input',
           onBlur: (event: FocusEvent) => {
-            const {value} = (event.target as HTMLInputElement);
+            const { value } = (event.target as HTMLInputElement);
 
             if (!checkPassword(value)) {
               this.setError('password', true);
@@ -111,7 +113,7 @@ export default class RegisterPage extends Block {
           name: 'password_repeat',
           class: 'form__input',
           onBlur: (event: FocusEvent) => {
-            const {value} = (event.target as HTMLInputElement);
+            const { value } = (event.target as HTMLInputElement);
 
             if (!checkPassword(value)) {
               this.setError('password_repeat', true);
@@ -168,33 +170,33 @@ export default class RegisterPage extends Block {
   setError(name: string, state: boolean) {
     switch (name) {
       case 'email':
-        (this.children.Inputs as Block[])[0].setProps({class: 'form__input' + (state ? '_error' : '')});
+        (this.children.Inputs as Block[])[0].setProps({ class: `form__input${state ? '_error' : ''}` });
         break;
       case 'login':
-        (this.children.Inputs as Block[])[1].setProps({class: 'form__input' + (state ? '_error' : '')});
+        (this.children.Inputs as Block[])[1].setProps({ class: `form__input${state ? '_error' : ''}` });
         break;
       case 'first_name':
-        (this.children.Inputs as Block[])[2].setProps({class: 'form__input' + (state ? '_error' : '')});
+        (this.children.Inputs as Block[])[2].setProps({ class: `form__input${state ? '_error' : ''}` });
         break;
       case 'second_name':
-        (this.children.Inputs as Block[])[3].setProps({class: 'form__input' + (state ? '_error' : '')});
+        (this.children.Inputs as Block[])[3].setProps({ class: `form__input${state ? '_error' : ''}` });
         break;
       case 'phone':
-        (this.children.Inputs as Block[])[4].setProps({class: 'form__input' + (state ? '_error' : '')});
+        (this.children.Inputs as Block[])[4].setProps({ class: `form__input${state ? '_error' : ''}` });
         break;
       case 'password':
-        (this.children.Inputs as Block[])[5].setProps({class: 'form__input' + (state ? '_error' : '')});
+        (this.children.Inputs as Block[])[5].setProps({ class: `form__input${state ? '_error' : ''}` });
         break;
       case 'password_repeat':
-        (this.children.Inputs as Block[])[6].setProps({class: 'form__input' + (state ? '_error' : '')});
+        (this.children.Inputs as Block[])[6].setProps({ class: `form__input${state ? '_error' : ''}` });
         break;
     }
   }
 
   resetFormErrors() {
     (this.children.Inputs as Block[]).forEach((child) => {
-      child.setProps({class: 'form__input'});
-    })
+      child.setProps({ class: 'form__input' });
+    });
   }
 
   render() {

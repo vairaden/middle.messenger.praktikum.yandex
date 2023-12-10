@@ -1,6 +1,6 @@
 import Block from '../Block';
 import template from './input.hbs';
-import {Input} from '../Input/Input';
+import { Input } from '../Input/Input';
 
 interface Props {
   label: string;

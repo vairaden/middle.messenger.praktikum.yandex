@@ -1,4 +1,4 @@
-import { nanoid } from 'nanoid';
+import {nanoid} from 'nanoid';
 import EventBus from '../lib/eventBus';
 
 abstract class Block {
@@ -26,7 +26,7 @@ abstract class Block {
   constructor(propsWithChildren: any = {}) {
     const eventBus = new EventBus();
 
-    const { props, children } = this._getChildrenAndProps(propsWithChildren);
+    const {props, children} = this._getChildrenAndProps(propsWithChildren);
 
     // this._meta = {
     //   props
@@ -46,18 +46,22 @@ abstract class Block {
     const children: Record<string, Block | Block[]> = {};
 
     Object.entries(childrenAndProps).forEach(([key, value]) => {
-      if (value instanceof Block || Array.isArray(value) && value.every((item) => item instanceof Block)) {
+      if (value instanceof Block ||
+          Array.isArray(value) &&
+          value.every((item) => item instanceof Block)) {
         children[key] = value;
       } else {
         props[key] = value;
       }
     });
 
-    return { props, children };
+    return {props, children};
   }
 
   _addEvents() {
-    const { events = {} } = this.props as { events: Record<string, () => void> };
+    const {events = {}} = this.props as {
+      events: Record<string, () => void>
+    };
 
     Object.keys(events).forEach((eventName) => {
       this._element?.addEventListener(eventName, events[eventName]);
@@ -137,7 +141,7 @@ abstract class Block {
   }
 
   protected compile(template: (context: any) => string, props: any) {
-    const contextAndStubs = { ...props, __refs: this.refs };
+    const contextAndStubs = {...props, __refs: this.refs};
 
     Object.entries(this.children).forEach(([name, component]) => {
       if (Array.isArray(component)) {
@@ -202,7 +206,7 @@ abstract class Block {
         return typeof value === 'function' ? value.bind(target) : value;
       },
       set(target, prop, value) {
-        const oldTarget = { ...target };
+        const oldTarget = {...target};
 
         target[prop] = value;
 
