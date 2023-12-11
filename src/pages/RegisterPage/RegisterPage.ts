@@ -1,4 +1,4 @@
-import template from './register.hbs';
+import template from './registerPage.hbs';
 import Block from '../../components/Block';
 import FormInput from '../../components/FormInput/FormInput';
 import {

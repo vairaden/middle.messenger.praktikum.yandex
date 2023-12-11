@@ -1,4 +1,4 @@
-import template from './settings.hbs';
+import template from './settingsPage.hbs';
 import Block from '../../components/Block';
 import render from '../../lib/render';
 import Button from '../../components/Button/Button';

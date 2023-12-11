@@ -1,4 +1,4 @@
-import template from './main.hbs';
+import template from './homePage.hbs';
 import Block from '../../components/Block';
 import ChatBrowser from '../../widgets/ChatBrowser/ChatBrowser';
 import Message from '../../widgets/Message/Message';

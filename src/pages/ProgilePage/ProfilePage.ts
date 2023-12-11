@@ -1,4 +1,4 @@
-import template from './profile.hbs';
+import template from './profilePage.hbs';
 import Block from '../../components/Block';
 import Link from '../../components/Link/Link';
 import render from '../../lib/render';

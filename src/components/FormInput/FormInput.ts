@@ -1,5 +1,5 @@
 import Block from '../Block';
-import template from './input.hbs';
+import template from './formInput.hbs';
 import Input from '../Input/Input';
 
 interface Props {

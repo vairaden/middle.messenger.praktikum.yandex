@@ -1,4 +1,4 @@
-import template from './ChatItem.hbs';
+import template from './chatItem.hbs';
 import Block from '../../components/Block';
 
 export default class ChatItem extends Block {

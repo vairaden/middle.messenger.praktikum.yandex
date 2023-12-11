@@ -1,4 +1,4 @@
-import template from './ChatBrowser.hbs';
+import template from './chatBrowser.hbs';
 import Block from '../../components/Block';
 import ChatItem from '../../components/ChatItem/ChatItem';
 import Link from '../../components/Link/Link';

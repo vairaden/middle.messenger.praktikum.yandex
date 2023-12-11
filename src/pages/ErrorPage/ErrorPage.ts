@@ -1,4 +1,4 @@
-import template from './error.hbs';
+import template from './errorPage.hbs';
 import Block from '../../components/Block';
 
 export default class ErrorPage extends Block {

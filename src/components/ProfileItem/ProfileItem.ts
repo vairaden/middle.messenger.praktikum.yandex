@@ -1,4 +1,4 @@
-import template from './ProfileItem.hbs';
+import template from './profileItem.hbs';
 import Block from '../../components/Block';
 
 interface Props {

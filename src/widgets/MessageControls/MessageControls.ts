@@ -1,4 +1,4 @@
-import template from './MessageControls.hbs';
+import template from './messageControls.hbs';
 import Block from '../../components/Block';
 import Input from '../../components/Input/Input';
 import { checkNotEmpty } from '../../lib/validators';
@@ -20,6 +20,7 @@ export default class MessageControls extends Block {
           const values = Object.fromEntries(formData as any);
 
           if (!checkNotEmpty(values.message)) {
+            console.log('Empty message');
             return;
           }
 
