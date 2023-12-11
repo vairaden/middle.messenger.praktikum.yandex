@@ -1,9 +1,9 @@
 export function checkName(word: string) {
-  return /^[A-ZА-ЯЁ][a-zа-яё\-]+$/.test(word);
+  return /^[A-ZА-ЯЁ][a-zа-яё-]+$/.test(word);
 }
 
 export function checkLogin(word: string) {
-  return /^[A-ZА-ЯЁ][a-zа-яё\-]*$/.test(word);
+  return /^[A-ZА-ЯЁ][a-zа-яё-]*$/.test(word);
 }
 
 export function checkEmail(word: string) {

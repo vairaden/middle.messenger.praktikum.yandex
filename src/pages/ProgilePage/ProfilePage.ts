@@ -1,7 +1,7 @@
 import template from './profile.hbs';
 import Block from '../../components/Block';
-import { Link } from '../../components/Link/Link';
-import { render } from '../../lib/render';
+import Link from '../../components/Link/Link';
+import render from '../../lib/render';
 import ProfileItem from '../../components/ProfileItem/ProfileItem';
 
 const profileInformation = {

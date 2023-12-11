@@ -31,7 +31,7 @@ export async function request(url: string, options: Options): Promise<XMLHttpReq
       xhr.setRequestHeader(key, value);
     });
 
-    xhr.onload = function () {
+    xhr.onload = () => {
       resolve(xhr);
     };
 

@@ -7,7 +7,7 @@ interface Props {
   class?: string;
 }
 
-export class Link extends Block {
+export default class Link extends Block {
   constructor(props: Props) {
     super({
       class: 'link_centered',

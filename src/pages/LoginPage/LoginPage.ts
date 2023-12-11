@@ -1,10 +1,10 @@
 import template from './login.hbs';
 import Block from '../../components/Block';
-import { render } from '../../lib/render';
-import { Button } from '../../components/Button/Button';
+import render from '../../lib/render';
+import Button from '../../components/Button/Button';
 import { checkLogin, checkPassword } from '../../lib/validators';
-import { FormInput } from '../../components/FormInput/FormInput';
-import { Link } from '../../components/Link/Link';
+import FormInput from '../../components/FormInput/FormInput';
+import Link from '../../components/Link/Link';
 
 export default class LoginPage extends Block {
   constructor() {
@@ -84,6 +84,8 @@ export default class LoginPage extends Block {
       case 'password':
         (this.children.Inputs as Block[])[1].setProps({ class: `form__input${state ? '_error' : ''}` });
         break;
+      default:
+        throw new Error(`Cannot find block ${name}`);
     }
   }
 

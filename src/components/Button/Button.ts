@@ -8,7 +8,7 @@ interface Props {
   onClick?: () => void;
 }
 
-export class Button extends Block {
+export default class Button extends Block {
   constructor(props: Props) {
     super({
       ...props,

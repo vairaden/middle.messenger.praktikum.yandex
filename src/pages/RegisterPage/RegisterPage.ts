@@ -1,12 +1,12 @@
 import template from './register.hbs';
 import Block from '../../components/Block';
-import { FormInput } from '../../components/FormInput/FormInput';
+import FormInput from '../../components/FormInput/FormInput';
 import {
   checkEmail, checkLogin, checkName, checkPassword, checkPhone,
 } from '../../lib/validators';
-import { Link } from '../../components/Link/Link';
-import { render } from '../../lib/render';
-import { Button } from '../../components/Button/Button';
+import Link from '../../components/Link/Link';
+import render from '../../lib/render';
+import Button from '../../components/Button/Button';
 
 export default class RegisterPage extends Block {
   constructor() {
@@ -190,6 +190,8 @@ export default class RegisterPage extends Block {
       case 'password_repeat':
         (this.children.Inputs as Block[])[6].setProps({ class: `form__input${state ? '_error' : ''}` });
         break;
+      default:
+        throw new Error(`Cannot find block ${name}`);
     }
   }
 

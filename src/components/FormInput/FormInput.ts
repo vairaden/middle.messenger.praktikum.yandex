@@ -1,6 +1,6 @@
 import Block from '../Block';
 import template from './input.hbs';
-import { Input } from '../Input/Input';
+import Input from '../Input/Input';
 
 interface Props {
   label: string;
@@ -12,7 +12,7 @@ interface Props {
   onBlur?: (event: FocusEvent) => void;
 }
 
-export class FormInput extends Block {
+export default class FormInput extends Block {
   constructor(props: Props) {
     super({
       error: props.error,

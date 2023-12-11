@@ -1,6 +1,6 @@
 import template from './MessageControls.hbs';
 import Block from '../../components/Block';
-import { Input } from '../../components/Input/Input';
+import Input from '../../components/Input/Input';
 import { checkNotEmpty } from '../../lib/validators';
 
 export default class MessageControls extends Block {

@@ -1,8 +1,8 @@
 import template from './settings.hbs';
 import Block from '../../components/Block';
-import { render } from '../../lib/render';
-import { Button } from '../../components/Button/Button';
-import { FormInput } from '../../components/FormInput/FormInput';
+import render from '../../lib/render';
+import Button from '../../components/Button/Button';
+import FormInput from '../../components/FormInput/FormInput';
 
 const profileDataInputs = {
   Почта: { placeholder: 'pochta@yandex.ru', type: 'email', name: 'email' },

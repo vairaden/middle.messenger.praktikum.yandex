@@ -1,8 +1,8 @@
 import template from './ChatBrowser.hbs';
 import Block from '../../components/Block';
 import ChatItem from '../../components/ChatItem/ChatItem';
-import { Link } from '../../components/Link/Link';
-import { render } from '../../lib/render';
+import Link from '../../components/Link/Link';
+import render from '../../lib/render';
 
 export default class ChatBrowser extends Block {
   constructor() {

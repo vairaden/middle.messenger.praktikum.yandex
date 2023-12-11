@@ -1,4 +1,4 @@
-import { render } from './lib/render';
+import render from './lib/render';
 
 // registerComponent('Button', Button);
 

@@ -14,7 +14,7 @@ const ROUTES = {
   settings: SettingsPage,
 };
 
-export function render(name: keyof typeof ROUTES) {
+export default function render(name: keyof typeof ROUTES) {
   const root = document.querySelector('#app')!;
 
   root.innerHTML = '';

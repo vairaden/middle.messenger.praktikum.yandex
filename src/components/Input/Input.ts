@@ -10,7 +10,7 @@ interface Props {
   onBlur?: (event: FocusEvent) => void;
 }
 
-export class Input extends Block {
+export default class Input extends Block {
   constructor(props: Props) {
     super({
       ...props,
