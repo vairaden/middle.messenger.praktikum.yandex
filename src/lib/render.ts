@@ -24,7 +24,7 @@ export default function render(name: keyof typeof ROUTES) {
   if (Page) {
     page = new Page();
   } else {
-    page = new ErrorPage({code: '404', text: 'Не туда попали'});
+    page = new ErrorPage({ code: '404', text: 'Не туда попали' });
   }
 
   root.append(page.getContent()!);
