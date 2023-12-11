@@ -59,12 +59,17 @@ export default class LoginPage extends Block {
           const values = Object.fromEntries(formData as any);
 
           this.resetFormErrors();
+          let failedChecks = false;
           if (!checkLogin(values.login)) {
             this.setError('login', true);
-            return;
+            failedChecks = true;
           }
           if (!checkPassword(values.password)) {
             this.setError('password', true);
+            failedChecks = true;
+          }
+
+          if (failedChecks) {
             return;
           }
 

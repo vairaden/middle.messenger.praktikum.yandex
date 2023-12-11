@@ -1,8 +1,8 @@
 import template from './homePage.hbs';
 import Block from '../../components/Block';
-import ChatBrowser from '../../widgets/ChatBrowser/ChatBrowser';
-import Message from '../../widgets/Message/Message';
-import MessageControls from '../../widgets/MessageControls/MessageControls';
+import ChatBrowser from '../../blocks/ChatBrowser/ChatBrowser';
+import Message from '../../blocks/Message/Message';
+import MessageControls from '../../blocks/MessageControls/MessageControls';
 
 export default class HomePage extends Block {
   constructor() {

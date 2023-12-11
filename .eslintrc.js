@@ -22,5 +22,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'func-names': 'off',
     '@typescript-eslint/no-explicit-any': 'warn',
+    'max-len': ['error', 120],
+    'arrow-body-style': 'off',
   },
 };

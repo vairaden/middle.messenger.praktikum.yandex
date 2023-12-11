@@ -130,32 +130,37 @@ export default class RegisterPage extends Block {
           const values = Object.fromEntries(formData as any);
 
           this.resetFormErrors();
+          let failedChecks = false;
           if (!checkEmail(values.email)) {
             this.setError('email', true);
-            return;
+            failedChecks = true;
           }
           if (!checkLogin(values.login)) {
             this.setError('login', true);
-            return;
+            failedChecks = true;
           }
           if (!checkName(values.first_name)) {
             this.setError('first_name', true);
-            return;
+            failedChecks = true;
           }
           if (!checkName(values.second_name)) {
             this.setError('second_name', true);
-            return;
+            failedChecks = true;
           }
           if (!checkPhone(values.phone)) {
             this.setError('phone', true);
-            return;
+            failedChecks = true;
           }
           if (!checkPassword(values.password)) {
             this.setError('password', true);
-            return;
+            failedChecks = true;
           }
           if (!checkPassword(values.password_repeat)) {
             this.setError('password_repeat', true);
+            failedChecks = true;
+          }
+
+          if (failedChecks) {
             return;
           }
 
