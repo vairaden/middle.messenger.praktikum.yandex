@@ -8,7 +8,6 @@ import SettingsPage from '../pages/SettingsPage/SettingsPage';
 const ROUTES = {
   home: HomePage,
   login: LoginPage,
-  error: ErrorPage,
   profile: ProfilePage,
   register: RegisterPage,
   settings: SettingsPage,
@@ -21,7 +20,12 @@ export default function render(name: keyof typeof ROUTES) {
 
   const Page = ROUTES[name];
 
-  const page = new Page();
+  let page;
+  if (Page) {
+    page = new Page();
+  } else {
+    page = new ErrorPage({code: '404', text: 'Не туда попали'});
+  }
 
   root.append(page.getContent()!);
 
