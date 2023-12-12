@@ -1,6 +1,15 @@
 import { nanoid } from 'nanoid';
 import EventBus from '../lib/eventBus';
 
+interface Children {
+  [key: string]: Block | Block[]
+}
+
+interface Props {
+  events?: Record<string, EventListener | undefined>;
+  [key: string]: unknown;
+}
+
 abstract class Block {
   static EVENTS = {
     INIT: 'init',
@@ -11,26 +20,19 @@ abstract class Block {
 
   public id = nanoid(6);
 
-  protected props: any;
+  protected props: Props;
 
-  protected refs: Record<string, Block> = {};
-
-  public children: Record<string, Block | Block[]>;
+  public children: Children;
 
   private eventBus: () => EventBus;
 
   private _element: HTMLElement | null = null;
 
-  // private _meta: { props: any; };
-
-  constructor(propsWithChildren: any = {}) {
+  constructor(propsWithChildren: Props = {}) {
     const eventBus = new EventBus();
 
     const { props, children } = this._getChildrenAndProps(propsWithChildren);
 
-    // this._meta = {
-    //   props
-    // };
     this.children = children;
     this.props = this._makePropsProxy(props);
 
@@ -41,13 +43,13 @@ abstract class Block {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  _getChildrenAndProps(childrenAndProps: any) {
-    const props: Record<string, any> = {};
-    const children: Record<string, Block | Block[]> = {};
+  _getChildrenAndProps(childrenAndProps: Props) {
+    const props: Props = {};
+    const children: Children = {};
 
     Object.entries(childrenAndProps).forEach(([key, value]) => {
       if (value instanceof Block
-          || (Array.isArray(value) && value.every((item) => item instanceof Block))) {
+        || (Array.isArray(value) && value.every((item) => item instanceof Block))) {
         children[key] = value;
       } else {
         props[key] = value;
@@ -58,12 +60,22 @@ abstract class Block {
   }
 
   _addEvents() {
-    const { events = {} } = this.props as {
-      events: Record<string, () => void>
-    };
+    const { events = {} } = this.props;
 
     Object.keys(events).forEach((eventName) => {
-      this._element?.addEventListener(eventName, events[eventName]);
+      if (events[eventName]) {
+        this._element?.addEventListener(eventName, events[eventName]!);
+      }
+    });
+  }
+
+  _removeEvents() {
+    const { events = {} } = this.props;
+
+    Object.keys(events).forEach((eventName) => {
+      if (events[eventName]) {
+        this._element?.removeEventListener(eventName, events[eventName]!);
+      }
     });
   }
 
@@ -75,7 +87,6 @@ abstract class Block {
   }
 
   private _init() {
-    // this._element = this._createDocumentElement()
     this.init();
 
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
@@ -103,17 +114,17 @@ abstract class Block {
     });
   }
 
-  private _componentDidUpdate(oldProps: any, newProps: any) {
+  private _componentDidUpdate(oldProps: Props, newProps: Props) {
     if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
   }
 
-  protected componentDidUpdate(oldProps: any, newProps: any) {
+  protected componentDidUpdate(oldProps: Props, newProps: Props) {
     return true || oldProps !== newProps;
   }
 
-  setProps = (nextProps: any) => {
+  setProps = (nextProps: Props) => {
     if (!nextProps) {
       return;
     }
@@ -131,6 +142,7 @@ abstract class Block {
     const newElement = fragment.firstElementChild as HTMLElement;
 
     if (this._element) {
+      this._removeEvents();
       this._element.replaceWith(newElement);
     }
 
@@ -139,8 +151,8 @@ abstract class Block {
     this._addEvents();
   }
 
-  protected compile(template: (context: any) => string, props: any) {
-    const contextAndStubs = { ...props, __refs: this.refs };
+  protected compile(template: (context: any) => string, props: Props) {
+    const contextAndStubs = { ...props };
 
     Object.entries(this.children).forEach(([name, component]) => {
       if (Array.isArray(component)) {
@@ -180,15 +192,11 @@ abstract class Block {
       }
     });
 
-    // contextAndStubs.__children?.forEach(({embed}: any) => {
-    //   embed(temp.content);
-    // });
-
     return temp.content;
   }
 
   protected render():
-      DocumentFragment {
+    DocumentFragment {
     return new DocumentFragment();
   }
 
@@ -196,15 +204,15 @@ abstract class Block {
     return this.element;
   }
 
-  _makePropsProxy(props: any) {
+  _makePropsProxy(props: Props) {
     const self = this;
 
     return new Proxy(props, {
-      get(target, prop) {
+      get(target: Props, prop: string) {
         const value = target[prop];
         return typeof value === 'function' ? value.bind(target) : value;
       },
-      set(target, prop, value) {
+      set(target: Props, prop: string, value) {
         const oldTarget = { ...target };
 
         target[prop] = value;
@@ -216,10 +224,6 @@ abstract class Block {
         throw new Error('Нет доступа');
       },
     });
-  }
-
-  _createDocumentElement(tagName: string) {
-    return document.createElement(tagName);
   }
 
   show() {

@@ -8,17 +8,27 @@ interface Props {
   type: string;
   class: string;
   error?: boolean;
+  errorText?: string;
   placeholder?: string;
-  onBlur?: (event: FocusEvent) => void;
+  onBlur?: EventListener;
 }
 
 export default class FormInput extends Block {
   constructor(props: Props) {
     super({
       error: props.error,
+      errorText: props.errorText,
       label: props.label,
       class: props.class,
-      Input: new Input(props),
+      Input: new Input(
+        {
+          name: props.name,
+          type: props.type,
+          class: props.class,
+          placeholder: props.placeholder,
+          onBlur: props.onBlur,
+        },
+      ),
     });
   }
 

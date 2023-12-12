@@ -7,7 +7,7 @@ interface Props {
   type: string;
   class?: string;
   placeholder?: string;
-  onBlur?: (event: FocusEvent) => void;
+  onBlur?: EventListener;
 }
 
 export default class Input extends Block {

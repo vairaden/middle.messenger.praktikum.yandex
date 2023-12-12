@@ -27,8 +27,11 @@ export default class RegisterPage extends Block {
           label: 'Почта',
           type: 'email',
           name: 'email',
+          errorText: 'Может включать цифры и спецсимволы вроде дефиса и подчёркивания,'
+            + ' обязательно должна быть «собака» (@) и точка после неё,'
+            + ' но перед точкой обязательно должны быть буквы',
           class: 'form__input',
-          onBlur: (event: FocusEvent) => {
+          onBlur: (event) => {
             const { value } = (event.target as HTMLInputElement);
 
             if (!checkEmail(value)) {
@@ -41,8 +44,10 @@ export default class RegisterPage extends Block {
           label: 'Логин',
           type: 'text',
           name: 'login',
+          errorText: 'От 3 до 20 символов, латиница, может содержать цифры, но не состоять из них,'
+            + ' без пробелов, без спецсимволов (допустимы дефис и нижнее подчёркивание)',
           class: 'form__input',
-          onBlur: (event: FocusEvent) => {
+          onBlur: (event) => {
             const { value } = (event.target as HTMLInputElement);
 
             if (!checkLogin(value)) {
@@ -55,8 +60,10 @@ export default class RegisterPage extends Block {
           label: 'Имя',
           type: 'text',
           name: 'first_name',
+          errorText: 'Первая буква должна быть заглавной, без пробелов и без цифр,'
+            + ' нет спецсимволов (допустим только дефис)',
           class: 'form__input',
-          onBlur: (event: FocusEvent) => {
+          onBlur: (event) => {
             const { value } = (event.target as HTMLInputElement);
 
             if (!checkName(value)) {
@@ -69,8 +76,10 @@ export default class RegisterPage extends Block {
           label: 'Фамилия',
           type: 'text',
           name: 'second_name',
+          errorText: 'Первая буква должна быть заглавной, без пробелов и без цифр,'
+            + ' нет спецсимволов (допустим только дефис)',
           class: 'form__input',
-          onBlur: (event: FocusEvent) => {
+          onBlur: (event) => {
             const { value } = (event.target as HTMLInputElement);
 
             if (!checkName(value)) {
@@ -83,8 +92,9 @@ export default class RegisterPage extends Block {
           label: 'Телефон',
           type: 'tel',
           name: 'phone',
+          errorText: 'От 10 до 15 символов, состоит из цифр, может начинается с плюса',
           class: 'form__input',
-          onBlur: (event: FocusEvent) => {
+          onBlur: (event) => {
             const { value } = (event.target as HTMLInputElement);
 
             if (!checkPhone(value)) {
@@ -97,8 +107,9 @@ export default class RegisterPage extends Block {
           label: 'Пароль',
           type: 'password',
           name: 'password',
+          errorText: 'От 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра',
           class: 'form__input',
-          onBlur: (event: FocusEvent) => {
+          onBlur: (event) => {
             const { value } = (event.target as HTMLInputElement);
 
             if (!checkPassword(value)) {
@@ -111,8 +122,9 @@ export default class RegisterPage extends Block {
           label: 'Пароль (ещё раз)',
           type: 'password',
           name: 'password_repeat',
+          errorText: 'От 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра',
           class: 'form__input',
-          onBlur: (event: FocusEvent) => {
+          onBlur: (event) => {
             const { value } = (event.target as HTMLInputElement);
 
             if (!checkPassword(value)) {
@@ -124,7 +136,7 @@ export default class RegisterPage extends Block {
         }),
       ],
       events: {
-        submit: (event: SubmitEvent) => {
+        submit: (event) => {
           event.preventDefault();
           const formData = new FormData(event.target as HTMLFormElement);
           const values = Object.fromEntries(formData as any);

@@ -14,8 +14,10 @@ export default class LoginPage extends Block {
           label: 'Логин',
           type: 'text',
           name: 'login',
+          errorText: 'От 3 до 20 символов, латиница, может содержать цифры, но не состоять из них,'
+            + ' без пробелов, без спецсимволов (допустимы дефис и нижнее подчёркивание)',
           class: 'form__input',
-          onBlur: (event: FocusEvent) => {
+          onBlur: (event) => {
             const { value } = (event.target as HTMLInputElement);
 
             if (!checkLogin(value)) {
@@ -29,8 +31,9 @@ export default class LoginPage extends Block {
           label: 'Пароль',
           type: 'password',
           name: 'password',
+          errorText: 'От 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра',
           class: 'form__input',
-          onBlur: (event: FocusEvent) => {
+          onBlur: (event) => {
             const { value } = (event.target as HTMLInputElement);
 
             if (!checkPassword(value)) {
@@ -53,7 +56,7 @@ export default class LoginPage extends Block {
         },
       }),
       events: {
-        submit: (event: SubmitEvent) => {
+        submit: (event) => {
           event.preventDefault();
           const formData = new FormData(event.target as HTMLFormElement);
           const values = Object.fromEntries(formData as any);

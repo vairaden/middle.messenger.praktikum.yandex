@@ -5,7 +5,7 @@ interface Props {
   text: string;
   class?: string;
   type?: 'submit' | 'button';
-  onClick?: () => void;
+  onClick?: EventListener;
 }
 
 export default class Button extends Block {

@@ -1,4 +1,5 @@
-type Callback = (...args : unknown[]) => void;
+type Callback = (...args: any[]) => void;
+
 export default class EventBus {
   private readonly listeners: Record<string, Callback[]> = {};
 

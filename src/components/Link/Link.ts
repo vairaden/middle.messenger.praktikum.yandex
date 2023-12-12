@@ -3,7 +3,7 @@ import template from './link.hbs';
 
 interface Props {
   Content: string;
-  onClick?: () => void;
+  onClick?: EventListener;
   class?: string;
 }
 

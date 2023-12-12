@@ -4,6 +4,7 @@ import ErrorPage from '../pages/ErrorPage/ErrorPage';
 import ProfilePage from '../pages/ProgilePage/ProfilePage';
 import RegisterPage from '../pages/RegisterPage/RegisterPage';
 import SettingsPage from '../pages/SettingsPage/SettingsPage';
+import Layout from '../layouts/Layout';
 
 const ROUTES = {
   home: HomePage,
@@ -27,7 +28,9 @@ export default function render(name: keyof typeof ROUTES) {
     page = new ErrorPage({ code: '404', text: 'Не туда попали' });
   }
 
-  root.append(page.getContent()!);
+  const layout = new Layout({ Page: page });
+
+  root.append(layout.getContent()!);
 
   page.dispatchComponentDidMount();
 }

@@ -14,7 +14,7 @@ export default class MessageControls extends Block {
         placeholder: 'Сообщение',
       }),
       events: {
-        submit: (event: SubmitEvent) => {
+        submit: (event) => {
           event.preventDefault();
           const formData = new FormData(event.target as HTMLFormElement);
           const values = Object.fromEntries(formData as any);

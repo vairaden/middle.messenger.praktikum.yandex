@@ -12,26 +12,60 @@ interface InputAttrs {
   placeholder: string;
   type: string;
   name: string;
+  errorText: string;
   validator: (value: string) => boolean;
 }
+
 const profileDataInputs: Record<string, InputAttrs> = {
   Почта: {
-    placeholder: 'pochta@yandex.ru', type: 'email', name: 'email', validator: checkEmail,
+    placeholder: 'pochta@yandex.ru',
+    type: 'email',
+    name: 'email',
+    validator: checkEmail,
+    errorText: 'Может включать цифры и спецсимволы вроде дефиса и подчёркивания,'
+      + ' обязательно должна быть «собака» (@) и точка после неё,'
+      + ' но перед точкой обязательно должны быть буквы',
+
   },
   Логин: {
-    placeholder: 'ivanivanov', type: 'text', name: 'login', validator: checkLogin,
+    placeholder: 'ivanivanov',
+    type: 'text',
+    name: 'login',
+    validator: checkLogin,
+    errorText: 'От 3 до 20 символов, латиница, может содержать цифры,'
+      + ' но не состоять из них, без пробелов, без спецсимволов'
+      + ' (допустимы дефис и нижнее подчёркивание)',
   },
   Имя: {
-    placeholder: 'Иван', type: 'text', name: 'first_name', validator: checkName,
+    placeholder: 'Иван',
+    type: 'text',
+    name: 'first_name',
+    validator: checkName,
+    errorText: 'Первая буква должна быть заглавной,'
+      + ' без пробелов и без цифр, нет спецсимволов (допустим только дефис)',
   },
   Фамилия: {
-    placeholder: 'Иванов', type: 'text', name: 'second_name', validator: checkName,
+    placeholder: 'Иванов',
+    type: 'text',
+    name: 'second_name',
+    validator: checkName,
+    errorText: 'Первая буква должна быть заглавной,'
+      + ' без пробелов и без цифр, нет спецсимволов (допустим только дефис)',
   },
   'Имя в чате': {
-    placeholder: 'Иван', type: 'text', name: 'display_name', validator: checkLogin,
+    placeholder: 'Иван',
+    type: 'text',
+    name: 'display_name',
+    validator: checkLogin,
+    errorText: 'От 3 до 20 символов, латиница, может содержать цифры, но не состоять из них,'
+      + ' без пробелов, без спецсимволов (допустимы дефис и нижнее подчёркивание)',
   },
   Телефон: {
-    placeholder: '+79099673030', type: 'tel', name: 'phone', validator: checkPhone,
+    placeholder: '+79099673030',
+    type: 'tel',
+    name: 'phone',
+    validator: checkPhone,
+    errorText: 'От 10 до 15 символов, состоит из цифр, может начинается с плюса',
   },
 };
 export default class SettingsPage extends Block {
@@ -43,8 +77,9 @@ export default class SettingsPage extends Block {
           type: attrs.type,
           label,
           placeholder: attrs.placeholder,
+          errorText: attrs.errorText,
           class: 'form__input_flat',
-          onBlur: (event: FocusEvent) => {
+          onBlur: (event) => {
             const { value } = (event.target as HTMLInputElement);
 
             if (!attrs.validator(value)) {
@@ -66,8 +101,9 @@ export default class SettingsPage extends Block {
             type: 'password',
             label: 'Новый пароль',
             placeholder: '********',
+            errorText: 'От 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра',
             class: 'form__input_flat',
-            onBlur: (event: FocusEvent) => {
+            onBlur: (event) => {
               const { value } = (event.target as HTMLInputElement);
 
               if (!checkPassword(value)) {
@@ -82,8 +118,9 @@ export default class SettingsPage extends Block {
             type: 'password',
             label: 'Старый пароль',
             placeholder: '********',
+            errorText: 'От 8 до 40 символов, обязательно хотя бы одна заглавная буква и цифра',
             class: 'form__input_flat',
-            onBlur: (event: FocusEvent) => {
+            onBlur: (event) => {
               const { value } = (event.target as HTMLInputElement);
 
               if (!checkPassword(value)) {
@@ -107,7 +144,7 @@ export default class SettingsPage extends Block {
           text: 'Сохранить',
         }),
         events: {
-          submit: (event: SubmitEvent) => {
+          submit: (event) => {
             event.preventDefault();
             const formData = new FormData(event.target as HTMLFormElement);
             const values = Object.fromEntries(formData as any);

@@ -1,3 +1,9 @@
+@import "../../styles/variables.pcss";
+
+.error-text {
+  font-size: small;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -14,6 +20,10 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 1rem;
+
+    .error-text {
+      display: none;
+    }
   }
 
   &__input_error {
@@ -42,6 +52,10 @@
       border: none;
       text-align: right;
     }
+
+    .error-text {
+      display: none;
+    }
   }
 
   &__input_flat_error {
@@ -51,6 +65,7 @@
 
     color: $color-alert;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     padding: 6px;
     margin-bottom: 6px;
