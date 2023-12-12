@@ -2,4 +2,4 @@
     indent_size = 2
     indent_style = space
     max_line_length = 100
-    
+    insert_final_newline = true
