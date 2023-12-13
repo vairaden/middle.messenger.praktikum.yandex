@@ -1,0 +1,28 @@
+module.exports = {
+  env: {
+    browser: true,
+  },
+  extends: ['airbnb-base',
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+  ],
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint'],
+  rules: {
+    'import/no-unresolved': 'off',
+    'import/extensions': 'off',
+    'no-underscore-dangle': 'off',
+    'no-console': 'warn',
+    'no-shadow': 'off',
+    'no-use-before-define': 'off',
+    'class-methods-use-this': 'off',
+    '@typescript-eslint/no-this-alias': 'off',
+    'consistent-return': 'warn',
+    'no-param-reassign': 'off',
+    'import/no-extraneous-dependencies': 'off',
+    'func-names': 'off',
+    '@typescript-eslint/no-explicit-any': 'warn',
+    'max-len': ['error', 120],
+    'arrow-body-style': 'off',
+  },
+};

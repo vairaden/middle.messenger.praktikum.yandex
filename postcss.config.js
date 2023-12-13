@@ -1,8 +1,8 @@
 module.exports = {
   plugins: {
-    "postcss-mixins": {},
+    'postcss-mixins': {},
     autoprefixer: {},
-    "postcss-nested": {},
-    "postcss-simple-vars": {},
+    'postcss-nested': {},
+    'postcss-simple-vars': {},
   },
 };
