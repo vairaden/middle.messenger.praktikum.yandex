@@ -5,7 +5,6 @@ import {
   checkEmail, checkLogin, checkName, checkPassword, checkPhone,
 } from '../../lib/validators';
 import Link from '../../components/Link/Link';
-import render from '../../lib/render';
 import Button from '../../components/Button/Button';
 
 export default class RegisterPage extends Block {
@@ -14,7 +13,7 @@ export default class RegisterPage extends Block {
       Link: new Link({
         Content: 'Войти',
         onClick: () => {
-          render('login');
+          // render('login');
         },
       }),
       Button: new Button({
@@ -178,7 +177,7 @@ export default class RegisterPage extends Block {
 
           console.log(values);
 
-          render('home');
+          // render('home');
         },
       },
     });

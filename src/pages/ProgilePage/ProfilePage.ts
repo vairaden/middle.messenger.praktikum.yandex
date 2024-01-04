@@ -1,7 +1,6 @@
 import template from './profilePage.hbs';
 import Block from '../../components/Block';
 import Link from '../../components/Link/Link';
-import render from '../../lib/render';
 import ProfileItem from '../../components/ProfileItem/ProfileItem';
 
 const profileInformation = {
@@ -19,7 +18,7 @@ export default class ProfilePage extends Block {
         class: 'back-button',
         Content: '<img src="/back.svg" alt="Стрелка назад"/>',
         onClick: () => {
-          render('home');
+          // render('home');
         },
       }),
       ProfileItems: Object.entries(profileInformation).map(([key, value]) => new ProfileItem({
@@ -30,21 +29,21 @@ export default class ProfilePage extends Block {
         Content: 'Изменить данные',
         class: 'link',
         onClick: () => {
-          render('settings');
+          // render('settings');
         },
       }),
       ChangePasswordLink: new Link({
         Content: 'Изменить пароль',
         class: 'link',
         onClick: () => {
-          render('settings');
+          // render('settings');
         },
       }),
       ExitLink: new Link({
         Content: 'Выйти',
         class: 'link_alert',
         onClick: () => {
-          render('login');
+          // render('login');
         },
       }),
     });

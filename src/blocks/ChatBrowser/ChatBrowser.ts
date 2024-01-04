@@ -2,7 +2,6 @@ import template from './chatBrowser.hbs';
 import Block from '../../components/Block';
 import ChatItem from '../../components/ChatItem/ChatItem';
 import Link from '../../components/Link/Link';
-import render from '../../lib/render';
 
 export default class ChatBrowser extends Block {
   constructor() {
@@ -11,7 +10,7 @@ export default class ChatBrowser extends Block {
       Link: new Link({
         Content: 'Профиль',
         onClick: () => {
-          render('profile');
+          // render('profile');
         },
       }),
     });

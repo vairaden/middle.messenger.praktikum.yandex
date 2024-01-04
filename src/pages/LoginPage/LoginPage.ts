@@ -1,6 +1,5 @@
 import template from './loginPage.hbs';
 import Block from '../../components/Block';
-import render from '../../lib/render';
 import Button from '../../components/Button/Button';
 import { checkLogin, checkPassword } from '../../lib/validators';
 import FormInput from '../../components/FormInput/FormInput';
@@ -52,7 +51,7 @@ export default class LoginPage extends Block {
       Link: new Link({
         Content: 'Нет аккаунта?',
         onClick: () => {
-          render('register');
+          // render('register');
         },
       }),
       events: {
@@ -78,7 +77,7 @@ export default class LoginPage extends Block {
 
           console.log(values);
 
-          render('home');
+          // render('home');
         },
       },
     });

@@ -1,6 +1,5 @@
 import template from './settingsPage.hbs';
 import Block from '../../components/Block';
-import render from '../../lib/render';
 import Button from '../../components/Button/Button';
 import FormInput from '../../components/FormInput/FormInput';
 import {
@@ -135,7 +134,7 @@ export default class SettingsPage extends Block {
           class: 'back-button',
           Content: '<img src="/back.svg" alt="Стрелка назад"/>',
           onClick: () => {
-            render('profile');
+            // render('profile');
           },
         }),
         Button: new Button({
@@ -190,7 +189,7 @@ export default class SettingsPage extends Block {
 
             console.log(values);
 
-            render('profile');
+            // render('profile');
           },
         },
       },

@@ -1,7 +1,6 @@
 import template from './errorPage.hbs';
 import Block from '../../components/Block';
 import Link from '../../components/Link/Link';
-import render from '../../lib/render';
 
 interface Props {
   code: string;
@@ -16,7 +15,7 @@ export default class ErrorPage extends Block {
         class: 'link_centered',
         Content: 'Назад к чатам',
         onClick() {
-          render('home');
+          // render('home');
         },
       }),
     });
