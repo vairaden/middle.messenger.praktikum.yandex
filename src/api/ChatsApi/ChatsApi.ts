@@ -1,7 +1,6 @@
 import BaseAPI from '../BaseAPI';
-import {ChatInfo} from "./chatsApiTypes";
-import {User} from "../AuthApi/authApiTypes";
-
+import { ChatInfo } from './chatsApiTypes';
+import { User } from '../AuthApi/authApiTypes';
 
 export class ChatsApi extends BaseAPI {
   constructor() {

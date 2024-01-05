@@ -1,6 +1,6 @@
 import Router from '../utils/Router';
 import Block from './Block';
-import {BlockProps} from "../types";
+import { BlockProps } from '../types';
 
 export function withRouter(Component: typeof Block) {
   type Pr = typeof Component extends typeof Block<infer P extends BlockProps> ? P : any;

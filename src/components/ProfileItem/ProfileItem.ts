@@ -3,7 +3,7 @@ import Block from '../../components/Block';
 
 interface Props {
   label: string;
-  value: string;
+  value: string | number;
 }
 
 export default class ProfileItem extends Block {

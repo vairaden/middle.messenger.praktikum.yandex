@@ -22,18 +22,22 @@ function isEqual(lhs: PlainObject, rhs: PlainObject) {
     return false;
   }
 
-  for (const [key, value] of Object.entries(lhs)) {
-    const rightValue = rhs[key];
-    if (isArrayOrObject(value) && isArrayOrObject(rightValue)) {
-      if (isEqual(value, rightValue)) {
-        continue;
+  try {
+    Object.entries(lhs).forEach(([key, value]) => {
+      const rightValue = rhs[key];
+      if (isArrayOrObject(value) && isArrayOrObject(rightValue)) {
+        if (isEqual(value, rightValue)) {
+          return;
+        }
+        throw new Error('false');
       }
-      return false;
-    }
 
-    if (value !== rightValue) {
-      return false;
-    }
+      if (value !== rightValue) {
+        throw new Error('false');
+      }
+    });
+  } catch (e: any) {
+    return false;
   }
 
   return true;

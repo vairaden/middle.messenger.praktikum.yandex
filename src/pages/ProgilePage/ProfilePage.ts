@@ -2,18 +2,23 @@ import template from './profilePage.hbs';
 import Block from '../../components/Block';
 import Link from '../../components/Link/Link';
 import ProfileItem from '../../components/ProfileItem/ProfileItem';
-import AuthController from "../../controllers/AuthController";
+import AuthController from '../../controllers/AuthController';
+import { User } from '../../api/AuthApi/authApiTypes';
+import { withStore } from '../../utils/Store';
 
 const profileInformation = {
-  Почта: 'pochta@yandex.ru',
-  Логин: 'ivanivanov',
-  Имя: 'Иван',
-  Фамилия: 'Иванов',
-  'Имя в чате': 'Иван',
-  Телефон: '+7 (909) 967 30 30',
+  first_name: 'Имя',
+  second_name: 'Фамилия',
+  login: 'Логин',
+  email: 'Почта',
+  phone: 'Телефон',
 };
-export default class ProfilePage extends Block {
-  constructor() {
+interface Props {
+  user: User;
+}
+
+class ProfilePage extends Block {
+  constructor(props: Props) {
     super({
       Link: new Link({
         class: 'back-button',
@@ -21,8 +26,8 @@ export default class ProfilePage extends Block {
         href: '/messenger',
       }),
       ProfileItems: Object.entries(profileInformation).map(([key, value]) => new ProfileItem({
-        label: key,
-        value,
+        label: value,
+        value: props.user[key as keyof User],
       })),
       SettingsLink: new Link({
         Content: 'Изменить данные',
@@ -40,7 +45,7 @@ export default class ProfilePage extends Block {
         href: '#',
         onClick: () => {
           AuthController.logout();
-        }
+        },
       }),
     });
   }
@@ -49,3 +54,7 @@ export default class ProfilePage extends Block {
     return this.compile(template, this.props);
   }
 }
+
+const userStore = withStore((store) => ({ user: store.user }));
+// @ts-ignore
+export default userStore(ProfilePage);

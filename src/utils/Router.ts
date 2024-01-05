@@ -21,11 +21,16 @@ function render(query: string, block: Block) {
 class Route {
   private block: Block | null = null;
 
-  constructor(
-    private pathname: string,
-    private readonly blockClass: BlockConstructable,
-    private readonly query: string,
-  ) {
+  private readonly pathname: string;
+
+  private readonly BlockClass: BlockConstructable;
+
+  private readonly query: string;
+
+  constructor(pathname: string, BlockClass: BlockConstructable, query: string) {
+    this.pathname = pathname;
+    this.BlockClass = BlockClass;
+    this.query = query;
   }
 
   leave() {
@@ -38,7 +43,7 @@ class Route {
 
   render() {
     if (!this.block) {
-      this.block = new this.blockClass({});
+      this.block = new this.BlockClass({});
 
       render(this.query, this.block);
     }

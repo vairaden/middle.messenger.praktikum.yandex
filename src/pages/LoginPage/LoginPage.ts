@@ -4,8 +4,8 @@ import Button from '../../components/Button/Button';
 import { checkLogin, checkPassword } from '../../lib/validators';
 import FormInput from '../../components/FormInput/FormInput';
 import Link from '../../components/Link/Link';
-import AuthController from "../../controllers/AuthController";
-import {SignupData} from "../../api/AuthApi/authApiTypes";
+import AuthController from '../../controllers/AuthController';
+import { SignupData } from '../../api/AuthApi/authApiTypes';
 
 export default class LoginPage extends Block {
   constructor() {
@@ -51,7 +51,7 @@ export default class LoginPage extends Block {
       }),
       Link: new Link({
         Content: 'Нет аккаунта?',
-        href: '/sign-up'
+        href: '/sign-up',
       }),
       events: {
         submit: (event) => {

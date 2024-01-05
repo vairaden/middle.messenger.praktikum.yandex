@@ -9,7 +9,7 @@ export default class ChatBrowser extends Block {
       ChatItems: new Array(3).fill(null).map(() => new ChatItem()),
       Link: new Link({
         Content: 'Профиль',
-        href: 'settings',
+        href: '/profile',
       }),
     });
   }

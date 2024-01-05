@@ -1,10 +1,10 @@
-import Router from "./utils/Router";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import ProfilePage from "./pages/ProgilePage/ProfilePage";
-import HomePage from "./pages/HomePage/HomePage";
-import AuthController from "./controllers/AuthController";
-import SettingsPage from "./pages/SettingsPage/SettingsPage";
+import Router from './utils/Router';
+import LoginPage from './pages/LoginPage/LoginPage';
+import RegisterPage from './pages/RegisterPage/RegisterPage';
+import ProfilePage from './pages/ProgilePage/ProfilePage';
+import HomePage from './pages/HomePage/HomePage';
+import AuthController from './controllers/AuthController';
+import SettingsPage from './pages/SettingsPage/SettingsPage';
 
 const enum Routes {
   Login = '/',
@@ -20,7 +20,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     .use(Routes.Signup, RegisterPage)
     .use(Routes.Profile, ProfilePage)
     .use(Routes.Settings, SettingsPage)
-    .use(Routes.Messenger, HomePage)
+    .use(Routes.Messenger, HomePage);
 
   let isProtectedRoute = true;
 
@@ -39,24 +39,22 @@ window.addEventListener('DOMContentLoaded', async () => {
   // phone:"79999999999"
   // second_name:"Avgust"
 
-
   // login: "kek"
   // password: "Lolkek123"
 
-  Router.start();
-  // try {
-  //   await AuthController.fetchUser();
-  //
-  //   Router.start();
-  //
-  //   if (!isProtectedRoute) {
-  //     Router.go(Routes.Profile)
-  //   }
-  // } catch (e) {
-  //   Router.start();
-  //
-  //   if (isProtectedRoute) {
-  //     Router.go(Routes.Login);
-  //   }
-  // }
+  try {
+    await AuthController.fetchUser();
+
+    Router.start();
+
+    if (!isProtectedRoute) {
+      Router.go(Routes.Profile);
+    }
+  } catch (e) {
+    Router.start();
+
+    if (isProtectedRoute) {
+      Router.go(Routes.Login);
+    }
+  }
 });

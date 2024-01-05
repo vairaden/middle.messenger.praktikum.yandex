@@ -1,8 +1,8 @@
 import store from '../utils/Store';
 import router from '../utils/Router';
 import MessagesController from './MessagesController';
-import AuthApi from "../api/AuthApi/AuthApi";
-import {SigninData, SignupData} from "../api/AuthApi/authApiTypes";
+import AuthApi from '../api/AuthApi/AuthApi';
+import { SigninData, SignupData } from '../api/AuthApi/authApiTypes';
 
 export class AuthController {
   private readonly api: typeof AuthApi;

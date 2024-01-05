@@ -7,7 +7,6 @@ interface Props {
 }
 export default class Layout extends Block {
   constructor(props: Props) {
-    console.log(props);
     super({
       Navbar: new Navbar(),
       Page: props.Page,

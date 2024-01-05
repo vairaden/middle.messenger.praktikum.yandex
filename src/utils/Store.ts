@@ -1,9 +1,9 @@
 import { Message } from '../controllers/MessagesController';
-import EventBus from "./eventBus";
-import set from "../lib/set";
-import Block from "../components/Block";
-import {User} from "../api/AuthApi/authApiTypes";
-import {ChatInfo} from "../api/ChatsApi/chatsApiTypes";
+import set from '../lib/set';
+import { User } from '../api/AuthApi/authApiTypes';
+import { ChatInfo } from '../api/ChatsApi/chatsApiTypes';
+import EventBus from './eventBus';
+import Block from '../components/Block';
 
 export enum StoreEvents {
   Updated = 'updated'
@@ -19,6 +19,11 @@ interface State {
 export class Store extends EventBus {
   private state: any = {};
 
+  constructor() {
+    super();
+    this.on(StoreEvents.Updated, () => {});
+  }
+
   public set(keypath: string, data: unknown) {
     set(this.state, keypath, data);
 
@@ -32,14 +37,12 @@ export class Store extends EventBus {
 
 const store = new Store();
 
-// @ts-ignore
+// @ts-expect-error: Property store does not exist on type Window & typeof globalThis
 window.store = store;
 
-export function withStore<SP extends Record<string, unknown>>(mapStateToProps: (state: State) => SP) {
-  return function wrap<P extends Record<string, unknown>>(Component: typeof Block<SP & P>){
-
+export function withStore<SP>(mapStateToProps: (state: State) => SP) {
+  return function wrap<P>(Component: typeof Block<SP & P>) {
     return class WithStore extends Component {
-
       constructor(props: Omit<P, keyof SP>) {
         let previousState = mapStateToProps(store.getState());
 
@@ -52,12 +55,9 @@ export function withStore<SP extends Record<string, unknown>>(mapStateToProps: (
 
           this.setProps({ ...stateProps } as SP & P);
         });
-
       }
-
-    }
-
-  }
+    };
+  };
 }
 
 export default store;

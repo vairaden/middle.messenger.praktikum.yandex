@@ -1,7 +1,7 @@
-import {nanoid} from 'nanoid';
+import { nanoid } from 'nanoid';
 import EventBus from '../utils/eventBus';
 import isEqual from '../lib/isEqual';
-import {BlockProps} from "../types";
+import { BlockProps } from '../types';
 
 interface Children {
   [key: string]: Block | Block[]
@@ -28,7 +28,7 @@ abstract class Block<P extends BlockProps = BlockProps> {
   constructor(propsWithChildren?: P) {
     const eventBus = new EventBus();
 
-    const {props, children} = this._getChildrenAndProps(propsWithChildren);
+    const { props, children } = this._getChildrenAndProps(propsWithChildren);
 
     this.children = children;
     this.props = this._makePropsProxy(props);
@@ -55,11 +55,11 @@ abstract class Block<P extends BlockProps = BlockProps> {
       });
     }
 
-    return {props: props as P, children};
+    return { props: props as P, children };
   }
 
   _addEvents() {
-    const {events = {}} = this.props as P & { events: Record<string, () => void> };
+    const { events = {} } = this.props as P & { events: Record<string, () => void> };
 
     Object.keys(events).forEach((eventName) => {
       if (events[eventName]) {
@@ -69,7 +69,7 @@ abstract class Block<P extends BlockProps = BlockProps> {
   }
 
   _removeEvents() {
-    const {events = {}} = this.props as P & { events: Record<string, () => void> };
+    const { events = {} } = this.props as P & { events: Record<string, () => void> };
 
     Object.keys(events).forEach((eventName) => {
       if (events[eventName]) {
@@ -151,7 +151,7 @@ abstract class Block<P extends BlockProps = BlockProps> {
   }
 
   protected compile(template: (context: any) => string, props: any) {
-    const contextAndStubs = {...props};
+    const contextAndStubs = { ...props };
 
     Object.entries(this.children).forEach(([name, component]) => {
       if (Array.isArray(component)) {
@@ -212,7 +212,7 @@ abstract class Block<P extends BlockProps = BlockProps> {
         return typeof value === 'function' ? value.bind(target) : value;
       },
       set(target: P, prop: string, value) {
-        const oldTarget = {...target};
+        const oldTarget = { ...target };
 
         target[prop as keyof P] = value;
 

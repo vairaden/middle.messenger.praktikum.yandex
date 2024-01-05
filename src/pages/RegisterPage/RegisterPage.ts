@@ -6,8 +6,8 @@ import {
 } from '../../lib/validators';
 import Link from '../../components/Link/Link';
 import Button from '../../components/Button/Button';
-import AuthController from "../../controllers/AuthController";
-import {SignupData} from "../../api/AuthApi/authApiTypes";
+import AuthController from '../../controllers/AuthController';
+import { SignupData } from '../../api/AuthApi/authApiTypes';
 
 export default class RegisterPage extends Block {
   constructor() {
