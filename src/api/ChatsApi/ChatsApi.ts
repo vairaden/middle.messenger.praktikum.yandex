@@ -1,19 +1,9 @@
-import BaseAPI from './BaseAPI';
-import { User } from './AuthAPI';
+import BaseAPI from '../BaseAPI';
+import {ChatInfo} from "./chatsApiTypes";
+import {User} from "../AuthApi/authApiTypes";
 
-export interface ChatInfo {
-  id: number;
-  title: string;
-  avatar: string;
-  unread_count: number;
-  last_message: {
-    user: User,
-    time: string;
-    content: string;
-  }
-}
 
-export class ChatsAPI extends BaseAPI {
+export class ChatsApi extends BaseAPI {
   constructor() {
     super('/chats');
   }
@@ -47,4 +37,4 @@ export class ChatsAPI extends BaseAPI {
   update = undefined;
 }
 
-export default new ChatsAPI();
+export default new ChatsApi();

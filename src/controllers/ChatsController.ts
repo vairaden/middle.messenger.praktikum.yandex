@@ -1,9 +1,9 @@
-import API, { ChatsAPI } from '../api/ChatsAPI';
+import API, { ChatsApi } from '../api/ChatsApi/ChatsApi';
 import store from '../utils/Store';
 import MessagesController from './MessagesController';
 
 class ChatsController {
-  private readonly api: ChatsAPI;
+  private readonly api: ChatsApi;
 
   constructor() {
     this.api = API;
