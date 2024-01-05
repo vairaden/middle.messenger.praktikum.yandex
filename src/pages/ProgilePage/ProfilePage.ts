@@ -2,6 +2,7 @@ import template from './profilePage.hbs';
 import Block from '../../components/Block';
 import Link from '../../components/Link/Link';
 import ProfileItem from '../../components/ProfileItem/ProfileItem';
+import AuthController from "../../controllers/AuthController";
 
 const profileInformation = {
   Почта: 'pochta@yandex.ru',
@@ -17,9 +18,7 @@ export default class ProfilePage extends Block {
       Link: new Link({
         class: 'back-button',
         Content: '<img src="/back.svg" alt="Стрелка назад"/>',
-        onClick: () => {
-          // render('home');
-        },
+        href: '/messenger',
       }),
       ProfileItems: Object.entries(profileInformation).map(([key, value]) => new ProfileItem({
         label: key,
@@ -28,23 +27,20 @@ export default class ProfilePage extends Block {
       SettingsLink: new Link({
         Content: 'Изменить данные',
         class: 'link',
-        onClick: () => {
-          // render('settings');
-        },
+        href: 'settings',
       }),
       ChangePasswordLink: new Link({
         Content: 'Изменить пароль',
         class: 'link',
-        onClick: () => {
-          // render('settings');
-        },
+        href: '/settings',
       }),
       ExitLink: new Link({
         Content: 'Выйти',
         class: 'link_alert',
+        href: '#',
         onClick: () => {
-          // render('login');
-        },
+          AuthController.logout();
+        }
       }),
     });
   }

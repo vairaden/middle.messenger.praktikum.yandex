@@ -1,9 +1,9 @@
-import { User } from '../api/AuthAPI';
-import { ChatInfo } from '../api/ChatsAPI';
 import { Message } from '../controllers/MessagesController';
 import EventBus from "./eventBus";
 import set from "../lib/set";
 import Block from "../components/Block";
+import {User} from "../api/AuthApi/authApiTypes";
+import {ChatInfo} from "../api/ChatsApi/chatsApiTypes";
 
 export enum StoreEvents {
   Updated = 'updated'

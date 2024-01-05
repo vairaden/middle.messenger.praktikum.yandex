@@ -133,9 +133,7 @@ export default class SettingsPage extends Block {
         Link: new Link({
           class: 'back-button',
           Content: '<img src="/back.svg" alt="Стрелка назад"/>',
-          onClick: () => {
-            // render('profile');
-          },
+          href: '/settings',
         }),
         Button: new Button({
           class: 'button_primary',

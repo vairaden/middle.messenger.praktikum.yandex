@@ -5,16 +5,17 @@ interface Props {
   Content: string;
   onClick?: EventListener;
   class?: string;
+  href: string;
 }
 
 export default class Link extends Block {
   constructor(props: Props) {
     super({
       class: 'link_centered',
-      ...props,
       events: {
         click: props.onClick,
       },
+      ...props,
     });
   }
 

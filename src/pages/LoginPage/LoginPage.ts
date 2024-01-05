@@ -4,6 +4,8 @@ import Button from '../../components/Button/Button';
 import { checkLogin, checkPassword } from '../../lib/validators';
 import FormInput from '../../components/FormInput/FormInput';
 import Link from '../../components/Link/Link';
+import AuthController from "../../controllers/AuthController";
+import {SignupData} from "../../api/AuthApi/authApiTypes";
 
 export default class LoginPage extends Block {
   constructor() {
@@ -34,7 +36,6 @@ export default class LoginPage extends Block {
           class: 'form__input',
           onBlur: (event) => {
             const { value } = (event.target as HTMLInputElement);
-
             if (!checkPassword(value)) {
               this.setError('password', true);
             } else {
@@ -50,9 +51,7 @@ export default class LoginPage extends Block {
       }),
       Link: new Link({
         Content: 'Нет аккаунта?',
-        onClick: () => {
-          // render('register');
-        },
+        href: '/sign-up'
       }),
       events: {
         submit: (event) => {
@@ -75,9 +74,7 @@ export default class LoginPage extends Block {
             return;
           }
 
-          console.log(values);
-
-          // render('home');
+          AuthController.signin(values as SignupData);
         },
       },
     });

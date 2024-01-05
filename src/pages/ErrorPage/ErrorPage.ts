@@ -14,9 +14,7 @@ export default class ErrorPage extends Block {
       Link: new Link({
         class: 'link_centered',
         Content: 'Назад к чатам',
-        onClick() {
-          // render('home');
-        },
+        href: '/messenger',
       }),
     });
   }

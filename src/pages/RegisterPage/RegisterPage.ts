@@ -6,15 +6,15 @@ import {
 } from '../../lib/validators';
 import Link from '../../components/Link/Link';
 import Button from '../../components/Button/Button';
+import AuthController from "../../controllers/AuthController";
+import {SignupData} from "../../api/AuthApi/authApiTypes";
 
 export default class RegisterPage extends Block {
   constructor() {
     super({
       Link: new Link({
         Content: 'Войти',
-        onClick: () => {
-          // render('login');
-        },
+        href: '/',
       }),
       Button: new Button({
         type: 'submit',
@@ -175,9 +175,7 @@ export default class RegisterPage extends Block {
             return;
           }
 
-          console.log(values);
-
-          // render('home');
+          AuthController.signup(values as SignupData);
         },
       },
     });

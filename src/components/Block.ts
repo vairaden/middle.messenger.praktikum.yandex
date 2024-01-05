@@ -120,7 +120,7 @@ abstract class Block<P extends BlockProps = BlockProps> {
   }
 
   protected componentDidUpdate(oldProps: P, newProps: P) {
-    return isEqual(oldProps, newProps);
+    return !isEqual(oldProps, newProps);
   }
 
   setProps = (nextProps: P) => {

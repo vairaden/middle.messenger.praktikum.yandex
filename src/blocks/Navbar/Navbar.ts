@@ -10,9 +10,7 @@ export default class Navbar extends Block {
       Links: pages.map((name) => {
         return new Link({
           Content: name,
-          onClick() {
-            // render(name as any); // any чтобы была возможность перейти на 404
-          },
+          href: 'lolkekcheburek',
         });
       }),
     });

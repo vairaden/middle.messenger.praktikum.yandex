@@ -4,10 +4,6 @@ interface BlockConstructable<P extends Record<string, unknown> = any> {
   new(props: P): Block<P>;
 }
 
-function isEqual(lhs: string, rhs: string): boolean {
-  return lhs === rhs;
-}
-
 function render(query: string, block: Block) {
   const root = document.querySelector(query);
 
@@ -37,7 +33,7 @@ class Route {
   }
 
   match(pathname: string) {
-    return isEqual(pathname, this.pathname);
+    return pathname === this.pathname;
   }
 
   render() {
