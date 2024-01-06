@@ -37,9 +37,6 @@ export class Store extends EventBus {
 
 const store = new Store();
 
-// @ts-expect-error: Property store does not exist on type Window & typeof globalThis
-window.store = store;
-
 export function withStore<SP>(mapStateToProps: (state: State) => SP) {
   return function wrap<P>(Component: typeof Block<SP & P>) {
     return class WithStore extends Component {

@@ -7,15 +7,15 @@ export class ChatsApi extends BaseAPI {
     super('/chats');
   }
 
-  create(title: string) {
+  createChat(title: string) {
     return this.http.post('/', { title });
   }
 
-  delete(id: number): Promise<unknown> {
+  deleteChat(id: number): Promise<unknown> {
     return this.http.delete('/', { chatId: id });
   }
 
-  read(): Promise<ChatInfo[]> {
+  getChats(): Promise<ChatInfo[]> {
     return this.http.get('/');
   }
 
@@ -27,7 +27,7 @@ export class ChatsApi extends BaseAPI {
     return this.http.put('/users', { users, chatId: id });
   }
 
-  async getToken(id: number): Promise<string> {
+  async getChatToken(id: number): Promise<string> {
     const response = await this.http.post<{ token: string }>(`/token/${id}`);
 
     return response.token;

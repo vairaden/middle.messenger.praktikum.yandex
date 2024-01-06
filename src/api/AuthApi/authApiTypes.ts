@@ -12,17 +12,13 @@ export interface SignupData {
   phone: string;
 }
 
-export interface SignupResponse {
-  id: number;
-}
-
 export interface User {
   id: number;
   first_name: string;
   second_name: string;
+  display_name: string;
   login: string;
   email: string;
-  password: string;
   phone: string;
   avatar: string;
 }

@@ -7,7 +7,7 @@ interface Children {
   [key: string]: Block | Block[]
 }
 
-abstract class Block<P extends BlockProps = BlockProps> {
+abstract class Block {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -17,7 +17,7 @@ abstract class Block<P extends BlockProps = BlockProps> {
 
   public id = nanoid(6);
 
-  protected props: P;
+  protected props: BlockProps;
 
   public children: Children;
 
@@ -25,7 +25,7 @@ abstract class Block<P extends BlockProps = BlockProps> {
 
   private _element: HTMLElement | null = null;
 
-  constructor(propsWithChildren?: P) {
+  constructor(propsWithChildren?: BlockProps) {
     const eventBus = new EventBus();
 
     const { props, children } = this._getChildrenAndProps(propsWithChildren);
@@ -40,7 +40,7 @@ abstract class Block<P extends BlockProps = BlockProps> {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  _getChildrenAndProps(childrenAndProps?: P) {
+  _getChildrenAndProps(childrenAndProps?: BlockProps) {
     const props: Record<string, unknown> = {};
     const children: Children = {};
 
@@ -55,11 +55,11 @@ abstract class Block<P extends BlockProps = BlockProps> {
       });
     }
 
-    return { props: props as P, children };
+    return { props: props as BlockProps, children };
   }
 
   _addEvents() {
-    const { events = {} } = this.props as P & { events: Record<string, () => void> };
+    const { events = {} } = this.props;
 
     Object.keys(events).forEach((eventName) => {
       if (events[eventName]) {
@@ -69,7 +69,7 @@ abstract class Block<P extends BlockProps = BlockProps> {
   }
 
   _removeEvents() {
-    const { events = {} } = this.props as P & { events: Record<string, () => void> };
+    const { events = {} } = this.props;
 
     Object.keys(events).forEach((eventName) => {
       if (events[eventName]) {
@@ -98,8 +98,7 @@ abstract class Block<P extends BlockProps = BlockProps> {
     this.componentDidMount();
   }
 
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
@@ -113,17 +112,17 @@ abstract class Block<P extends BlockProps = BlockProps> {
     });
   }
 
-  private _componentDidUpdate(oldProps: P, newProps: P) {
+  private _componentDidUpdate(oldProps: BlockProps, newProps: BlockProps) {
     if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
   }
 
-  protected componentDidUpdate(oldProps: P, newProps: P) {
+  protected componentDidUpdate(oldProps: BlockProps, newProps: BlockProps) {
     return !isEqual(oldProps, newProps);
   }
 
-  setProps = (nextProps: P) => {
+  setProps = (nextProps: BlockProps) => {
     if (!nextProps) {
       return;
     }
@@ -203,18 +202,18 @@ abstract class Block<P extends BlockProps = BlockProps> {
     return this.element;
   }
 
-  _makePropsProxy(props: P) {
+  _makePropsProxy(props: BlockProps) {
     const self = this;
 
     return new Proxy(props, {
-      get(target: P, prop: string) {
+      get(target: BlockProps, prop: string) {
         const value = target[prop];
         return typeof value === 'function' ? value.bind(target) : value;
       },
-      set(target: P, prop: string, value) {
+      set(target: BlockProps, prop: string, value) {
         const oldTarget = { ...target };
 
-        target[prop as keyof P] = value;
+        target[prop] = value;
 
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
         return true;

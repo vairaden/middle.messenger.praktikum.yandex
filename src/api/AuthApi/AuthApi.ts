@@ -1,6 +1,6 @@
 import BaseAPI from '../BaseAPI';
 import {
-  SigninData, SignupData, SignupResponse, User,
+  SigninData, SignupData, User
 } from './authApiTypes';
 
 export class AuthApi extends BaseAPI {
@@ -12,7 +12,7 @@ export class AuthApi extends BaseAPI {
     return this.http.post('/signin', data);
   }
 
-  signup(data: SignupData): Promise<SignupResponse> {
+  signup(data: SignupData): Promise<{ id: number }> {
     return this.http.post('/signup', data);
   }
 

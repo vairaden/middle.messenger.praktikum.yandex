@@ -1,5 +1,5 @@
 import template from './message.hbs';
-import Block from '../../components/Block';
+import Block from '../Block';
 
 export default class Message extends Block {
   render() {

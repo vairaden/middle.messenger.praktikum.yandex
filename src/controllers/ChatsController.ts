@@ -9,17 +9,17 @@ class ChatsController {
     this.api = API;
   }
 
-  async create(title: string) {
-    await this.api.create(title);
+  async createChat(title: string) {
+    await this.api.createChat(title);
 
     this.fetchChats();
   }
 
   async fetchChats() {
-    const chats = await this.api.read();
+    const chats = await this.api.getChats();
 
     chats.map(async (chat) => {
-      const token = await this.getToken(chat.id);
+      const token = await this.getChatToken(chat.id);
 
       await MessagesController.connect(chat.id, token);
     });
@@ -31,14 +31,14 @@ class ChatsController {
     this.api.addUsers(id, [userId]);
   }
 
-  async delete(id: number) {
-    await this.api.delete(id);
+  async deleteChat(id: number) {
+    await this.api.deleteChat(id);
 
     this.fetchChats();
   }
 
-  getToken(id: number) {
-    return this.api.getToken(id);
+  getChatToken(id: number) {
+    return this.api.getChatToken(id);
   }
 
   selectChat(id: number) {
@@ -46,9 +46,5 @@ class ChatsController {
   }
 }
 
-const controller = new ChatsController();
+export default new ChatsController();
 
-// @ts-ignore
-window.chatsController = controller;
-
-export default controller;
