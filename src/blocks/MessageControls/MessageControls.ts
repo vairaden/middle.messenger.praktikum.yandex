@@ -24,7 +24,6 @@ export default class MessageControls extends Block {
             return;
           }
 
-          console.log(values);
         },
       },
     });

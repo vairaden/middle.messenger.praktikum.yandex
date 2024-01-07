@@ -6,17 +6,19 @@ import ChatsController from "../../controllers/ChatsController";
 import {withStore} from "../../utils/Store";
 import {ChatInfo} from "../../api/ChatsApi/chatsApiTypes";
 import ChatThread from "../../blocks/ChatThread/ChatThread";
+import {Message} from "../../controllers/MessagesController";
 
 interface Props {
   chats: ChatInfo[];
   selectedChat?: number;
+  messages: Record<number, Message[]>;
 }
 
 class HomePage extends Block {
   constructor(props: Props) {
     super({
       ChatBrowser: new ChatBrowser({chats: props.chats}),
-      ChatThread: new ChatThread(),
+      ChatThread: new ChatThread({messages: props.messages}),
       MessageControls: new MessageControls(),
     });
   }
@@ -27,6 +29,7 @@ class HomePage extends Block {
 
   protected componentDidUpdate(_: Props, newProps: Props): boolean {
     (this.children.ChatBrowser as ChatBrowser).setProps({chats: newProps.chats});
+    (this.children.ChatThread as ChatThread).setProps({selectedChat: newProps.selectedChat});
 
     return false;
   }
@@ -37,6 +40,10 @@ class HomePage extends Block {
 }
 
 const withChats = withStore((state) =>
-  ({chats: state.chats, selectedChat: state.selectedChat}));
+  ({
+    chats: state.chats,
+    selectedChat: state.selectedChat,
+    messages: state.messages,
+  }));
 
 export default withChats(HomePage);

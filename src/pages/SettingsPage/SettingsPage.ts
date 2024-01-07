@@ -135,10 +135,20 @@ export default class SettingsPage extends Block {
           Content: '<img src="/back.svg" alt="Стрелка назад"/>',
           href: '/profile',
         }),
-        Button: new Button({
+        ChangeDataButton: new Button({
           class: 'button_primary',
           type: 'submit',
-          text: 'Сохранить',
+          text: 'Сохранить данные',
+        }),
+        ChangeAvatarButton: new Button({
+          class: 'button_primary',
+          type: 'submit',
+          text: 'Сохранить аватар',
+        }),
+        ChangePasswordButton: new Button({
+          class: 'button_primary',
+          type: 'submit',
+          text: 'Изменить пароль',
         }),
         events: {
           submit: (event) => {
@@ -185,7 +195,6 @@ export default class SettingsPage extends Block {
               return;
             }
 
-            console.log(values);
 
             // render('profile');
           },

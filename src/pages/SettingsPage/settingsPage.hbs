@@ -3,16 +3,22 @@
   <main class="settings">
     <img class="settings__avatar" src="/avatar.png" alt="Avatar"/>
     <form class="settings__form">
-        {{#each ProfileDataInputs }}
-          {{{this}}}
-        {{/each}}
+      {{#each ProfileDataInputs }}
+        {{{this}}}
+      {{/each}}
+      {{{ChangeDataButton}}}
+    </form>
+    <form class="settings__form">
       <h2>Смена аватара</h2>
-        {{{ AvatarInput }}}
+      {{{ AvatarInput }}}
+      {{{ChangeAvatarButton}}}
+    </form>
+    <form class="settings__form">
       <h2>Смаена пароля</h2>
       {{#each PasswordInputs }}
         {{{this}}}
       {{/each}}
-      {{{Button}}}
+      {{{ChangePasswordButton}}}
     </form>
   </main>
 </div>

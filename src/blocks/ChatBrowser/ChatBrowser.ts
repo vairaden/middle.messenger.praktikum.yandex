@@ -13,7 +13,6 @@ function chatListFactory(chats?: ChatInfo[]) {
       new ChatItem({
           chat,
           onClick: () => {
-            console.log('select', chat.id);
             chatsController.selectChat(chat.id);
           }
         }
