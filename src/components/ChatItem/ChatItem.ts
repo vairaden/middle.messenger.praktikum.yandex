@@ -1,19 +1,20 @@
 import template from './chatItem.hbs';
 import Block from '../../components/Block';
 import { ChatInfo } from '../../api/ChatsApi/chatsApiTypes';
+import { BlockProps } from '../../types';
 
-interface Props {
+interface Props extends BlockProps {
   chat: ChatInfo;
   onClick: EventListener;
 }
 
-export default class ChatItem extends Block {
+export default class ChatItem extends Block<Props> {
   constructor(props: Props) {
     super({
+      chat: props.chat,
       events: {
         click: props.onClick,
       },
-      ...props.chat,
     });
   }
 

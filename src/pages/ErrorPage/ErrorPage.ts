@@ -1,13 +1,14 @@
 import template from './errorPage.hbs';
 import Block from '../../components/Block';
 import Link from '../../components/Link/Link';
+import { BlockProps } from '../../types';
 
-interface Props {
+interface Props extends BlockProps {
   code: string;
   text: string;
 }
 
-export default class ErrorPage extends Block {
+export default class ErrorPage extends Block<Props> {
   constructor(props: Props) {
     super({
       ...props,

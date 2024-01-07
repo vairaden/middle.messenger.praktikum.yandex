@@ -6,6 +6,7 @@ import { ChatInfo } from '../../api/ChatsApi/chatsApiTypes';
 import Button from '../../components/Button/Button';
 import ChatsController from '../../controllers/ChatsController';
 import chatsController from '../../controllers/ChatsController';
+import { BlockProps } from '../../types';
 
 function chatListFactory(chats?: ChatInfo[]) {
   if (chats) {
@@ -19,11 +20,11 @@ function chatListFactory(chats?: ChatInfo[]) {
   return [];
 }
 
-interface Props {
+interface Props extends BlockProps {
   chats?: ChatInfo[];
 }
 
-export default class ChatBrowser extends Block {
+export default class ChatBrowser extends Block<Props> {
   constructor(props: Props) {
     super({
       ChatItems: chatListFactory(props.chats),
@@ -42,7 +43,7 @@ export default class ChatBrowser extends Block {
   }
 
   componentDidUpdate(oldProps: Props, newProps: Props) {
-    this.children.ChatItems = chatListFactory(newProps.chats);
+    (this.children.ChatItems as unknown as ChatItem[]) = chatListFactory(newProps.chats);
 
     return super.componentDidUpdate(oldProps, newProps);
   }

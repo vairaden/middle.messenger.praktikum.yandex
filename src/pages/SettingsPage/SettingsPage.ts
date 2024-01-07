@@ -67,6 +67,7 @@ const profileDataInputs: Record<string, InputAttrs> = {
     errorText: 'От 10 до 15 символов, состоит из цифр, может начинается с плюса',
   },
 };
+
 export default class SettingsPage extends Block {
   constructor() {
     super(

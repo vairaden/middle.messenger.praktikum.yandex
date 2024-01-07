@@ -2,29 +2,30 @@ import template from './chatThread.hbs';
 import Block from '../../components/Block';
 import MessageBlock from '../../components/Message/Message';
 import { Message } from '../../controllers/MessagesController';
+import getReadableTime from '../../lib/getReadableTime';
+import { BlockProps } from '../../types';
 
-interface Props {
+interface Props extends BlockProps {
   messages: Message[];
 }
 
-export default class ChatThread extends Block {
+export default class ChatThread extends Block<Props> {
   constructor(props: Props) {
     super({
       Messages: props.messages.map((message) => {
         return new MessageBlock({
           text: message.content,
-          time: message.time,
+          time: getReadableTime(message.time),
         });
       }),
     });
   }
 
   protected componentDidUpdate(oldProps: Props, newProps: Props): boolean {
-    console.log(newProps);
-    (this.children.Messages as MessageBlock[]) = newProps.messages.map((message) => {
+    (this.children.Messages as unknown as MessageBlock[]) = newProps.messages.map((message) => {
       return new MessageBlock({
         text: message.content,
-        time: new Date(message.time).getHours().toString(),
+        time: getReadableTime(message.time),
       });
     });
 

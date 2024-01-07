@@ -5,6 +5,7 @@ import ProfileItem from '../../components/ProfileItem/ProfileItem';
 import AuthController from '../../controllers/AuthController';
 import { User } from '../../api/AuthApi/authApiTypes';
 import { withStore } from '../../utils/Store';
+import { BlockProps } from '../../types';
 
 const profileInformation = {
   first_name: 'Имя',
@@ -13,11 +14,12 @@ const profileInformation = {
   email: 'Почта',
   phone: 'Телефон',
 };
-interface Props {
+
+interface Props extends BlockProps{
   user: User;
 }
 
-class ProfilePage extends Block {
+class ProfilePage extends Block<Props> {
   constructor(props: Props) {
     super({
       Link: new Link({
@@ -31,11 +33,6 @@ class ProfilePage extends Block {
       })),
       SettingsLink: new Link({
         Content: 'Изменить данные',
-        class: 'link',
-        href: 'settings',
-      }),
-      ChangePasswordLink: new Link({
-        Content: 'Изменить пароль',
         class: 'link',
         href: '/settings',
       }),

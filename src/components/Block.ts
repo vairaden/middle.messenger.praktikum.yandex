@@ -7,7 +7,7 @@ interface Children {
   [key: string]: Block | Block[]
 }
 
-abstract class Block {
+abstract class Block<P extends BlockProps = BlockProps> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -17,7 +17,7 @@ abstract class Block {
 
   public id = nanoid(6);
 
-  protected props: BlockProps;
+  protected props: P;
 
   public children: Children;
 
@@ -55,7 +55,7 @@ abstract class Block {
       });
     }
 
-    return { props: props as BlockProps, children };
+    return { props: props as P, children };
   }
 
   _addEvents() {
@@ -112,17 +112,17 @@ abstract class Block {
     });
   }
 
-  private _componentDidUpdate(oldProps: BlockProps, newProps: BlockProps) {
+  private _componentDidUpdate(oldProps: P, newProps: P) {
     if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
   }
 
-  protected componentDidUpdate(oldProps: BlockProps, newProps: BlockProps) {
+  protected componentDidUpdate(oldProps: P, newProps: P) {
     return !isEqual(oldProps, newProps);
   }
 
-  setProps = (nextProps: BlockProps) => {
+  setProps = (nextProps: P) => {
     if (!nextProps) {
       return;
     }
@@ -202,18 +202,18 @@ abstract class Block {
     return this.element;
   }
 
-  _makePropsProxy(props: BlockProps) {
+  _makePropsProxy(props: P) {
     const self = this;
 
     return new Proxy(props, {
-      get(target: BlockProps, prop: string) {
+      get(target: P, prop: string) {
         const value = target[prop];
         return typeof value === 'function' ? value.bind(target) : value;
       },
-      set(target: BlockProps, prop: string, value) {
+      set(target: P, prop: string, value) {
         const oldTarget = { ...target };
 
-        target[prop] = value;
+        target[prop as keyof P] = value;
 
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
         return true;

@@ -7,21 +7,22 @@ import { withStore } from '../../utils/Store';
 import { ChatInfo } from '../../api/ChatsApi/chatsApiTypes';
 import ChatThread from '../../blocks/ChatThread/ChatThread';
 import { Message } from '../../controllers/MessagesController';
+import { BlockProps } from '../../types';
 
-interface Props {
+interface Props extends BlockProps{
   chats: ChatInfo[];
   selectedChat?: number;
   messages: Record<number, Message[]>;
 }
 
-class HomePage extends Block {
+class HomePage extends Block<Props> {
   constructor(props: Props) {
     const messages = props.selectedChat ? props.messages[props.selectedChat] : [];
 
     super({
       ChatBrowser: new ChatBrowser({ chats: props.chats }),
       ChatThread: new ChatThread({ messages }),
-      MessageControls: new MessageControls({selectedChat: props.selectedChat}),
+      MessageControls: new MessageControls(),
     });
   }
 
@@ -30,12 +31,12 @@ class HomePage extends Block {
   }
 
   protected componentDidUpdate(_: Props, newProps: Props): boolean {
-    (this.children.ChatBrowser as ChatBrowser).setProps({ chats: newProps.chats });
+    (this.children.ChatBrowser as unknown as ChatBrowser).setProps({ chats: newProps.chats });
 
     const messages = newProps.selectedChat ? newProps.messages[newProps.selectedChat] : [];
-    (this.children.ChatThread as ChatThread).setProps({ messages });
+    (this.children.ChatThread as unknown as ChatThread).setProps({ messages });
 
-    (this.children.MessageControls as MessageControls).setProps({ selectedChat: newProps.selectedChat });
+    (this.children.MessageControls as unknown as MessageControls).setProps({ selectedChat: newProps.selectedChat });
 
     return false;
   }

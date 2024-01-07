@@ -1,12 +1,13 @@
 import template from './message.hbs';
 import Block from '../Block';
+import { BlockProps } from '../../types';
 
-interface Props {
+interface Props extends BlockProps{
   text: string;
   time: string;
 }
 
-export default class Message extends Block {
+export default class Message extends Block<Props> {
   constructor(props: Props) {
     super(props);
   }
