@@ -21,7 +21,7 @@ class HomePage extends Block {
     super({
       ChatBrowser: new ChatBrowser({ chats: props.chats }),
       ChatThread: new ChatThread({ messages }),
-      MessageControls: new MessageControls(),
+      MessageControls: new MessageControls({selectedChat: props.selectedChat}),
     });
   }
 
@@ -34,6 +34,8 @@ class HomePage extends Block {
 
     const messages = newProps.selectedChat ? newProps.messages[newProps.selectedChat] : [];
     (this.children.ChatThread as ChatThread).setProps({ messages });
+
+    (this.children.MessageControls as MessageControls).setProps({ selectedChat: newProps.selectedChat });
 
     return false;
   }

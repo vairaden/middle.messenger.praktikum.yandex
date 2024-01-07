@@ -1,8 +1,5 @@
 <ul class="chat-thread">
-  <li class="chat-thread__date-separator">
-    <span>19 июня</span>
-  </li>
-  {{{ Message }}}
-
-  {{{ Message }}}
+  {{#each Messages }}
+    {{{this}}}
+  {{/each}}
 </ul>
