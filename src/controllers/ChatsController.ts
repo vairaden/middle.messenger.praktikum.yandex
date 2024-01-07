@@ -47,4 +47,3 @@ class ChatsController {
 }
 
 export default new ChatsController();
-

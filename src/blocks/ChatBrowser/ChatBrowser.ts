@@ -2,21 +2,19 @@ import template from './chatBrowser.hbs';
 import Block from '../../components/Block';
 import ChatItem from '../../components/ChatItem/ChatItem';
 import Link from '../../components/Link/Link';
-import {ChatInfo} from "../../api/ChatsApi/chatsApiTypes";
-import Button from "../../components/Button/Button";
-import ChatsController from "../../controllers/ChatsController";
-import chatsController from "../../controllers/ChatsController";
+import { ChatInfo } from '../../api/ChatsApi/chatsApiTypes';
+import Button from '../../components/Button/Button';
+import ChatsController from '../../controllers/ChatsController';
+import chatsController from '../../controllers/ChatsController';
 
 function chatListFactory(chats?: ChatInfo[]) {
   if (chats) {
-    return chats.map((chat) =>
-      new ChatItem({
-          chat,
-          onClick: () => {
-            chatsController.selectChat(chat.id);
-          }
-        }
-      ))
+    return chats.map((chat) => new ChatItem({
+      chat,
+      onClick: () => {
+        chatsController.selectChat(chat.id);
+      },
+    }));
   }
   return [];
 }

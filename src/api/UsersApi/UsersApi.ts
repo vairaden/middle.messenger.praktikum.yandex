@@ -1,6 +1,6 @@
 import BaseAPI from '../BaseAPI';
-import {User} from "../AuthApi/authApiTypes";
-import {ChangePasswordData, ChangeProfileData} from "./usersApiTypes";
+import { User } from '../AuthApi/authApiTypes';
+import { ChangePasswordData, ChangeProfileData } from './usersApiTypes';
 
 export class UsersApi extends BaseAPI {
   constructor() {
@@ -24,7 +24,7 @@ export class UsersApi extends BaseAPI {
   }
 
   searchUsers(login: string): Promise<User[]> {
-    return this.http.post('/search', { login })
+    return this.http.post('/search', { login });
   }
 }
 

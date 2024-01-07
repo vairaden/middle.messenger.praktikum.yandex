@@ -2,11 +2,11 @@ import template from './homePage.hbs';
 import Block from '../../components/Block';
 import ChatBrowser from '../../blocks/ChatBrowser/ChatBrowser';
 import MessageControls from '../../blocks/MessageControls/MessageControls';
-import ChatsController from "../../controllers/ChatsController";
-import {withStore} from "../../utils/Store";
-import {ChatInfo} from "../../api/ChatsApi/chatsApiTypes";
-import ChatThread from "../../blocks/ChatThread/ChatThread";
-import {Message} from "../../controllers/MessagesController";
+import ChatsController from '../../controllers/ChatsController';
+import { withStore } from '../../utils/Store';
+import { ChatInfo } from '../../api/ChatsApi/chatsApiTypes';
+import ChatThread from '../../blocks/ChatThread/ChatThread';
+import { Message } from '../../controllers/MessagesController';
 
 interface Props {
   chats: ChatInfo[];
@@ -16,20 +16,24 @@ interface Props {
 
 class HomePage extends Block {
   constructor(props: Props) {
+    const messages = props.selectedChat ? props.messages[props.selectedChat] : [];
+
     super({
-      ChatBrowser: new ChatBrowser({chats: props.chats}),
-      ChatThread: new ChatThread({messages: props.messages}),
+      ChatBrowser: new ChatBrowser({ chats: props.chats }),
+      ChatThread: new ChatThread({ messages }),
       MessageControls: new MessageControls(),
     });
   }
 
   init() {
-    ChatsController.fetchChats()
+    ChatsController.fetchChats();
   }
 
   protected componentDidUpdate(_: Props, newProps: Props): boolean {
-    (this.children.ChatBrowser as ChatBrowser).setProps({chats: newProps.chats});
-    (this.children.ChatThread as ChatThread).setProps({selectedChat: newProps.selectedChat});
+    (this.children.ChatBrowser as ChatBrowser).setProps({ chats: newProps.chats });
+
+    const messages = newProps.selectedChat ? newProps.messages[newProps.selectedChat] : [];
+    (this.children.ChatThread as ChatThread).setProps({ messages });
 
     return false;
   }
@@ -39,11 +43,10 @@ class HomePage extends Block {
   }
 }
 
-const withChats = withStore((state) =>
-  ({
-    chats: state.chats,
-    selectedChat: state.selectedChat,
-    messages: state.messages,
-  }));
+const withChats = withStore((state) => ({
+  chats: state.chats,
+  selectedChat: state.selectedChat,
+  messages: state.messages,
+}));
 
 export default withChats(HomePage);

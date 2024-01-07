@@ -21,9 +21,7 @@ export default class MessageControls extends Block {
 
           if (!checkNotEmpty(values.message)) {
             console.log('Empty message');
-            return;
           }
-
         },
       },
     });

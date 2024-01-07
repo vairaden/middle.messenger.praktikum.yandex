@@ -1,22 +1,21 @@
 import template from './chatThread.hbs';
-import Block from "../../components/Block";
-import MessageBlock from "../../components/Message/Message";
-import {Message} from "../../controllers/MessagesController";
+import Block from '../../components/Block';
+import MessageBlock from '../../components/Message/Message';
+import { Message } from '../../controllers/MessagesController';
 
 interface Props {
-  messages: Record<number, Message[]>;
+  messages: Message[];
 }
 
 export default class ChatThread extends Block {
   constructor(props: Props) {
     super({
-      // TODO: fix message pass
-      Messages: Object.values(props.messages)[0].map((message) => {
+      Messages: props.messages.map((message) => {
         return new MessageBlock({
           text: message.content,
           time: message.time,
         });
-      })
+      }),
     });
   }
 

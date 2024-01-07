@@ -192,9 +192,8 @@ export default class SettingsPage extends Block {
             }
 
             if (failedChecks) {
-              return;
-            }
 
+            }
 
             // render('profile');
           },

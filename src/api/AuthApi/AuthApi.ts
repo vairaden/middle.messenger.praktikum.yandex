@@ -1,6 +1,6 @@
 import BaseAPI from '../BaseAPI';
 import {
-  SigninData, SignupData, User
+  SigninData, SignupData, User,
 } from './authApiTypes';
 
 export class AuthApi extends BaseAPI {

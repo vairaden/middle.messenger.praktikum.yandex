@@ -1,6 +1,6 @@
 import template from './chatItem.hbs';
 import Block from '../../components/Block';
-import {ChatInfo} from "../../api/ChatsApi/chatsApiTypes";
+import { ChatInfo } from '../../api/ChatsApi/chatsApiTypes';
 
 interface Props {
   chat: ChatInfo;
@@ -13,9 +13,10 @@ export default class ChatItem extends Block {
       events: {
         click: props.onClick,
       },
-      ...props.chat
+      ...props.chat,
     });
   }
+
   render() {
     return this.compile(template, this.props);
   }
