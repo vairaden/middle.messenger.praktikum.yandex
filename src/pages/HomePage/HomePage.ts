@@ -1,19 +1,58 @@
 import template from './homePage.hbs';
 import Block from '../../components/Block';
 import ChatBrowser from '../../blocks/ChatBrowser/ChatBrowser';
-import Message from '../../blocks/Message/Message';
 import MessageControls from '../../blocks/MessageControls/MessageControls';
+import ChatsController from '../../controllers/ChatsController';
+import { withStore } from '../../utils/Store';
+import { ChatInfo } from '../../api/ChatsApi/chatsApiTypes';
+import ChatThread from '../../blocks/ChatThread/ChatThread';
+import { Message } from '../../controllers/MessagesController';
+import { BlockProps } from '../../types';
+import Modal from "../../blocks/Modal/Modal";
+import './homePage.pcss';
 
-export default class HomePage extends Block {
-  constructor() {
+interface Props extends BlockProps{
+  chats: ChatInfo[];
+  selectedChat?: number;
+  messages: Record<number, Message[]>;
+}
+
+class HomePage extends Block<Props> {
+  constructor(props: Props) {
+    const messages = props.selectedChat ? props.messages[props.selectedChat] : [];
+
     super({
-      ChatBrowser: new ChatBrowser(),
-      Message: new Message(),
+      Modal: new Modal(),
+      ChatBrowser: new ChatBrowser({ chats: props.chats }),
+      ChatThread: new ChatThread({ messages }),
       MessageControls: new MessageControls(),
     });
+  }
+
+  init() {
+    ChatsController.fetchChats();
+  }
+
+  protected componentDidUpdate(_: Props, newProps: Props): boolean {
+    (this.children.ChatBrowser as unknown as ChatBrowser).setProps({ chats: newProps.chats });
+
+    const messages = newProps.selectedChat ? newProps.messages[newProps.selectedChat] : [];
+    (this.children.ChatThread as unknown as ChatThread).setProps({ messages });
+
+    (this.children.MessageControls as unknown as MessageControls).setProps({ selectedChat: newProps.selectedChat });
+
+    return false;
   }
 
   render() {
     return this.compile(template, this.props);
   }
 }
+
+const withChats = withStore((state) => ({
+  chats: state.chats,
+  selectedChat: state.selectedChat,
+  messages: state.messages,
+}));
+
+export default withChats(HomePage);

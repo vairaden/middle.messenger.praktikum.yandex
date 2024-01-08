@@ -1,20 +1,23 @@
 import Block from '../Block';
 import template from './link.hbs';
+import { BlockProps } from '../../types';
+import "./link.pcss";
 
-interface Props {
+interface Props extends BlockProps {
   Content: string;
   onClick?: EventListener;
   class?: string;
+  href: string;
 }
 
-export default class Link extends Block {
+export default class Link extends Block<Props> {
   constructor(props: Props) {
     super({
       class: 'link_centered',
-      ...props,
       events: {
         click: props.onClick,
       },
+      ...props,
     });
   }
 

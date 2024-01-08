@@ -1,8 +1,10 @@
 import Block from '../Block';
 import template from './formInput.hbs';
 import Input from '../Input/Input';
+import { BlockProps } from '../../types';
+import "./formInput.pcss";
 
-interface Props {
+interface Props extends BlockProps {
   label: string;
   name: string;
   type: string;
@@ -13,7 +15,7 @@ interface Props {
   onBlur?: EventListener;
 }
 
-export default class FormInput extends Block {
+export default class FormInput extends Block<Props> {
   constructor(props: Props) {
     super({
       error: props.error,

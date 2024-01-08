@@ -1,23 +1,22 @@
 import template from './errorPage.hbs';
 import Block from '../../components/Block';
 import Link from '../../components/Link/Link';
-import render from '../../lib/render';
+import { BlockProps } from '../../types';
+import './errorPage.pcss';
 
-interface Props {
+interface Props extends BlockProps {
   code: string;
   text: string;
 }
 
-export default class ErrorPage extends Block {
+export default class ErrorPage extends Block<Props> {
   constructor(props: Props) {
     super({
       ...props,
       Link: new Link({
         class: 'link_centered',
         Content: 'Назад к чатам',
-        onClick() {
-          render('home');
-        },
+        href: '/messenger',
       }),
     });
   }

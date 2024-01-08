@@ -1,10 +1,12 @@
 import template from './loginPage.hbs';
 import Block from '../../components/Block';
-import render from '../../lib/render';
 import Button from '../../components/Button/Button';
 import { checkLogin, checkPassword } from '../../lib/validators';
 import FormInput from '../../components/FormInput/FormInput';
 import Link from '../../components/Link/Link';
+import AuthController from '../../controllers/AuthController';
+import { SignupData } from '../../api/AuthApi/authApiTypes';
+import './loginPage.pcss';
 
 export default class LoginPage extends Block {
   constructor() {
@@ -35,7 +37,6 @@ export default class LoginPage extends Block {
           class: 'form__input',
           onBlur: (event) => {
             const { value } = (event.target as HTMLInputElement);
-
             if (!checkPassword(value)) {
               this.setError('password', true);
             } else {
@@ -51,9 +52,7 @@ export default class LoginPage extends Block {
       }),
       Link: new Link({
         Content: 'Нет аккаунта?',
-        onClick: () => {
-          render('register');
-        },
+        href: '/sign-up',
       }),
       events: {
         submit: (event) => {
@@ -76,9 +75,7 @@ export default class LoginPage extends Block {
             return;
           }
 
-          console.log(values);
-
-          render('home');
+          AuthController.signin(values as SignupData);
         },
       },
     });

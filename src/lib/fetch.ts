@@ -20,15 +20,16 @@ function queryStringify(data: Record<string, any>) {
       return `${acc + key}=${value.toString()}${arr.length - 1 === index ? '' : '&'}`;
     }, '?');
 }
+type TransportMethod = (url: string, options: Options) => Promise<XMLHttpRequest>;
 
 export default class HTTPTransport {
-  get = (url: string, options: Options = {}) => this.request(url, { ...options, method: Methods.GET });
+  get: TransportMethod = (url, options = {}) => this.request(url, { ...options, method: Methods.GET });
 
-  post = (url: string, options: Options = {}) => this.request(url, { ...options, method: Methods.POST });
+  post: TransportMethod = (url, options = {}) => this.request(url, { ...options, method: Methods.POST });
 
-  put = (url: string, options: Options = {}) => this.request(url, { ...options, method: Methods.PUT });
+  put: TransportMethod = (url, options = {}) => this.request(url, { ...options, method: Methods.PUT });
 
-  delete = (url: string, options: Options = {}) => this.request(url, { ...options, method: Methods.DELETE });
+  delete: TransportMethod = (url, options = {}) => this.request(url, { ...options, method: Methods.DELETE });
 
   request = (url: string, options: Options): Promise<XMLHttpRequest> => {
     const {

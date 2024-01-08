@@ -3,7 +3,7 @@ export function checkName(word: string) {
 }
 
 export function checkLogin(word: string) {
-  return /^[A-ZА-ЯЁ][a-zа-яё-]*$/.test(word);
+  return /^([A-ZА-ЯЁa-zа-яё\-_]){3,20}$/.test(word);
 }
 
 export function checkEmail(word: string) {
