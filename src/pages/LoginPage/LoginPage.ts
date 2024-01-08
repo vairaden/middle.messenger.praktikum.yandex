@@ -6,6 +6,7 @@ import FormInput from '../../components/FormInput/FormInput';
 import Link from '../../components/Link/Link';
 import AuthController from '../../controllers/AuthController';
 import { SignupData } from '../../api/AuthApi/authApiTypes';
+import './loginPage.pcss';
 
 export default class LoginPage extends Block {
   constructor() {

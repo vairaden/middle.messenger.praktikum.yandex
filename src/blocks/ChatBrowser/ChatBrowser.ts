@@ -7,6 +7,7 @@ import Button from '../../components/Button/Button';
 import ChatsController from '../../controllers/ChatsController';
 import chatsController from '../../controllers/ChatsController';
 import { BlockProps } from '../../types';
+import "./chatBrowser.pcss";
 
 function chatListFactory(chats?: ChatInfo[]) {
   if (chats) {

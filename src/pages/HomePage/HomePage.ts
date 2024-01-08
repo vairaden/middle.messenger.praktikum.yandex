@@ -8,6 +8,8 @@ import { ChatInfo } from '../../api/ChatsApi/chatsApiTypes';
 import ChatThread from '../../blocks/ChatThread/ChatThread';
 import { Message } from '../../controllers/MessagesController';
 import { BlockProps } from '../../types';
+import Modal from "../../blocks/Modal/Modal";
+import './homePage.pcss';
 
 interface Props extends BlockProps{
   chats: ChatInfo[];
@@ -20,6 +22,7 @@ class HomePage extends Block<Props> {
     const messages = props.selectedChat ? props.messages[props.selectedChat] : [];
 
     super({
+      Modal: new Modal(),
       ChatBrowser: new ChatBrowser({ chats: props.chats }),
       ChatThread: new ChatThread({ messages }),
       MessageControls: new MessageControls(),

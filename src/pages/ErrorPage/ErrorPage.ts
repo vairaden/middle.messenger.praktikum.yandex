@@ -2,6 +2,7 @@ import template from './errorPage.hbs';
 import Block from '../../components/Block';
 import Link from '../../components/Link/Link';
 import { BlockProps } from '../../types';
+import './errorPage.pcss';
 
 interface Props extends BlockProps {
   code: string;

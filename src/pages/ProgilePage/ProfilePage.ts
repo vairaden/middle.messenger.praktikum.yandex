@@ -6,6 +6,7 @@ import AuthController from '../../controllers/AuthController';
 import { User } from '../../api/AuthApi/authApiTypes';
 import { withStore } from '../../utils/Store';
 import { BlockProps } from '../../types';
+import './profilePage.pcss';
 
 const profileInformation = {
   first_name: 'Имя',

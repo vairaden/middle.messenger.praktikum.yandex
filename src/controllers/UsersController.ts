@@ -1,56 +1,38 @@
 import store from '../utils/Store';
 import router from '../utils/Router';
 import MessagesController from './MessagesController';
-import AuthApi from '../api/AuthApi/AuthApi';
-import { SigninData, SignupData } from '../api/AuthApi/authApiTypes';
+import {User} from '../api/AuthApi/authApiTypes';
+import UsersApi from "../api/UsersApi/UsersApi";
+import {ChangePasswordData, ChangeProfileData} from "../api/UsersApi/usersApiTypes";
 
 export class UsersController {
-  private readonly api: typeof AuthApi;
+  private readonly api: typeof UsersApi;
 
   constructor() {
-    this.api = AuthApi;
+    this.api = UsersApi;
   }
 
-  async signin(data: SigninData) {
-    try {
-      await this.api.signin(data);
-
-      await this.fetchUser();
-
-      router.go('/profile');
-    } catch (e: any) {
-      console.error(e);
-    }
+  async changeProfileData(data: ChangeProfileData) {
+    await this.api.changeProfile(data);
   }
 
-  async signup(data: SignupData) {
-    try {
-      await this.api.signup(data);
+  async changeAvatar(data: FormData) {
+    await this.api.changeAvatar(data);
 
-      await this.fetchUser();
-
-      router.go('/profile');
-    } catch (e: any) {
-      console.error(e.message);
-    }
   }
 
-  async fetchUser() {
-    const user = await this.api.read();
+  async changePassword(data: ChangePasswordData) {
+    await this.api.changePassword(data);
 
-    store.set('user', user);
   }
 
-  async logout() {
-    try {
-      MessagesController.closeAll();
+  async getUserById(id: string): Promise<User> {
+    return await this.api.getUserById(id);
 
-      await this.api.logout();
+  }
 
-      router.go('/');
-    } catch (e: any) {
-      console.error(e.message);
-    }
+  async searchUsers(login: string): Promise<User[]> {
+    return this.api.searchUsers(login)
   }
 }
 

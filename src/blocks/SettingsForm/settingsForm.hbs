@@ -1,0 +1,7 @@
+<form class="settings-form">
+  {{#if this.headerText}}<h2 class="settings-form__heading">{{this.headerText}}</h2>{{/if}}
+  {{#each Inputs}}
+    {{{this}}}
+  {{/each}}
+  {{{SubmitButton}}}
+</form>

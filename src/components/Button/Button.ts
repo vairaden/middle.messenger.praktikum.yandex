@@ -1,6 +1,7 @@
 import Block from '../Block';
 import template from './button.hbs';
 import { BlockProps } from '../../types';
+import "./button.pcss";
 
 interface Props extends BlockProps {
   text: string;
