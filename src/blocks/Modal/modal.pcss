@@ -1,6 +1,5 @@
 .modal {
   &__background {
-    display: none;
     position: absolute;
     background-color: rgba(0, 0, 0, 0.2);
     height: 100%;
@@ -9,7 +8,7 @@
 
   &__card {
     width: fit-content;
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 16px;
     position: relative;
     background-color: white;
@@ -17,4 +16,8 @@
     left: 50%;
     transform: translate(-50%,-50%);
   }
+}
+
+.hidden {
+  display: none;
 }

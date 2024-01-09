@@ -1,0 +1,70 @@
+@import "../../styles/variables.pcss";
+
+.chat-item {
+  &__container {
+    padding: 12px;
+    display: grid;
+    gap: 6px;
+    grid-template-columns: min-content auto min-content;
+    cursor: pointer;
+    height: 6rem;
+
+  }
+
+  &:hover {
+    background-color: #eeeef1;
+  }
+
+  &:last-child {
+    .chat-item__separator {
+      display: none;
+    }
+  }
+
+  &__separator {
+    height: 1px;
+    width: 90%;
+    margin: auto;
+    background-color: #999999;
+  }
+
+  &__sender {
+    font-weight: bold;
+  }
+
+  &__avatar {
+    margin: auto 6px;
+    height: 3rem;
+    aspect-ratio: 1;
+    border: 1px solid $color-primary;
+    border-radius: 9999px;
+  }
+
+  &__name {
+    font-weight: bold;
+  }
+
+  &__preview {
+  }
+
+  &__time {
+  }
+
+  &__notification-badge-container {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__notification-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: $color-primary;
+    border-radius: 9999px;
+    width: 2rem;
+    height: 2rem;
+  }
+}

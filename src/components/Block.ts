@@ -7,7 +7,7 @@ interface Children {
   [key: string]: Block | Block[]
 }
 
-abstract class Block<P extends BlockProps = BlockProps> {
+abstract class Block<P extends BlockProps = any> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',

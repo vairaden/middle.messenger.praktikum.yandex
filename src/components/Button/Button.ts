@@ -6,7 +6,7 @@ import "./button.pcss";
 interface Props extends BlockProps {
   text: string;
   class?: string;
-  type?: 'submit' | 'button';
+  type?: 'submit' | 'button' | "reset";
   onClick?: EventListener;
 }
 

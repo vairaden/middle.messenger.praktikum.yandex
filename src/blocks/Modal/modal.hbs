@@ -1,5 +1,5 @@
-<div class="modal__background">
-  <div class="modal__card">
-  kek
+<div class="modal__background{{#if this.hidden}} hidden{{/if}}">
+  <div class="modal__card" onclick="event.stopPropagation()">
+    {{{ Content }}}
   </div>
 </div>
