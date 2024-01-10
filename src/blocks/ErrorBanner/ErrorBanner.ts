@@ -1,15 +1,15 @@
-import template from './errorPage.hbs';
+import template from './errorBanner.hbs';
 import Block from '../../components/Block';
 import Link from '../../components/Link/Link';
 import { BlockProps } from '../../types';
-import './errorPage.pcss';
+import './errorBanner.pcss';
 
 interface Props extends BlockProps {
   code: string;
   text: string;
 }
 
-export default class ErrorPage extends Block<Props> {
+export default class ErrorBanner extends Block<Props> {
   constructor(props: Props) {
     super({
       ...props,

@@ -38,7 +38,7 @@ class Route {
   }
 
   match(pathname: string) {
-    return pathname === this.pathname;
+    return new RegExp(`^${this.pathname}/?$`).test(pathname);
   }
 
   render() {
@@ -57,6 +57,8 @@ class Router {
 
   private currentRoute: Route | null = null;
 
+  private notFoundRoute: Route | null = null;
+
   private history = window.history;
 
   constructor(private readonly rootQuery: string) {
@@ -67,6 +69,11 @@ class Router {
     this.routes = [];
 
     Router.__instance = this;
+  }
+
+  public useNotFoundRoute(block: BlockConstructable) {
+    this.notFoundRoute = new Route('/404', block, this.rootQuery);
+    return this;
   }
 
   public use(pathname: string, block: BlockConstructable) {
@@ -87,10 +94,10 @@ class Router {
   }
 
   private _onRoute(pathname: string) {
-    const route = this.getRoute(pathname);
+    let route: Route | null = this.getRoute(pathname);
 
     if (!route) {
-      return;
+      route = this.notFoundRoute;
     }
 
     if (this.currentRoute && this.currentRoute !== route) {
@@ -98,8 +105,9 @@ class Router {
     }
 
     this.currentRoute = route;
-
-    route.render();
+    if (route) {
+      route.render();
+    }
   }
 
   public go(pathname: string) {
@@ -117,7 +125,7 @@ class Router {
   }
 
   private getRoute(pathname: string) {
-    return this.routes.find((route) => route.match(pathname));
+    return this.routes.find((route) => route.match(pathname)) || null;
   }
 }
 
