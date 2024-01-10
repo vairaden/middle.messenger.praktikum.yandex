@@ -73,10 +73,15 @@ export default class HTTPTransport {
       xhr.onerror = () => reject(new Error('network error'));
       xhr.ontimeout = () => reject(new Error('timeout'));
 
-      xhr.setRequestHeader('Content-Type', 'application/json');
-
       xhr.withCredentials = true;
       xhr.responseType = 'json';
+
+      if (data instanceof FormData) {
+        xhr.send(data);
+        return;
+      }
+
+      xhr.setRequestHeader('Content-Type', 'application/json');
 
       if (method === Method.Get || !data) {
         xhr.send();

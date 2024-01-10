@@ -54,5 +54,4 @@ class ProfilePage extends Block<Props> {
 }
 
 const userStore = withStore((state) => ({ user: state.user }));
-// @ts-ignore
 export default userStore(ProfilePage);

@@ -1,9 +1,9 @@
-import Block from "../../components/Block";
-import template from "./createChatForm.hbs";
-import "./createChatForm.pcss";
-import {BlockProps} from "../../types";
-import Button from "../../components/Button/Button";
-import FormInput from "../../components/FormInput/FormInput";
+import Block from '../../components/Block';
+import template from './createChatForm.hbs';
+import './createChatForm.pcss';
+import { BlockProps } from '../../types';
+import Button from '../../components/Button/Button';
+import FormInput from '../../components/FormInput/FormInput';
 
 interface Props extends BlockProps {
   onCancel: () => void;
@@ -22,22 +22,22 @@ export default class CreateChatForm extends Block<Props> {
             type: 'text',
             class: 'form__input',
             label: 'Имя чата',
-          }
+          },
         ),
         CancelButton: new Button({
           text: 'Отменить',
           onClick: props.onCancel,
-          type: "reset",
+          type: 'reset',
           class: 'button_secondary',
         }),
         ConfirmButton: new Button({
           text: 'Создать',
-          type: "submit",
+          type: 'submit',
           class: 'button_primary',
         }),
         events: {
           submit: props.onConfirm,
-        }
+        },
       },
     );
   }

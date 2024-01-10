@@ -8,6 +8,8 @@ interface Props extends BlockProps {
   type: string;
   class?: string;
   placeholder?: string;
+  value?: string;
+  accept?: string;
   onBlur?: EventListener;
 }
 

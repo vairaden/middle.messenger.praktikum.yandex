@@ -5,7 +5,7 @@ import { Message } from '../../controllers/MessagesController';
 import getReadableTime from '../../lib/getReadableTime';
 import { BlockProps } from '../../types';
 import './chatThread.pcss';
-import {User} from "../../api/AuthApi/authApiTypes";
+import { User } from '../../api/AuthApi/authApiTypes';
 
 interface Props extends BlockProps {
   messages: Message[];

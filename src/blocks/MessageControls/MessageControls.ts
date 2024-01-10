@@ -4,7 +4,7 @@ import Input from '../../components/Input/Input';
 import { checkNotEmpty } from '../../lib/validators';
 import MessagesController from '../../controllers/MessagesController';
 import { BlockProps } from '../../types';
-import "./messageControls.pcss";
+import './messageControls.pcss';
 
 interface Props extends BlockProps {
   selectedChat?: number;

@@ -1,7 +1,7 @@
-import Block from "../../components/Block";
-import template from "./modal.hbs";
-import "./modal.pcss";
-import {BlockProps} from "../../types";
+import Block from '../../components/Block';
+import template from './modal.hbs';
+import './modal.pcss';
+import { BlockProps } from '../../types';
 
 interface Props extends BlockProps {
   onCancel: () => void;
@@ -18,9 +18,9 @@ export default class Modal extends Block<Props> {
         events: {
           click: () => {
             props.onCancel();
-          }
-        }
-      }
+          },
+        },
+      },
     );
   }
 

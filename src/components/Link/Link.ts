@@ -1,7 +1,7 @@
 import Block from '../Block';
 import template from './link.hbs';
 import { BlockProps } from '../../types';
-import "./link.pcss";
+import './link.pcss';
 
 interface Props extends BlockProps {
   Content: string;

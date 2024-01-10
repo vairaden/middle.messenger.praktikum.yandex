@@ -1,12 +1,12 @@
 import Block from '../Block';
 import template from './button.hbs';
 import { BlockProps } from '../../types';
-import "./button.pcss";
+import './button.pcss';
 
 interface Props extends BlockProps {
   text: string;
   class?: string;
-  type?: 'submit' | 'button' | "reset";
+  type?: 'submit' | 'button' | 'reset';
   onClick?: EventListener;
 }
 

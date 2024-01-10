@@ -31,17 +31,6 @@ window.addEventListener('DOMContentLoaded', async () => {
       break;
   }
 
-  // email:"keklol@mail.ru"
-  // first_name:"Boris"
-  // login:"kek"
-  // password:"Lolkek123"
-  // password_repeat:"Lolkek123"
-  // phone:"79999999999"
-  // second_name:"Avgust"
-
-  // login: "kek"
-  // password: "Lolkek123"
-
   try {
     await AuthController.fetchUser();
 

@@ -1,9 +1,7 @@
 import store from '../utils/Store';
-import router from '../utils/Router';
-import MessagesController from './MessagesController';
-import {User} from '../api/AuthApi/authApiTypes';
-import UsersApi from "../api/UsersApi/UsersApi";
-import {ChangePasswordData, ChangeProfileData} from "../api/UsersApi/usersApiTypes";
+import { User } from '../api/AuthApi/authApiTypes';
+import UsersApi from '../api/UsersApi/UsersApi';
+import { ChangePasswordData, ChangeProfileData } from '../api/UsersApi/usersApiTypes';
 
 export class UsersController {
   private readonly api: typeof UsersApi;
@@ -13,26 +11,25 @@ export class UsersController {
   }
 
   async changeProfileData(data: ChangeProfileData) {
-    await this.api.changeProfile(data);
+    const user = await this.api.changeProfile(data);
+    store.set('user', user);
   }
 
   async changeAvatar(data: FormData) {
-    await this.api.changeAvatar(data);
-
+    const user = await this.api.changeAvatar(data);
+    store.set('user', user);
   }
 
   async changePassword(data: ChangePasswordData) {
     await this.api.changePassword(data);
-
   }
 
   async getUserById(id: string): Promise<User> {
-    return await this.api.getUserById(id);
-
+    return this.api.getUserById(id);
   }
 
   async searchUsers(login: string): Promise<User[]> {
-    return this.api.searchUsers(login)
+    return this.api.searchUsers(login);
   }
 }
 
