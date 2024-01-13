@@ -1,16 +1,16 @@
 import template from './chatThread.hbs';
 import Block from '../../components/Block';
 import MessageBlock from '../../components/Message/Message';
-import {Message} from '../../controllers/MessagesController';
+import { Message } from '../../controllers/MessagesController';
 import getReadableTime from '../../lib/getReadableTime';
-import {BlockProps} from '../../types';
+import { BlockProps } from '../../types';
 import './chatThread.pcss';
-import {User} from '../../api/AuthApi/authApiTypes';
-import {ChatInfo} from "../../api/ChatsApi/chatsApiTypes";
-import Modal from "../Modal/Modal";
-import CreateChatForm from "../CreateChatForm/CreateChatForm";
-import ChatsController from "../../controllers/ChatsController";
-import Button from "../../components/Button/Button";
+import { User } from '../../api/AuthApi/authApiTypes';
+import { ChatInfo } from '../../api/ChatsApi/chatsApiTypes';
+import Modal from '../Modal/Modal';
+import CreateChatForm from '../CreateChatForm/CreateChatForm';
+import ChatsController from '../../controllers/ChatsController';
+import Button from '../../components/Button/Button';
 
 interface Props extends BlockProps {
   selectedChat?: ChatInfo;
@@ -47,7 +47,7 @@ export default class ChatThread extends Block<Props> {
         class: 'chat-thread__etc-button',
         onClick: () => {
           (this.children.Modal as Block).setProps({ hidden: false });
-        }
+        },
       }),
       selectedChat: props.selectedChat,
       Messages: props.messages.map((message) => {

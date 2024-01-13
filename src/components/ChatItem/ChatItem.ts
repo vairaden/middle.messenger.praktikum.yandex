@@ -3,7 +3,7 @@ import Block from '../../components/Block';
 import { ChatInfo } from '../../api/ChatsApi/chatsApiTypes';
 import { BlockProps } from '../../types';
 import './chatItem.pcss';
-import getReadableTime from "../../lib/getReadableTime";
+import getReadableTime from '../../lib/getReadableTime';
 
 interface Props extends BlockProps {
   chat: ChatInfo;

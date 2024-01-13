@@ -3,13 +3,13 @@ import Block from '../../components/Block';
 import ChatBrowser from '../../blocks/ChatBrowser/ChatBrowser';
 import MessageControls from '../../blocks/MessageControls/MessageControls';
 import ChatsController from '../../controllers/ChatsController';
-import {withStore} from '../../utils/Store';
-import {ChatInfo} from '../../api/ChatsApi/chatsApiTypes';
+import { withStore } from '../../utils/Store';
+import { ChatInfo } from '../../api/ChatsApi/chatsApiTypes';
 import ChatThread from '../../blocks/ChatThread/ChatThread';
-import {Message} from '../../controllers/MessagesController';
-import {BlockProps} from '../../types';
+import { Message } from '../../controllers/MessagesController';
+import { BlockProps } from '../../types';
 import './homePage.pcss';
-import {User} from '../../api/AuthApi/authApiTypes';
+import { User } from '../../api/AuthApi/authApiTypes';
 
 interface Props extends BlockProps {
   chats: ChatInfo[];
@@ -23,9 +23,10 @@ class HomePage extends Block<Props> {
     const messages = props.selectedChat ? props.messages[props.selectedChat] : [];
 
     super({
-      ChatBrowser: new ChatBrowser({chats: props.chats}),
+      ChatBrowser: new ChatBrowser({ chats: props.chats }),
       ChatThread: new ChatThread({
-        messages, user: props.user,
+        messages,
+        user: props.user,
         selectedChat: props.chats?.find((chat) => chat.id === props.selectedChat),
       }),
       MessageControls: new MessageControls(),
@@ -37,7 +38,7 @@ class HomePage extends Block<Props> {
   }
 
   protected componentDidUpdate(_: Props, newProps: Props): boolean {
-    (this.children.ChatBrowser as unknown as ChatBrowser).setProps({chats: newProps.chats});
+    (this.children.ChatBrowser as unknown as ChatBrowser).setProps({ chats: newProps.chats });
 
     const messages = newProps.selectedChat ? newProps.messages[newProps.selectedChat] : [];
     (this.children.ChatThread as unknown as ChatThread).setProps({
@@ -46,7 +47,7 @@ class HomePage extends Block<Props> {
       selectedChat: newProps.chats?.find((chat) => chat.id === newProps.selectedChat),
     });
 
-    (this.children.MessageControls as unknown as MessageControls).setProps({selectedChat: newProps.selectedChat});
+    (this.children.MessageControls as unknown as MessageControls).setProps({ selectedChat: newProps.selectedChat });
 
     return false;
   }
