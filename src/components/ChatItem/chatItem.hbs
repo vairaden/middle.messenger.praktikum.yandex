@@ -1,22 +1,33 @@
 <li class="chat-item">
   <div class="chat-item__container">
-    <img class="chat-item__avatar" src="/avatar.png" alt="Avatar"/>
+    <img class="chat-item__avatar"
+         src="{{#if
+           this.avatar}}https://ya-praktikum.tech/api/v2/resources{{this.avatar}}{{else}}/avatar.png{{/if}}"
+         alt="Avatar"/>
     <div>
       <div class="chat-item__name">{{ this.title }}</div>
       <div class="chat-item__preview">
-        <span class="chat-item__sender">{{this.last_message.user.login}}:</span>
-        {{ this.last_message.content}}
+        {{#if this.last_message }}
+          <span class="chat-item__sender">{{this.last_message.user.login}}:</span>
+          {{ this.last_message.content}}
+        {{else}}
+          Нет сообщений
+        {{/if}}
       </div>
     </div>
     <div>
-      <div class="chat-item__time">12:10</div>
-      <div class="chat-item__notification-badge-container">
-        <div class="chat-item__notification-badge">
+      {{#if lastMessageTime }}
+        <div class="chat-item__time">{{ lastMessageTime }}</div>
+      {{/if}}
+      {{#if this.unread_count}}
+        <div class="chat-item__notification-badge-container">
+          <div class="chat-item__notification-badge">
           <span>
             {{this.unread_count}}
           </span>
+          </div>
         </div>
-      </div>
+      {{/if}}
     </div>
   </div>
   <div class="chat-item__separator"></div>

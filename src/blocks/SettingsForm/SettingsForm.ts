@@ -20,7 +20,7 @@ export default class SettingForm extends Block<Props> {
       SubmitButton: new Button({
         class: 'button_primary',
         type: 'submit',
-        text: props.submitButtonText,
+        Content: props.submitButtonText,
       }),
       events: {
         submit: props.onSubmit,

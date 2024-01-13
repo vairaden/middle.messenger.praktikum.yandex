@@ -48,7 +48,7 @@ export default class LoginPage extends Block {
       Button: new Button({
         class: 'button_primary',
         type: 'submit',
-        text: 'Авторизоваться',
+        Content: 'Авторизоваться',
       }),
       Link: new Link({
         Content: 'Нет аккаунта?',

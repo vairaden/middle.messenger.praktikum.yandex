@@ -51,7 +51,7 @@ export default class ChatBrowser extends Block<Props> {
       }),
       ChatItems: chatListFactory(props.chats),
       CreateButton: new Button({
-        text: 'Создать чат',
+        Content: 'Создать чат',
         class: 'button_primary',
         onClick: () => {
           (this.children.Modal as Block).setProps({ hidden: false });
@@ -66,7 +66,6 @@ export default class ChatBrowser extends Block<Props> {
 
   componentDidUpdate(oldProps: Props, newProps: Props) {
     (this.children.ChatItems as unknown as ChatItem[]) = chatListFactory(newProps.chats);
-    console.log(newProps.chats);
     return super.componentDidUpdate(oldProps, newProps);
   }
 

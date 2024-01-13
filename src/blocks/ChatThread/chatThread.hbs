@@ -1,5 +1,17 @@
-<ul class="chat-thread">
-  {{#each Messages }}
-    {{{this}}}
-  {{/each}}
-</ul>
+<div class="chat-thread">
+  {{{ Modal }}}
+  {{#if selectedChat }}
+    <div class="chat-thread__header">
+      <img class="chat-thread__avatar" src="{{#if
+        avatar}}https://ya-praktikum.tech/api/v2/resources{{selectedChat.avatar}}{{else}}/avatar.png{{/if}}"
+           alt="Avatar"/>
+      <p class="chat-thread__name">{{ selectedChat.title }}</p>
+      {{{ EtcButton }}}
+    </div>
+  {{/if}}
+  <ul class="chat-thread__messages">
+    {{#each Messages }}
+      {{{this}}}
+    {{/each}}
+  </ul>
+</div>

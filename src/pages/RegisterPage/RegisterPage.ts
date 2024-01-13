@@ -18,7 +18,7 @@ export default class RegisterPage extends Block {
       }),
       Button: new Button({
         type: 'submit',
-        text: 'Зарегистрироваться',
+        Content: 'Зарегистрироваться',
         class: 'button_primary',
       }),
       Inputs: [

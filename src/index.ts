@@ -25,6 +25,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     .useNotFoundRoute(NotFoundPage);
 
   let isProtectedRoute = false;
+  let isAuthRoute = false;
 
   switch (window.location.pathname) {
     case Routes.Profile:
@@ -34,16 +35,22 @@ window.addEventListener('DOMContentLoaded', async () => {
       break;
   }
 
+  switch (window.location.pathname) {
+    case Routes.Signup:
+    case Routes.Login:
+      isAuthRoute = true;
+  }
+
   try {
     await AuthController.fetchUser();
     Router.start();
-    Router.go(window.location.pathname);
+    if (isAuthRoute) {
+      Router.go(Routes.Messenger);
+    }
   } catch (e) {
     Router.start();
     if (isProtectedRoute) {
       Router.go(Routes.Login);
-    } else {
-      Router.go(window.location.pathname);
     }
   }
 });

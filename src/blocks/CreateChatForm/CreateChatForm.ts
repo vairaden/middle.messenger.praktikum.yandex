@@ -25,13 +25,13 @@ export default class CreateChatForm extends Block<Props> {
           },
         ),
         CancelButton: new Button({
-          text: 'Отменить',
+          Content: 'Отменить',
           onClick: props.onCancel,
           type: 'reset',
           class: 'button_secondary',
         }),
         ConfirmButton: new Button({
-          text: 'Создать',
+          Content: 'Создать',
           type: 'submit',
           class: 'button_primary',
         }),
