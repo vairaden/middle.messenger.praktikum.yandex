@@ -151,8 +151,7 @@ class SettingsPage extends Block<Props> {
           onSubmit: (e) => {
             e.preventDefault();
             const formData = new FormData(e.target as HTMLFormElement);
-            const values = Object.fromEntries(formData as any);
-            console.log(values);
+
             UsersController.changeAvatar(formData).then(() => {
               this.clearAvatarForm();
             });

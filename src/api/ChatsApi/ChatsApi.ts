@@ -27,13 +27,15 @@ export class ChatsApi extends BaseAPI {
     return this.http.put('/users', { users, chatId: id });
   }
 
+  deleteUserFromChat(id: number, userId: number) {
+    return this.http.delete('/users', { chatId: id, users: [userId] });
+  }
+
   async getChatToken(id: number): Promise<string> {
     const response = await this.http.post<{ token: string }>(`/token/${id}`);
 
     return response.token;
   }
-
-  update = undefined;
 }
 
 export default new ChatsApi();

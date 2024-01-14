@@ -37,12 +37,20 @@ class ChatsController {
     this.fetchChats();
   }
 
+  deleteUserFromChat(id: number, userId: number) {
+    return this.api.deleteUserFromChat(id, userId);
+  }
+
   getChatToken(id: number) {
     return this.api.getChatToken(id);
   }
 
   selectChat(id: number) {
     store.set('selectedChat', id);
+  }
+
+  getChatUsers(id: number) {
+    return this.api.getUsers(id);
   }
 }
 

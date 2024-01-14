@@ -1,0 +1,21 @@
+@import "../../styles/variables.pcss";
+
+.user-list-item {
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+  border-bottom: 1px solid $color-secondary;
+  padding: 0.5rem 1rem;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  button {
+    margin: 0;
+  }
+
+  &__login {
+    margin: auto 0;
+  }
+}

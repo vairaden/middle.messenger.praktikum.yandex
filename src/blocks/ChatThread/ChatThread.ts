@@ -8,9 +8,9 @@ import './chatThread.pcss';
 import { User } from '../../api/AuthApi/authApiTypes';
 import { ChatInfo } from '../../api/ChatsApi/chatsApiTypes';
 import Modal from '../Modal/Modal';
-import CreateChatForm from '../CreateChatForm/CreateChatForm';
 import ChatsController from '../../controllers/ChatsController';
 import Button from '../../components/Button/Button';
+import ChatSettings from '../ChatSettings/ChatSettings';
 
 interface Props extends BlockProps {
   selectedChat?: ChatInfo;
@@ -22,8 +22,9 @@ export default class ChatThread extends Block<Props> {
   constructor(props: Props) {
     super({
       Modal: new Modal({
-        Content: new CreateChatForm({
-          onConfirm: async (e) => {
+        Content: new ChatSettings({
+          selectedChat: props.selectedChat,
+          onConfirm: async (e: Event) => {
             e.preventDefault();
             const formData = new FormData(e.target as HTMLFormElement);
             const values = Object.fromEntries(formData as any);
@@ -63,7 +64,7 @@ export default class ChatThread extends Block<Props> {
   protected componentDidUpdate(oldProps: Props, newProps: Props): boolean {
     (this.children.Messages as unknown as MessageBlock[]) = newProps.messages.map((message) => {
       return new MessageBlock({
-        modifier: this.props.user.id === message.user_id ? 'sent' : 'received',
+        modifier: newProps.user.id === message.user_id ? 'sent' : 'received',
         text: message.content,
         time: getReadableTime(message.time),
       });

@@ -1,8 +1,10 @@
 <div class="page-wrapper">
   {{{ Link }}}
   <main class="profile">
-    <img class="profile__avatar" src="/avatar.png" alt="Avatar"/>
-    <h1 class="profile__login">Иван</h1>
+    <img class="profile__avatar" src="{{#if
+      avatar}}https://ya-praktikum.tech/api/v2/resources{{avatar}}{{else}}/avatar.png{{/if}}"
+         alt="Avatar"/>
+    <h1 class="profile__login">{{ userLogin }}</h1>
     <ul class="profile__section">
       {{# each ProfileItems}}
         {{{this}}}

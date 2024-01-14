@@ -9,9 +9,11 @@ import { BlockProps } from '../../types';
 import './profilePage.pcss';
 
 const profileInformation = {
+  id: 'ID',
   first_name: 'Имя',
   second_name: 'Фамилия',
   login: 'Логин',
+  display_name: 'Имя в чате',
   email: 'Почта',
   phone: 'Телефон',
 };
@@ -23,6 +25,8 @@ interface Props extends BlockProps{
 class ProfilePage extends Block<Props> {
   constructor(props: Props) {
     super({
+      avatar: props.user.avatar,
+      userLogin: props.user.login,
       Link: new Link({
         class: 'back-button',
         Content: '<img src="/back.svg" alt="Стрелка назад"/>',
@@ -30,7 +34,7 @@ class ProfilePage extends Block<Props> {
       }),
       ProfileItems: Object.entries(profileInformation).map(([key, value]) => new ProfileItem({
         label: value,
-        value: props.user[key as keyof User],
+        value: props.user[key as keyof User] ? props.user[key as keyof User].toString() : '-',
       })),
       SettingsLink: new Link({
         Content: 'Изменить данные',
