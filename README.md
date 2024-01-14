@@ -16,6 +16,26 @@
 
 **Сообщение** — не должно быть пустым.
 
+## Функциональность
+
+### Авторизация
+- регистрация
+- авторизация
+- выход из системы
+
+### Работа с информацией пользователя 
+- изменение данных пользователя
+- изменение аватара 
+- изменение пароля
+
+### Работа с чатами 
+- список чатов пользователя
+- создание новых чатов
+- добавление пользователя в чат
+- удаление пользователя из чата
+
+### Работа с сообщениями через WebSocket
+
 ## Макеты в Figma
 https://www.figma.com/file/Pelka2T12iSogai8WSTOcG/Yandex-practicum-messenger?type=design&node-id=0%3A1&mode=dev
 
@@ -25,6 +45,7 @@ https://inspiring-sunshine-dd6aa5.netlify.app/
 ## Сcылки на PR
 - 1 Спринт - https://github.com/vairaden/middle.messenger.praktikum.yandex/pull/4
 - 2 Спринт - https://github.com/vairaden/middle.messenger.praktikum.yandex/pull/5
+- 3 Спринт - https://github.com/vairaden/middle.messenger.praktikum.yandex/pull/6
 
 ## Запуск
 **Версия NodeJS: 18.18.2**
