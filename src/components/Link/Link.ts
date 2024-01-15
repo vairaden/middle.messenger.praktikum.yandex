@@ -2,6 +2,7 @@ import Block from '../Block';
 import template from './link.hbs';
 import { BlockProps } from '../../types';
 import './link.pcss';
+import { withRouter } from '../withRouter';
 
 interface Props extends BlockProps {
   Content: string;
@@ -10,12 +11,12 @@ interface Props extends BlockProps {
   href: string;
 }
 
-export default class Link extends Block<Props> {
+class Link extends Block<Props> {
   constructor(props: Props) {
     super({
       class: 'link_centered',
       events: {
-        click: props.onClick,
+        click: props.onClick || function () { props.router.go(props.href); },
       },
       ...props,
     });
@@ -25,3 +26,5 @@ export default class Link extends Block<Props> {
     return this.compile(template, this.props);
   }
 }
+
+export default withRouter(Link);
