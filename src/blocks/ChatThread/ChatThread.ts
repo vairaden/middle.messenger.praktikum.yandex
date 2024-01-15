@@ -1,14 +1,13 @@
 import template from './chatThread.hbs';
 import Block from '../../components/Block';
 import MessageBlock from '../../components/Message/Message';
-import {Message} from '../../controllers/MessagesController';
+import { Message } from '../../controllers/MessagesController';
 import getReadableTime from '../../lib/getReadableTime';
-import {BlockProps} from '../../types';
+import { BlockProps } from '../../types';
 import './chatThread.pcss';
-import {User} from '../../api/AuthApi/authApiTypes';
-import {ChatInfo} from '../../api/ChatsApi/chatsApiTypes';
+import { User } from '../../api/AuthApi/authApiTypes';
+import { ChatInfo } from '../../api/ChatsApi/chatsApiTypes';
 import Modal from '../Modal/Modal';
-import ChatsController from '../../controllers/ChatsController';
 import Button from '../../components/Button/Button';
 import ChatSettings from '../ChatSettings/ChatSettings';
 
@@ -24,20 +23,12 @@ export default class ChatThread extends Block<Props> {
       Modal: new Modal({
         Content: new ChatSettings({
           selectedChat: props.selectedChat,
-          onConfirm: async (e: Event) => {
-            e.preventDefault();
-            const formData = new FormData(e.target as HTMLFormElement);
-            const values = Object.fromEntries(formData as any);
-
-            await ChatsController.createChat(values.chat_name);
-            (this.children.Modal as Block).setProps({hidden: true});
-          },
           onCancel: () => {
-            (this.children.Modal as Block).setProps({hidden: true});
+            (this.children.Modal as Block).setProps({ hidden: true });
           },
         }),
         onCancel: () => {
-          (this.children.Modal as Block).setProps({hidden: true});
+          (this.children.Modal as Block).setProps({ hidden: true });
         },
         confirmText: 'Создать',
         hidden: true,
@@ -47,7 +38,7 @@ export default class ChatThread extends Block<Props> {
         Content: '<img src="/etc.svg" alt="Еще"/>',
         class: 'chat-thread__etc-button',
         onClick: () => {
-          (this.children.Modal as Block).setProps({hidden: false});
+          (this.children.Modal as Block).setProps({ hidden: false });
         },
       }),
       selectedChat: props.selectedChat,
@@ -70,7 +61,7 @@ export default class ChatThread extends Block<Props> {
       });
     });
 
-    const element = document.getElementById("message-thread");
+    const element = document.getElementById('message-thread');
     if (element) {
       element.scrollTop = element.scrollHeight;
     }

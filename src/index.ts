@@ -6,7 +6,7 @@ import SettingsPage from './pages/SettingsPage/SettingsPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
-import ServerErrorPage from "./pages/ServerErrorPage/ServerErrorPage";
+import ServerErrorPage from './pages/ServerErrorPage/ServerErrorPage';
 
 const enum Routes {
   Login = '/',

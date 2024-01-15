@@ -11,6 +11,8 @@ type Options = {
   data?: any;
 };
 
+type HTTPMethod = <R=unknown>(path: string, data?: unknown) => Promise<R>
+
 export default class HTTPTransport {
   static API_URL = 'https://ya-praktikum.tech/api/v2';
 
@@ -20,39 +22,39 @@ export default class HTTPTransport {
     this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
   }
 
-  public get<Response>(path = '/'): Promise<Response> {
-    return this.request<Response>(this.endpoint + path);
-  }
+  public get: HTTPMethod = (path = '/') => {
+    return this.request(this.endpoint + path);
+  };
 
-  public post<Response = void>(path: string, data?: unknown): Promise<Response> {
-    return this.request<Response>(this.endpoint + path, {
+  public post: HTTPMethod = (path, data) => {
+    return this.request(this.endpoint + path, {
       method: Method.Post,
       data,
     });
-  }
+  };
 
-  public put<Response = void>(path: string, data: unknown): Promise<Response> {
-    return this.request<Response>(this.endpoint + path, {
+  public put: HTTPMethod = (path, data) => {
+    return this.request(this.endpoint + path, {
       method: Method.Put,
       data,
     });
-  }
+  };
 
-  public patch<Response = void>(path: string, data: unknown): Promise<Response> {
-    return this.request<Response>(this.endpoint + path, {
+  public patch: HTTPMethod = (path, data) => {
+    return this.request(this.endpoint + path, {
       method: Method.Patch,
       data,
     });
-  }
+  };
 
-  public delete<Response>(path: string, data?: unknown): Promise<Response> {
-    return this.request<Response>(this.endpoint + path, {
+  public delete: HTTPMethod = (path: string, data?: unknown) => {
+    return this.request(this.endpoint + path, {
       method: Method.Delete,
       data,
     });
-  }
+  };
 
-  private request<Response>(url: string, options: Options = { method: Method.Get }): Promise<Response> {
+  private request(url: string, options: Options = { method: Method.Get }): Promise<any> {
     const { method, data } = options;
 
     return new Promise((resolve, reject) => {

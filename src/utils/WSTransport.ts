@@ -1,5 +1,5 @@
 import EventBus from './eventBus';
-import router from "./Router";
+import router from './Router';
 
 export enum WSTransportEvents {
   Connected = 'connected',
@@ -45,7 +45,7 @@ export default class WSTransport extends EventBus {
 
   private setupPing() {
     this.pingInterval = setInterval(() => {
-      this.send({type: 'ping'});
+      this.send({ type: 'ping' });
     }, 5000);
 
     this.on(WSTransportEvents.Close, () => {

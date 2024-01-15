@@ -1,7 +1,7 @@
-import API, {ChatsApi} from '../api/ChatsApi/ChatsApi';
+import API, { ChatsApi } from '../api/ChatsApi/ChatsApi';
 import store from '../utils/Store';
 import MessagesController from './MessagesController';
-import router from "../utils/Router";
+import router from '../utils/Router';
 
 class ChatsController {
   private readonly api: ChatsApi;
@@ -39,9 +39,10 @@ class ChatsController {
     }
   }
 
-  addUserToChat(id: number, userId: number) {
+  async addUserToChat(id: number, userId: number) {
     try {
-      this.api.addUsers(id, [userId]);
+      await this.api.addUsers(id, [userId]);
+      await this.fetchChats();
     } catch (e: any) {
       console.error(e.message);
       router.go('/500');
@@ -59,9 +60,10 @@ class ChatsController {
     }
   }
 
-  deleteUserFromChat(id: number, userId: number) {
+  async deleteUserFromChat(id: number, userId: number) {
     try {
-      return this.api.deleteUserFromChat(id, userId);
+      await this.api.deleteUserFromChat(id, userId);
+      await this.fetchChats();
     } catch (e: any) {
       console.error(e.message);
       router.go('/500');
@@ -85,7 +87,7 @@ class ChatsController {
     store.set('selectedChat', id);
   }
 
-  getChatUsers(id: number) {
+  async getChatUsers(id: number) {
     try {
       return this.api.getUsers(id);
     } catch (e: any) {

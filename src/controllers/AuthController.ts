@@ -20,7 +20,6 @@ export class AuthController {
       router.go('/messenger');
     } catch (e: any) {
       console.error(e.message);
-      router.go('/500');
     }
   }
 
@@ -33,14 +32,17 @@ export class AuthController {
       router.go('/messenger');
     } catch (e: any) {
       console.error(e.message);
-      router.go('/500');
     }
   }
 
   async fetchUser() {
-    const user = await this.api.read();
+    try {
+      const user = await this.api.read();
 
-    store.set('user', user);
+      store.set('user', user);
+    } catch (e: any) {
+      console.log(e.message);
+    }
   }
 
   async logout() {

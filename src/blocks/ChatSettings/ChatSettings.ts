@@ -12,7 +12,6 @@ import AddUserForm from '../../components/AddUserForm/AddUserForm';
 
 interface Props extends BlockProps {
   onCancel: () => void;
-  onConfirm: EventListener;
   selectedChat?: number;
   user: User;
 }
@@ -21,10 +20,10 @@ class ChatSettings extends Block<Props> {
   constructor(props: Props) {
     super(
       {
-        onConfirm: props.onConfirm,
         hidden: props.hidden,
         AddUserForm: new AddUserForm({
           onSubmit: (e) => {
+            e.preventDefault();
             const formData = new FormData(e.target as HTMLFormElement);
             const values = Object.fromEntries(formData as any);
 
