@@ -6,6 +6,7 @@ import SettingsPage from './pages/SettingsPage/SettingsPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
+import ServerErrorPage from "./pages/ServerErrorPage/ServerErrorPage";
 
 const enum Routes {
   Login = '/',
@@ -13,6 +14,7 @@ const enum Routes {
   Profile = '/profile',
   Settings = '/settings',
   Messenger = '/messenger',
+  ServerError = '/500'
 }
 
 window.addEventListener('DOMContentLoaded', async () => {
@@ -22,6 +24,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     .use(Routes.Profile, ProfilePage)
     .use(Routes.Settings, SettingsPage)
     .use(Routes.Messenger, HomePage)
+    .use(Routes.ServerError, ServerErrorPage)
     .useNotFoundRoute(NotFoundPage);
 
   let isProtectedRoute = false;

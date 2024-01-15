@@ -19,7 +19,8 @@ export class AuthController {
 
       router.go('/messenger');
     } catch (e: any) {
-      console.error(e);
+      console.error(e.message);
+      router.go('/500');
     }
   }
 
@@ -32,6 +33,7 @@ export class AuthController {
       router.go('/messenger');
     } catch (e: any) {
       console.error(e.message);
+      router.go('/500');
     }
   }
 
@@ -50,6 +52,7 @@ export class AuthController {
       router.go('/');
     } catch (e: any) {
       console.error(e.message);
+      router.go('/500');
     }
   }
 }

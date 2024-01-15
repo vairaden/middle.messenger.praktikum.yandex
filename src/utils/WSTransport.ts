@@ -1,4 +1,5 @@
 import EventBus from './eventBus';
+import router from "./Router";
 
 export enum WSTransportEvents {
   Connected = 'connected',
@@ -44,7 +45,7 @@ export default class WSTransport extends EventBus {
 
   private setupPing() {
     this.pingInterval = setInterval(() => {
-      this.send({ type: 'ping' });
+      this.send({type: 'ping'});
     }, 5000);
 
     this.on(WSTransportEvents.Close, () => {
@@ -67,13 +68,18 @@ export default class WSTransport extends EventBus {
     });
 
     socket.addEventListener('message', (message) => {
-      const data = JSON.parse(message.data);
+      try {
+        const data = JSON.parse(message.data);
 
-      if (data.type && data.type === 'pong') {
-        return;
+        if (data.type && data.type === 'pong') {
+          return;
+        }
+
+        this.emit(WSTransportEvents.Message, data);
+      } catch (err: any) {
+        console.log(err.message);
+        router.go('/500');
       }
-
-      this.emit(WSTransportEvents.Message, data);
     });
   }
 }

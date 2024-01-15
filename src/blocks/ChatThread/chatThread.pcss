@@ -1,5 +1,4 @@
 .chat-thread {
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -43,10 +42,15 @@
   }
 
   &__messages {
+    overflow-y: scroll;
+    height: 100%;
+
+    & > :first-child {
+      margin-top: auto !important;
+    }
+
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    height: 100%;
     list-style: none;
   }
 }

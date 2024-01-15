@@ -39,7 +39,7 @@ class ChatSettings extends Block<Props> {
         }),
         UserList: new UserList({
           users: [],
-          currentUser: props.user.id,
+          currentUser: props.user?.id,
           chatId: props.selectedChat!,
         }),
         DeleteChatButton: new Link({

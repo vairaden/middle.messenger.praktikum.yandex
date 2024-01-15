@@ -1,7 +1,7 @@
 import store from '../utils/Store';
-import { User } from '../api/AuthApi/authApiTypes';
 import UsersApi from '../api/UsersApi/UsersApi';
-import { ChangePasswordData, ChangeProfileData } from '../api/UsersApi/usersApiTypes';
+import {ChangePasswordData, ChangeProfileData} from '../api/UsersApi/usersApiTypes';
+import router from "../utils/Router";
 
 export class UsersController {
   private readonly api: typeof UsersApi;
@@ -11,25 +11,32 @@ export class UsersController {
   }
 
   async changeProfileData(data: ChangeProfileData) {
-    const user = await this.api.changeProfile(data);
-    store.set('user', user);
+    try {
+      const user = await this.api.changeProfile(data);
+      store.set('user', user);
+    } catch (e: any) {
+      console.error(e.message);
+      router.go('/500');
+    }
   }
 
   async changeAvatar(data: FormData) {
-    const user = await this.api.changeAvatar(data);
-    store.set('user', user);
+    try {
+      const user = await this.api.changeAvatar(data);
+      store.set('user', user);
+    } catch (e: any) {
+      console.error(e.message);
+      router.go('/500');
+    }
   }
 
   async changePassword(data: ChangePasswordData) {
-    await this.api.changePassword(data);
-  }
-
-  async getUserById(id: string): Promise<User> {
-    return this.api.getUserById(id);
-  }
-
-  async searchUsers(login: string): Promise<User[]> {
-    return this.api.searchUsers(login);
+    try {
+      await this.api.changePassword(data);
+    } catch (e: any) {
+      console.error(e.message);
+      router.go('/500');
+    }
   }
 }
 

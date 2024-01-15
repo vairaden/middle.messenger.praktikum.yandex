@@ -1,6 +1,7 @@
-import API, { ChatsApi } from '../api/ChatsApi/ChatsApi';
+import API, {ChatsApi} from '../api/ChatsApi/ChatsApi';
 import store from '../utils/Store';
 import MessagesController from './MessagesController';
+import router from "../utils/Router";
 
 class ChatsController {
   private readonly api: ChatsApi;
@@ -10,39 +11,74 @@ class ChatsController {
   }
 
   async createChat(title: string) {
-    await this.api.createChat(title);
+    try {
+      await this.api.createChat(title);
 
-    this.fetchChats();
+      this.fetchChats();
+    } catch (e: any) {
+      console.error(e.message);
+      router.go('/500');
+    }
   }
 
   async fetchChats() {
-    const chats = await this.api.getChats();
+    try {
+      const chats = await this.api.getChats();
 
-    chats.map(async (chat) => {
-      const token = await this.getChatToken(chat.id);
+      chats.map(async (chat) => {
+        const token = await this.getChatToken(chat.id);
+        if (token) {
+          await MessagesController.connect(chat.id, token);
+        }
+      });
 
-      await MessagesController.connect(chat.id, token);
-    });
-
-    store.set('chats', chats);
+      store.set('chats', chats);
+    } catch (e: any) {
+      console.error(e.message);
+      router.go('/500');
+    }
   }
 
   addUserToChat(id: number, userId: number) {
-    this.api.addUsers(id, [userId]);
+    try {
+      this.api.addUsers(id, [userId]);
+    } catch (e: any) {
+      console.error(e.message);
+      router.go('/500');
+    }
   }
 
   async deleteChat(id: number) {
-    await this.api.deleteChat(id);
+    try {
+      await this.api.deleteChat(id);
 
-    this.fetchChats();
+      this.fetchChats();
+    } catch (e: any) {
+      console.error(e.message);
+      router.go('/500');
+    }
   }
 
   deleteUserFromChat(id: number, userId: number) {
-    return this.api.deleteUserFromChat(id, userId);
+    try {
+      return this.api.deleteUserFromChat(id, userId);
+    } catch (e: any) {
+      console.error(e.message);
+      router.go('/500');
+    }
+
+    return null;
   }
 
   getChatToken(id: number) {
-    return this.api.getChatToken(id);
+    try {
+      return this.api.getChatToken(id);
+    } catch (e: any) {
+      console.error(e.message);
+      router.go('/500');
+    }
+
+    return null;
   }
 
   selectChat(id: number) {
@@ -50,7 +86,14 @@ class ChatsController {
   }
 
   getChatUsers(id: number) {
-    return this.api.getUsers(id);
+    try {
+      return this.api.getUsers(id);
+    } catch (e: any) {
+      console.error(e.message);
+      router.go('/500');
+    }
+
+    return null;
   }
 }
 
