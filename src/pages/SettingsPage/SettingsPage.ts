@@ -12,6 +12,7 @@ import { BlockProps } from '../../types';
 import './settingsPage.pcss';
 import UsersController from '../../controllers/UsersController';
 import { ChangePasswordData } from '../../api/UsersApi/usersApiTypes';
+import Avatar from '../../components/Avatar/Avatar';
 
 interface InputAttrs {
   label: string;
@@ -75,15 +76,15 @@ class SettingsPage extends Block<Props> {
   constructor(props: Props) {
     super(
       {
-        avatar: props.user.avatar,
+        Avatar: new Avatar({ src: props.user?.avatar }),
         DataForm: new SettingsForm({
           headerText: 'Изменить данные',
           Inputs: Object.entries(profileDataInputs).map(([name, attrs]) => new FormInput({
             name,
             type: attrs.type,
             label: attrs.label,
-            placeholder: props.user[name as keyof User] ? props.user[name as keyof User].toString() : '-',
-            value: props.user[name as keyof User] ? props.user[name as keyof User].toString() : '-',
+            placeholder: props.user && props.user[name as keyof User] ? props.user[name as keyof User].toString() : '-',
+            value: props.user && props.user[name as keyof User] ? props.user[name as keyof User].toString() : '-',
             errorText: attrs.errorText,
             class: 'form__input_flat',
             onBlur: (event) => {
@@ -130,9 +131,7 @@ class SettingsPage extends Block<Props> {
             }
 
             if (!failedChecks) {
-              UsersController.changeProfileData(values as User).then(() => {
-                this.clearDataForm();
-              });
+              UsersController.changeProfileData(values as User);
             }
           },
         }),
@@ -152,9 +151,7 @@ class SettingsPage extends Block<Props> {
             e.preventDefault();
             const formData = new FormData(e.target as HTMLFormElement);
 
-            UsersController.changeAvatar(formData).then(() => {
-              this.clearAvatarForm();
-            });
+            UsersController.changeAvatar(formData);
           },
         }),
         PasswordForm: new SettingsForm({
@@ -228,6 +225,11 @@ class SettingsPage extends Block<Props> {
     );
   }
 
+  protected componentDidUpdate(oldProps: Props, newProps: Props) {
+    (this.children.Avatar as Block).setProps({ src: newProps.user.avatar });
+    return super.componentDidUpdate(oldProps, newProps);
+  }
+
   setError(name: string, state: boolean) {
     switch (name) {
       case 'email':
@@ -276,18 +278,6 @@ class SettingsPage extends Block<Props> {
     this.children.PasswordForm.children.Inputs.forEach((child) => {
       child.setProps({ class: 'form__input_flat' });
     });
-  }
-
-  clearDataForm() {
-    const form = this.children.DataForm as Block;
-    const element = form.element as HTMLFormElement;
-    element.reset();
-  }
-
-  clearAvatarForm() {
-    const form = this.children.AvatarForm as Block;
-    const element = form.element as HTMLFormElement;
-    element.reset();
   }
 
   clearPasswordForm() {

@@ -3,7 +3,7 @@
   {{#if selectedChat }}
     <div class="chat-thread__header">
       <img class="chat-thread__avatar" src="{{#if
-        avatar}}https://ya-praktikum.tech/api/v2/resources{{selectedChat.avatar}}{{else}}/avatar.png{{/if}}"
+        selectedChat.avatar}}https://ya-praktikum.tech/api/v2/resources{{selectedChat.avatar}}{{else}}/avatar.png{{/if}}"
            alt="Avatar"/>
       <p class="chat-thread__name">{{ selectedChat.title }}</p>
       {{{ EtcButton }}}

@@ -50,8 +50,6 @@ export default class WSTransport extends EventBus {
 
     this.on(WSTransportEvents.Close, () => {
       clearInterval(this.pingInterval);
-
-      // this.pingInterval = null;
     });
   }
 
@@ -77,7 +75,7 @@ export default class WSTransport extends EventBus {
 
         this.emit(WSTransportEvents.Message, data);
       } catch (err: any) {
-        console.log(err.message);
+        console.error(err.message);
         router.go('/500');
       }
     });

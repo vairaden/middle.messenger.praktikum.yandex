@@ -35,7 +35,6 @@ class ChatsController {
       store.set('chats', chats);
     } catch (e: any) {
       console.error(e.message);
-      router.go('/500');
     }
   }
 
@@ -96,6 +95,16 @@ class ChatsController {
     }
 
     return null;
+  }
+
+  async changeChatAvatar(data: FormData) {
+    try {
+      await this.api.changeChatAvatar(data);
+      await this.fetchChats();
+    } catch (e: any) {
+      console.error(e.message);
+      router.go('/500');
+    }
   }
 }
 

@@ -9,6 +9,7 @@ import './chatSettings.pcss';
 import UserList from '../../components/UserList/UserList';
 import { User } from '../../api/AuthApi/authApiTypes';
 import AddUserForm from '../../components/AddUserForm/AddUserForm';
+import ChageChatAvatarFrom from '../../components/ChangeChatAvatarForm/ChageChatAvatarFrom';
 
 interface Props extends BlockProps {
   onCancel: () => void;
@@ -30,16 +31,22 @@ class ChatSettings extends Block<Props> {
             ChatsController.addUserToChat(this.props.selectedChat!, values.user_id);
           },
         }),
-        CloseButton: new Button({
-          Content: 'Закрыть',
-          onClick: props.onCancel,
-          type: 'button',
-          class: 'button_secondary',
-        }),
         UserList: new UserList({
           users: [],
           currentUser: props.user?.id,
           chatId: props.selectedChat!,
+        }),
+        ChangeAvatarForm: new ChageChatAvatarFrom({
+          onSubmit: (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target as HTMLFormElement);
+
+            if (this.props.selectedChat) {
+              formData.append('chatId', this.props.selectedChat.toString());
+
+              ChatsController.changeChatAvatar(formData);
+            }
+          },
         }),
         DeleteChatButton: new Link({
           onClick: () => {
@@ -54,9 +61,12 @@ class ChatSettings extends Block<Props> {
           Content: 'Удалить чат',
           class: 'link_alert',
         }),
-        events: {
-          submit: props.onConfirm,
-        },
+        CloseButton: new Button({
+          Content: 'Закрыть',
+          onClick: props.onCancel,
+          type: 'button',
+          class: 'button_secondary',
+        }),
       },
     );
   }
