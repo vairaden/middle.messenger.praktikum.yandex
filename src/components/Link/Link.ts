@@ -1,20 +1,24 @@
 import Block from '../Block';
 import template from './link.hbs';
+import { BlockProps } from '../../types';
+import './link.pcss';
+import { withRouter } from '../withRouter';
 
-interface Props {
+interface Props extends BlockProps {
   Content: string;
   onClick?: EventListener;
   class?: string;
+  href: string;
 }
 
-export default class Link extends Block {
+class Link extends Block<Props> {
   constructor(props: Props) {
     super({
       class: 'link_centered',
-      ...props,
       events: {
-        click: props.onClick,
+        click: props.onClick || function () { props.router.go(props.href); },
       },
+      ...props,
     });
   }
 
@@ -22,3 +26,5 @@ export default class Link extends Block {
     return this.compile(template, this.props);
   }
 }
+
+export default withRouter(Link);

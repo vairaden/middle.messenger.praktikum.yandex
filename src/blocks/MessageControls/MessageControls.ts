@@ -2,8 +2,14 @@ import template from './messageControls.hbs';
 import Block from '../../components/Block';
 import Input from '../../components/Input/Input';
 import { checkNotEmpty } from '../../lib/validators';
+import MessagesController from '../../controllers/MessagesController';
+import { BlockProps } from '../../types';
+import './messageControls.pcss';
 
-export default class MessageControls extends Block {
+interface Props extends BlockProps {
+  selectedChat?: number;
+}
+export default class MessageControls extends Block<Props> {
   constructor() {
     super({
       Input: new Input({
@@ -19,12 +25,9 @@ export default class MessageControls extends Block {
           const formData = new FormData(event.target as HTMLFormElement);
           const values = Object.fromEntries(formData as any);
 
-          if (!checkNotEmpty(values.message)) {
-            console.log('Empty message');
-            return;
+          if (checkNotEmpty(values.message) && this.props.selectedChat) {
+            MessagesController.sendMessage(this.props.selectedChat, values.message);
           }
-
-          console.log(values);
         },
       },
     });

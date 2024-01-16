@@ -1,9 +1,8 @@
 import template from './navbar.hbs';
 import Block from '../../components/Block';
 import Link from '../../components/Link/Link';
-import render from '../../lib/render';
 
-const pages = ['home', 'login', 'register', 'profile', 'settings', '404'];
+const pages = ['home', 'login', 'register', 'profile', 'settings', 'NotFoundPage'];
 
 export default class Navbar extends Block {
   constructor() {
@@ -11,9 +10,7 @@ export default class Navbar extends Block {
       Links: pages.map((name) => {
         return new Link({
           Content: name,
-          onClick() {
-            render(name as any); // any чтобы была возможность перейти на 404
-          },
+          href: 'lolkekcheburek',
         });
       }),
     });

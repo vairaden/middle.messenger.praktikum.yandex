@@ -1,16 +1,19 @@
 import Block from '../Block';
 import template from './input.hbs';
+import { BlockProps } from '../../types';
 
-interface Props {
+interface Props extends BlockProps {
   id?: string;
   name: string;
   type: string;
   class?: string;
   placeholder?: string;
+  value?: string;
+  accept?: string;
   onBlur?: EventListener;
 }
 
-export default class Input extends Block {
+export default class Input extends Block<Props> {
   constructor(props: Props) {
     super({
       ...props,

@@ -1,18 +1,9 @@
 <div class="page-wrapper">
   {{{ Link }}}
   <main class="settings">
-    <img class="settings__avatar" src="/avatar.png" alt="Avatar"/>
-    <form class="settings__form">
-        {{#each ProfileDataInputs }}
-          {{{this}}}
-        {{/each}}
-      <h2>Смена аватара</h2>
-        {{{ AvatarInput }}}
-      <h2>Смаена пароля</h2>
-      {{#each PasswordInputs }}
-        {{{this}}}
-      {{/each}}
-      {{{Button}}}
-    </form>
+    {{{ Avatar }}}
+    {{{DataForm}}}
+    {{{AvatarForm}}}
+    {{{PasswordForm}}}
   </main>
 </div>

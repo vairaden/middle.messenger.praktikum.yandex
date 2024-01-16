@@ -1,50 +1,52 @@
 import template from './profilePage.hbs';
 import Block from '../../components/Block';
 import Link from '../../components/Link/Link';
-import render from '../../lib/render';
 import ProfileItem from '../../components/ProfileItem/ProfileItem';
+import AuthController from '../../controllers/AuthController';
+import { User } from '../../api/AuthApi/authApiTypes';
+import { withStore } from '../../utils/Store';
+import { BlockProps } from '../../types';
+import './profilePage.pcss';
 
 const profileInformation = {
-  Почта: 'pochta@yandex.ru',
-  Логин: 'ivanivanov',
-  Имя: 'Иван',
-  Фамилия: 'Иванов',
-  'Имя в чате': 'Иван',
-  Телефон: '+7 (909) 967 30 30',
+  id: 'ID',
+  first_name: 'Имя',
+  second_name: 'Фамилия',
+  login: 'Логин',
+  display_name: 'Имя в чате',
+  email: 'Почта',
+  phone: 'Телефон',
 };
-export default class ProfilePage extends Block {
-  constructor() {
+
+interface Props extends BlockProps{
+  user: User;
+}
+
+class ProfilePage extends Block<Props> {
+  constructor(props: Props) {
     super({
+      avatar: props.user?.avatar,
+      userLogin: props.user?.login,
       Link: new Link({
         class: 'back-button',
         Content: '<img src="/back.svg" alt="Стрелка назад"/>',
-        onClick: () => {
-          render('home');
-        },
+        href: '/messenger',
       }),
       ProfileItems: Object.entries(profileInformation).map(([key, value]) => new ProfileItem({
-        label: key,
-        value,
+        label: value,
+        value: props.user && props.user[key as keyof User] ? props.user[key as keyof User].toString() : '-',
       })),
       SettingsLink: new Link({
         Content: 'Изменить данные',
         class: 'link',
-        onClick: () => {
-          render('settings');
-        },
-      }),
-      ChangePasswordLink: new Link({
-        Content: 'Изменить пароль',
-        class: 'link',
-        onClick: () => {
-          render('settings');
-        },
+        href: '/settings',
       }),
       ExitLink: new Link({
         Content: 'Выйти',
         class: 'link_alert',
+        href: '#',
         onClick: () => {
-          render('login');
+          AuthController.logout();
         },
       }),
     });
@@ -54,3 +56,6 @@ export default class ProfilePage extends Block {
     return this.compile(template, this.props);
   }
 }
+
+const userStore = withStore((state) => ({ user: state.user }));
+export default userStore(ProfilePage);

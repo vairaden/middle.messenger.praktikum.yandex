@@ -1,12 +1,13 @@
 import template from './profileItem.hbs';
 import Block from '../../components/Block';
+import { BlockProps } from '../../types';
 
-interface Props {
+interface Props extends BlockProps{
   label: string;
-  value: string;
+  value: string | number;
 }
 
-export default class ProfileItem extends Block {
+export default class ProfileItem extends Block<Props> {
   constructor(props: Props) {
     super(
       {

@@ -5,21 +5,20 @@ import {
   checkEmail, checkLogin, checkName, checkPassword, checkPhone,
 } from '../../lib/validators';
 import Link from '../../components/Link/Link';
-import render from '../../lib/render';
 import Button from '../../components/Button/Button';
+import AuthController from '../../controllers/AuthController';
+import { SignupData } from '../../api/AuthApi/authApiTypes';
 
 export default class RegisterPage extends Block {
   constructor() {
     super({
       Link: new Link({
         Content: 'Войти',
-        onClick: () => {
-          render('login');
-        },
+        href: '/',
       }),
       Button: new Button({
         type: 'submit',
-        text: 'Зарегистрироваться',
+        Content: 'Зарегистрироваться',
         class: 'button_primary',
       }),
       Inputs: [
@@ -176,9 +175,7 @@ export default class RegisterPage extends Block {
             return;
           }
 
-          console.log(values);
-
-          render('home');
+          AuthController.signup(values as SignupData);
         },
       },
     });

@@ -9,6 +9,10 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint'],
   rules: {
+    'no-useless-constructor': 'warn',
+    'default-case': 'warn',
+    'no-constructor-return': 'off',
+    'max-classes-per-file': 'off',
     'import/no-unresolved': 'off',
     'import/extensions': 'off',
     'no-underscore-dangle': 'off',

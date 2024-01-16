@@ -1,14 +1,16 @@
 import Block from '../Block';
 import template from './button.hbs';
+import { BlockProps } from '../../types';
+import './button.pcss';
 
-interface Props {
-  text: string;
+interface Props extends BlockProps {
+  Content: string;
   class?: string;
-  type?: 'submit' | 'button';
+  type?: 'submit' | 'button' | 'reset';
   onClick?: EventListener;
 }
 
-export default class Button extends Block {
+export default class Button extends Block<Props> {
   constructor(props: Props) {
     super({
       ...props,

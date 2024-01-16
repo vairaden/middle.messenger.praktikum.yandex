@@ -1,13 +1,24 @@
 @import "../../styles/variables.pcss";
 
-.button_primary {
-  height: 2rem;
-  border-radius: 8px;
-  color: white;
-  border: none;
-  background-color: $color-primary;
-  margin-bottom: 1rem;
-  padding: 12px;
-  line-height: 10px;
-  box-sizing: border-box;
+@define-mixin button $mod, $color, $hover-color, $text-color: white {
+  .button_$(mod) {
+    margin: 0 1rem 1rem 1rem;
+    height: 2rem;
+    border-radius: 8px;
+    color: $(text-color);
+    border: none;
+    background-color: $(color);
+    padding: 12px;
+    line-height: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $(hover-color);
+    }
+  }
 }
+
+@mixin button primary, $color-primary, $color-primary-hover;
+
+@mixin button secondary, $color-secondary, $color-secondary-hover, black;

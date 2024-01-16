@@ -1,16 +1,13 @@
 import { nanoid } from 'nanoid';
-import EventBus from '../lib/eventBus';
+import EventBus from '../utils/eventBus';
+import isEqual from '../lib/isEqual';
+import { BlockProps } from '../types';
 
 interface Children {
   [key: string]: Block | Block[]
 }
 
-interface Props {
-  events?: Record<string, EventListener | undefined>;
-  [key: string]: unknown;
-}
-
-abstract class Block {
+abstract class Block<P extends BlockProps = any> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -20,7 +17,7 @@ abstract class Block {
 
   public id = nanoid(6);
 
-  protected props: Props;
+  protected props: P;
 
   public children: Children;
 
@@ -28,7 +25,7 @@ abstract class Block {
 
   private _element: HTMLElement | null = null;
 
-  constructor(propsWithChildren: Props = {}) {
+  constructor(propsWithChildren?: BlockProps) {
     const eventBus = new EventBus();
 
     const { props, children } = this._getChildrenAndProps(propsWithChildren);
@@ -43,20 +40,22 @@ abstract class Block {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
-  _getChildrenAndProps(childrenAndProps: Props) {
-    const props: Props = {};
+  _getChildrenAndProps(childrenAndProps?: BlockProps) {
+    const props: Record<string, unknown> = {};
     const children: Children = {};
 
-    Object.entries(childrenAndProps).forEach(([key, value]) => {
-      if (value instanceof Block
-        || (Array.isArray(value) && value.every((item) => item instanceof Block))) {
-        children[key] = value;
-      } else {
-        props[key] = value;
-      }
-    });
+    if (childrenAndProps) {
+      Object.entries(childrenAndProps).forEach(([key, value]) => {
+        if (value instanceof Block
+          || (Array.isArray(value) && value.every((item) => item instanceof Block))) {
+          children[key] = value;
+        } else {
+          props[key] = value;
+        }
+      });
+    }
 
-    return { props, children };
+    return { props: props as P, children };
   }
 
   _addEvents() {
@@ -99,8 +98,7 @@ abstract class Block {
     this.componentDidMount();
   }
 
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
@@ -114,17 +112,17 @@ abstract class Block {
     });
   }
 
-  private _componentDidUpdate(oldProps: Props, newProps: Props) {
+  private _componentDidUpdate(oldProps: P, newProps: P) {
     if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
   }
 
-  protected componentDidUpdate(oldProps: Props, newProps: Props) {
-    return true || oldProps !== newProps;
+  protected componentDidUpdate(oldProps: P, newProps: P) {
+    return !isEqual(oldProps, newProps);
   }
 
-  setProps = (nextProps: Props) => {
+  setProps = (nextProps: P) => {
     if (!nextProps) {
       return;
     }
@@ -151,7 +149,7 @@ abstract class Block {
     this._addEvents();
   }
 
-  protected compile(template: (context: any) => string, props: Props) {
+  protected compile(template: (context: any) => string, props: any) {
     const contextAndStubs = { ...props };
 
     Object.entries(this.children).forEach(([name, component]) => {
@@ -204,18 +202,18 @@ abstract class Block {
     return this.element;
   }
 
-  _makePropsProxy(props: Props) {
+  _makePropsProxy(props: P) {
     const self = this;
 
     return new Proxy(props, {
-      get(target: Props, prop: string) {
+      get(target: P, prop: string) {
         const value = target[prop];
         return typeof value === 'function' ? value.bind(target) : value;
       },
-      set(target: Props, prop: string, value) {
+      set(target: P, prop: string, value) {
         const oldTarget = { ...target };
 
-        target[prop] = value;
+        target[prop as keyof P] = value;
 
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
         return true;
