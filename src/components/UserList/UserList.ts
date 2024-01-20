@@ -1,8 +1,8 @@
-import Block from '../Block';
+import Block from '../Block.ts';
 import template from './userList.hbs';
-import { BlockProps } from '../../types';
-import { User } from '../../api/AuthApi/authApiTypes';
-import UserListItem from '../UserListItem/UserListItem';
+import { BlockProps } from '../../types/index.ts';
+import { User } from '../../api/AuthApi/authApiTypes.ts';
+import UserListItem from '../UserListItem/UserListItem.ts';
 import './userList.pcss';
 
 interface Props extends BlockProps {

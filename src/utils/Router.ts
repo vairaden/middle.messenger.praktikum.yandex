@@ -1,4 +1,4 @@
-import Block from '../components/Block';
+import Block from '../components/Block.ts';
 
 interface BlockConstructable<P extends Record<string, unknown> = any> {
   new(props: P): Block<P>;

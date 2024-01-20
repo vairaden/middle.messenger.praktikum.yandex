@@ -1,11 +1,11 @@
 import template from './profilePage.hbs';
-import Block from '../../components/Block';
-import Link from '../../components/Link/Link';
-import ProfileItem from '../../components/ProfileItem/ProfileItem';
-import AuthController from '../../controllers/AuthController';
-import { User } from '../../api/AuthApi/authApiTypes';
-import { withStore } from '../../utils/Store';
-import { BlockProps } from '../../types';
+import Block from '../../components/Block.ts';
+import Link from '../../components/Link/Link.ts';
+import ProfileItem from '../../components/ProfileItem/ProfileItem.ts';
+import AuthController from '../../controllers/AuthController.ts';
+import { User } from '../../api/AuthApi/authApiTypes.ts';
+import { withStore } from '../../utils/Store.ts';
+import { BlockProps } from '../../types/index.ts';
 import './profilePage.pcss';
 
 const profileInformation = {

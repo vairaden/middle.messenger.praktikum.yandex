@@ -1,11 +1,11 @@
 import template from './loginPage.hbs';
-import Block from '../../components/Block';
-import Button from '../../components/Button/Button';
-import { checkLogin, checkPassword } from '../../lib/validators';
-import FormInput from '../../components/FormInput/FormInput';
-import Link from '../../components/Link/Link';
-import AuthController from '../../controllers/AuthController';
-import { SignupData } from '../../api/AuthApi/authApiTypes';
+import Block from '../../components/Block.ts';
+import Button from '../../components/Button/Button.ts';
+import { checkLogin, checkPassword } from '../../lib/validators.ts';
+import FormInput from '../../components/FormInput/FormInput.ts';
+import Link from '../../components/Link/Link.ts';
+import AuthController from '../../controllers/AuthController.ts';
+import { SignupData } from '../../api/AuthApi/authApiTypes.ts';
 import './loginPage.pcss';
 
 export default class LoginPage extends Block {

@@ -1,6 +1,6 @@
-import Block from '../Block';
+import Block from '../Block.ts';
 import template from './input.hbs';
-import { BlockProps } from '../../types';
+import { BlockProps } from '../../types/index.ts';
 
 interface Props extends BlockProps {
   id?: string;

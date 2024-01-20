@@ -1,6 +1,6 @@
-import Block from '../Block';
+import Block from '../Block.ts';
 import template from './button.hbs';
-import { BlockProps } from '../../types';
+import { BlockProps } from '../../types/index.ts';
 import './button.pcss';
 
 interface Props extends BlockProps {

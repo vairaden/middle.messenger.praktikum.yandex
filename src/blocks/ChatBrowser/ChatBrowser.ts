@@ -1,14 +1,14 @@
 import template from './chatBrowser.hbs';
-import Block from '../../components/Block';
-import ChatItem from '../../components/ChatItem/ChatItem';
-import Link from '../../components/Link/Link';
-import { ChatInfo } from '../../api/ChatsApi/chatsApiTypes';
-import Button from '../../components/Button/Button';
-import { BlockProps } from '../../types';
+import Block from '../../components/Block.ts';
+import ChatItem from '../../components/ChatItem/ChatItem.ts';
+import Link from '../../components/Link/Link.ts';
+import { ChatInfo } from '../../api/ChatsApi/chatsApiTypes.ts';
+import Button from '../../components/Button/Button.ts';
+import { BlockProps } from '../../types/index.ts';
 import './chatBrowser.pcss';
-import Modal from '../Modal/Modal';
-import CreateChatForm from '../CreateChatForm/CreateChatForm';
-import ChatsController from '../../controllers/ChatsController';
+import Modal from '../Modal/Modal.ts';
+import CreateChatForm from '../CreateChatForm/CreateChatForm.ts';
+import ChatsController from '../../controllers/ChatsController.ts';
 
 function chatListFactory(chats?: ChatInfo[]) {
   if (chats) {

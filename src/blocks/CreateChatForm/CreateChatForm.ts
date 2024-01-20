@@ -1,9 +1,9 @@
-import Block from '../../components/Block';
+import Block from '../../components/Block.ts';
 import template from './createChatForm.hbs';
 import './createChatForm.pcss';
-import { BlockProps } from '../../types';
-import Button from '../../components/Button/Button';
-import FormInput from '../../components/FormInput/FormInput';
+import { BlockProps } from '../../types/index.ts';
+import Button from '../../components/Button/Button.ts';
+import FormInput from '../../components/FormInput/FormInput.ts';
 
 interface Props extends BlockProps {
   onCancel: () => void;

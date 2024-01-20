@@ -1,7 +1,7 @@
-import Block from '../../components/Block';
+import Block from '../../components/Block.ts';
 import template from './modal.hbs';
 import './modal.pcss';
-import { BlockProps } from '../../types';
+import { BlockProps } from '../../types/index.ts';
 
 interface Props extends BlockProps {
   onCancel: () => void;

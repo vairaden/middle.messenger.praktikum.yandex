@@ -1,9 +1,9 @@
 import template from './messageControls.hbs';
-import Block from '../../components/Block';
-import Input from '../../components/Input/Input';
-import { checkNotEmpty } from '../../lib/validators';
-import MessagesController from '../../controllers/MessagesController';
-import { BlockProps } from '../../types';
+import Block from '../../components/Block.ts';
+import Input from '../../components/Input/Input.ts';
+import { checkNotEmpty } from '../../lib/validators.ts';
+import MessagesController from '../../controllers/MessagesController.ts';
+import { BlockProps } from '../../types/index.ts';
 import './messageControls.pcss';
 
 interface Props extends BlockProps {

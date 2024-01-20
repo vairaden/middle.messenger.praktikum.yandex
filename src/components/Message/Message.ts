@@ -1,6 +1,6 @@
 import template from './message.hbs';
-import Block from '../Block';
-import { BlockProps } from '../../types';
+import Block from '../Block.ts';
+import { BlockProps } from '../../types/index.ts';
 import './message.pcss';
 
 interface Props extends BlockProps{

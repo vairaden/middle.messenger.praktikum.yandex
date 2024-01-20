@@ -1,8 +1,8 @@
-import Block from '../Block';
+import Block from '../Block.ts';
 import template from './link.hbs';
-import { BlockProps } from '../../types';
+import { BlockProps } from '../../types/index.ts';
 import './link.pcss';
-import { withRouter } from '../withRouter';
+import { withRouter } from '../withRouter.ts';
 
 interface Props extends BlockProps {
   Content: string;

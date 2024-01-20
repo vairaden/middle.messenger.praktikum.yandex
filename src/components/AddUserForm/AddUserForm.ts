@@ -1,8 +1,8 @@
-import Block from '../Block';
+import Block from '../Block.ts';
 import template from './addUserForm.hbs';
-import { BlockProps } from '../../types';
-import Button from '../Button/Button';
-import FormInput from '../FormInput/FormInput';
+import { BlockProps } from '../../types/index.ts';
+import Button from '../Button/Button.ts';
+import FormInput from '../FormInput/FormInput.ts';
 
 interface Props extends BlockProps {
   onSubmit: EventListener;

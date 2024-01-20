@@ -1,6 +1,6 @@
 import template from './profileItem.hbs';
-import Block from '../../components/Block';
-import { BlockProps } from '../../types';
+import Block from '../Block.ts';
+import { BlockProps } from '../../types/index.ts';
 
 interface Props extends BlockProps{
   label: string;

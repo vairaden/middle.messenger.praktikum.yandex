@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
-import EventBus from '../utils/eventBus';
-import isEqual from '../lib/isEqual';
-import { BlockProps } from '../types';
+import EventBus from '../utils/eventBus.ts';
+import isEqual from '../lib/isEqual.ts';
+import { BlockProps } from '../types/index.ts';
 
 interface Children {
   [key: string]: Block | Block[]

@@ -1,12 +1,12 @@
-import Router from './utils/Router';
-import ProfilePage from './pages/ProgilePage/ProfilePage';
-import HomePage from './pages/HomePage/HomePage';
-import AuthController from './controllers/AuthController';
-import SettingsPage from './pages/SettingsPage/SettingsPage';
-import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-import LoginPage from './pages/LoginPage/LoginPage';
-import RegisterPage from './pages/RegisterPage/RegisterPage';
-import ServerErrorPage from './pages/ServerErrorPage/ServerErrorPage';
+import Router from './utils/Router.ts';
+import ProfilePage from './pages/ProgilePage/ProfilePage.ts';
+import HomePage from './pages/HomePage/HomePage.ts';
+import AuthController from './controllers/AuthController.ts';
+import SettingsPage from './pages/SettingsPage/SettingsPage.ts';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage.ts';
+import LoginPage from './pages/LoginPage/LoginPage.ts';
+import RegisterPage from './pages/RegisterPage/RegisterPage.ts';
+import ServerErrorPage from './pages/ServerErrorPage/ServerErrorPage.ts';
 
 const enum Routes {
   Login = '/',

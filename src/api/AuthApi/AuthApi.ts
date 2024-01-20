@@ -1,7 +1,7 @@
-import BaseAPI from '../BaseAPI';
+import BaseAPI from '../BaseAPI.ts';
 import {
   SigninData, SignupData, User,
-} from './authApiTypes';
+} from './authApiTypes.ts';
 
 export class AuthApi extends BaseAPI {
   constructor() {

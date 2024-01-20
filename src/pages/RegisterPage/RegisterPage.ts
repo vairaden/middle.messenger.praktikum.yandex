@@ -1,13 +1,13 @@
 import template from './registerPage.hbs';
-import Block from '../../components/Block';
-import FormInput from '../../components/FormInput/FormInput';
+import Block from '../../components/Block.ts';
+import FormInput from '../../components/FormInput/FormInput.ts';
 import {
   checkEmail, checkLogin, checkName, checkPassword, checkPhone,
-} from '../../lib/validators';
-import Link from '../../components/Link/Link';
-import Button from '../../components/Button/Button';
-import AuthController from '../../controllers/AuthController';
-import { SignupData } from '../../api/AuthApi/authApiTypes';
+} from '../../lib/validators.ts';
+import Link from '../../components/Link/Link.ts';
+import Button from '../../components/Button/Button.ts';
+import AuthController from '../../controllers/AuthController.ts';
+import { SignupData } from '../../api/AuthApi/authApiTypes.ts';
 
 export default class RegisterPage extends Block {
   constructor() {

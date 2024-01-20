@@ -1,6 +1,6 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
-import handlebars from './vite-plugins/vite-pluging-handlebars-precompile';
+import handlebars from './vite-plugins/vite-pluging-handlebars-precompile.ts';
 
 export default defineConfig({
   publicDir: resolve(__dirname, 'public'),

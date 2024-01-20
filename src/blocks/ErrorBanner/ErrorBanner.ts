@@ -1,7 +1,7 @@
 import template from './errorBanner.hbs';
-import Block from '../../components/Block';
-import Link from '../../components/Link/Link';
-import { BlockProps } from '../../types';
+import Block from '../../components/Block.ts';
+import Link from '../../components/Link/Link.ts';
+import { BlockProps } from '../../types/index.ts';
 import './errorBanner.pcss';
 
 interface Props extends BlockProps {
