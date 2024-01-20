@@ -1,12 +1,12 @@
 import template from './profilePage.hbs';
-import Block from '../../components/Block.ts';
+import Block from '../../components/Block/Block.ts';
 import Link from '../../components/Link/Link.ts';
 import ProfileItem from '../../components/ProfileItem/ProfileItem.ts';
 import AuthController from '../../controllers/AuthController.ts';
 import { User } from '../../api/AuthApi/authApiTypes.ts';
-import { withStore } from '../../utils/Store.ts';
 import { BlockProps } from '../../types/index.ts';
 import './profilePage.pcss';
+import withStore from '../../hooks/withStore/withStore.ts';
 
 const profileInformation = {
   id: 'ID',

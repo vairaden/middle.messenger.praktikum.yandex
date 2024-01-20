@@ -1,5 +1,5 @@
 import template from './navbar.hbs';
-import Block from '../../components/Block.ts';
+import Block from '../../components/Block/Block.ts';
 import Link from '../../components/Link/Link.ts';
 
 const pages = ['home', 'login', 'register', 'profile', 'settings', 'NotFoundPage'];

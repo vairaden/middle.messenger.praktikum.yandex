@@ -1,15 +1,15 @@
 import template from './homePage.hbs';
-import Block from '../../components/Block.ts';
+import Block from '../../components/Block/Block.ts';
 import ChatBrowser from '../../blocks/ChatBrowser/ChatBrowser.ts';
 import MessageControls from '../../blocks/MessageControls/MessageControls.ts';
 import ChatsController from '../../controllers/ChatsController.ts';
-import { withStore } from '../../utils/Store.ts';
 import { ChatInfo } from '../../api/ChatsApi/chatsApiTypes.ts';
 import ChatThread from '../../blocks/ChatThread/ChatThread.ts';
 import { Message } from '../../controllers/MessagesController.ts';
 import { BlockProps } from '../../types/index.ts';
 import './homePage.pcss';
 import { User } from '../../api/AuthApi/authApiTypes.ts';
+import withStore from '../../hooks/withStore/withStore.ts';
 
 interface Props extends BlockProps {
   chats: ChatInfo[];

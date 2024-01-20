@@ -1,7 +1,7 @@
 import API, { ChatsApi } from '../api/ChatsApi/ChatsApi.ts';
-import store from '../utils/Store.ts';
+import store from '../utils/Store/Store.ts';
 import MessagesController from './MessagesController.ts';
-import router from '../utils/Router.ts';
+import router from '../utils/Router/Router.ts';
 
 class ChatsController {
   private readonly api: ChatsApi;

@@ -1,4 +1,4 @@
-import Block from '../Block.ts';
+import Block from '../Block/Block.ts';
 import template from './userListItem.hbs';
 import { BlockProps } from '../../types/index.ts';
 import { User } from '../../api/AuthApi/authApiTypes.ts';

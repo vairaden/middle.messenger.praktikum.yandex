@@ -1,7 +1,7 @@
-import store from '../utils/Store.ts';
+import store from '../utils/Store/Store.ts';
 import UsersApi from '../api/UsersApi/UsersApi.ts';
 import { ChangePasswordData, ChangeProfileData } from '../api/UsersApi/usersApiTypes.ts';
-import router from '../utils/Router.ts';
+import router from '../utils/Router/Router.ts';
 
 export class UsersController {
   private readonly api: typeof UsersApi;

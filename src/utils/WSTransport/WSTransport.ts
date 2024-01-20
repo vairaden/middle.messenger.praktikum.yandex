@@ -1,5 +1,5 @@
-import EventBus from './eventBus.ts';
-import router from './Router.ts';
+import EventBus from '../EventBus/EventBus.ts';
+import router from '../Router/Router.ts';
 
 export enum WSTransportEvents {
   Connected = 'connected',

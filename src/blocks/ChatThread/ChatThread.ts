@@ -1,5 +1,5 @@
 import template from './chatThread.hbs';
-import Block from '../../components/Block.ts';
+import Block from '../../components/Block/Block.ts';
 import MessageBlock from '../../components/Message/Message.ts';
 import { Message } from '../../controllers/MessagesController.ts';
 import getReadableTime from '../../lib/getReadableTime.ts';

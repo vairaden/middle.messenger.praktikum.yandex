@@ -1,5 +1,5 @@
 import template from './chatBrowser.hbs';
-import Block from '../../components/Block.ts';
+import Block from '../../components/Block/Block.ts';
 import ChatItem from '../../components/ChatItem/ChatItem.ts';
 import Link from '../../components/Link/Link.ts';
 import { ChatInfo } from '../../api/ChatsApi/chatsApiTypes.ts';

@@ -1,5 +1,5 @@
 import template from './messageControls.hbs';
-import Block from '../../components/Block.ts';
+import Block from '../../components/Block/Block.ts';
 import Input from '../../components/Input/Input.ts';
 import { checkNotEmpty } from '../../lib/validators.ts';
 import MessagesController from '../../controllers/MessagesController.ts';

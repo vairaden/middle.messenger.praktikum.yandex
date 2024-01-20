@@ -1,5 +1,5 @@
 import template from './errorBanner.hbs';
-import Block from '../../components/Block.ts';
+import Block from '../../components/Block/Block.ts';
 import Link from '../../components/Link/Link.ts';
 import { BlockProps } from '../../types/index.ts';
 import './errorBanner.pcss';

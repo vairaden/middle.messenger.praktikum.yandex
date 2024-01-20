@@ -1,4 +1,4 @@
-import Block from '../../components/Block.ts';
+import Block from '../../components/Block/Block.ts';
 import template from './createChatForm.hbs';
 import './createChatForm.pcss';
 import { BlockProps } from '../../types/index.ts';

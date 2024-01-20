@@ -1,5 +1,5 @@
 import template from './message.hbs';
-import Block from '../Block.ts';
+import Block from '../Block/Block.ts';
 import { BlockProps } from '../../types/index.ts';
 import './message.pcss';
 

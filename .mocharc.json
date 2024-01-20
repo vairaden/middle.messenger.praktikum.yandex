@@ -2,11 +2,13 @@
   "extension": [".ts"],
   "spec": " ./src/**/*.test.ts",
   "require": [
-    "./mochaSetup.js"
+    "./test-utils/mocha-setup.js"
   ],
   "node-option": [
-    "loader=esm-loader-typescript",
+    "loader=./test-utils/handlebars-loader.js",
     "loader=node-esm-loader",
+    "loader=esm-loader-typescript",
+    "loader=esm-loader-css",
     "loader=esmock"
   ]
 }

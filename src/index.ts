@@ -1,4 +1,4 @@
-import Router from './utils/Router.ts';
+import Router from './utils/Router/Router.ts';
 import ProfilePage from './pages/ProgilePage/ProfilePage.ts';
 import HomePage from './pages/HomePage/HomePage.ts';
 import AuthController from './controllers/AuthController.ts';

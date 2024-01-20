@@ -1,5 +1,5 @@
 import template from './loginPage.hbs';
-import Block from '../../components/Block.ts';
+import Block from '../../components/Block/Block.ts';
 import Button from '../../components/Button/Button.ts';
 import { checkLogin, checkPassword } from '../../lib/validators.ts';
 import FormInput from '../../components/FormInput/FormInput.ts';

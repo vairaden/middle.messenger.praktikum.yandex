@@ -1,4 +1,4 @@
-import Block from '../Block.ts';
+import Block from '../Block/Block.ts';
 import template from './formInput.hbs';
 import Input from '../Input/Input.ts';
 import { BlockProps } from '../../types/index.ts';

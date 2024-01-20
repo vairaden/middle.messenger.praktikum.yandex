@@ -1,5 +1,5 @@
 import template from './chatItem.hbs';
-import Block from '../Block.ts';
+import Block from '../Block/Block.ts';
 import { ChatInfo } from '../../api/ChatsApi/chatsApiTypes.ts';
 import { BlockProps } from '../../types/index.ts';
 import './chatItem.pcss';

@@ -1,18 +1,18 @@
 import template from './settingsPage.hbs';
-import Block from '../../components/Block.ts';
+import Block from '../../components/Block/Block.ts';
 import FormInput from '../../components/FormInput/FormInput.ts';
 import {
   checkEmail, checkLogin, checkName, checkPassword, checkPhone,
 } from '../../lib/validators.ts';
 import Link from '../../components/Link/Link.ts';
 import SettingsForm from '../../blocks/SettingsForm/SettingsForm.ts';
-import { withStore } from '../../utils/Store.ts';
 import { User } from '../../api/AuthApi/authApiTypes.ts';
 import { BlockProps } from '../../types/index.ts';
 import './settingsPage.pcss';
 import UsersController from '../../controllers/UsersController.ts';
 import { ChangePasswordData } from '../../api/UsersApi/usersApiTypes.ts';
 import Avatar from '../../components/Avatar/Avatar.ts';
+import withStore from '../../hooks/withStore/withStore.ts';
 
 interface InputAttrs {
   label: string;

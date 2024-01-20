@@ -1,4 +1,4 @@
-import Block from '../../components/Block.ts';
+import Block from '../../components/Block/Block.ts';
 import ErrorBanner from '../../blocks/ErrorBanner/ErrorBanner.ts';
 import template from './notFoundPage.hbs';
 

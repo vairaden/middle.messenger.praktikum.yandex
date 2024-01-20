@@ -1,4 +1,4 @@
-import Block from '../components/Block.ts';
+import Block from '../components/Block/Block.ts';
 import template from './layout.hbs';
 import Navbar from '../blocks/Navbar/Navbar.ts';
 

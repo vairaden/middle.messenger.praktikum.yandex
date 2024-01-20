@@ -1,5 +1,5 @@
-import store from '../utils/Store.ts';
-import router from '../utils/Router.ts';
+import store from '../utils/Store/Store.ts';
+import router from '../utils/Router/Router.ts';
 import MessagesController from './MessagesController.ts';
 import AuthApi from '../api/AuthApi/AuthApi.ts';
 import { SigninData, SignupData } from '../api/AuthApi/authApiTypes.ts';

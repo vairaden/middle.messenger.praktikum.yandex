@@ -1,5 +1,5 @@
 import template from './profileItem.hbs';
-import Block from '../Block.ts';
+import Block from '../Block/Block.ts';
 import { BlockProps } from '../../types/index.ts';
 
 interface Props extends BlockProps{

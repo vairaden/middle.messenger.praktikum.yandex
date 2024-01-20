@@ -1,5 +1,5 @@
 import template from './registerPage.hbs';
-import Block from '../../components/Block.ts';
+import Block from '../../components/Block/Block.ts';
 import FormInput from '../../components/FormInput/FormInput.ts';
 import {
   checkEmail, checkLogin, checkName, checkPassword, checkPhone,
