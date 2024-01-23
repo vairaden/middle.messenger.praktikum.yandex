@@ -1,6 +1,6 @@
 import Block from '../../components/Block/Block.ts';
 
-interface BlockConstructable<P extends Record<string, unknown> = any> {
+export interface BlockConstructable<P extends Record<string, unknown> = any> {
   new(props: P): Block<P>;
 }
 
@@ -51,7 +51,7 @@ class Route {
 }
 
 class Router {
-  private static __instance: Router;
+  private static __instance?: Router;
 
   private routes: Route[] = [];
 
@@ -69,6 +69,12 @@ class Router {
     this.routes = [];
 
     Router.__instance = this;
+  }
+
+  public reset() {
+    delete Router.__instance;
+
+    new Router(this.rootQuery);
   }
 
   public useNotFoundRoute(block: BlockConstructable) {

@@ -1,4 +1,5 @@
 import Handlebars from 'handlebars';
+import createLoader from 'create-esm-loader';
 
 const hbsLoader = {
   resolve: (specifier, options) => {
@@ -42,4 +43,10 @@ const hbsLoader = {
   },
 };
 
-export default hbsLoader;
+export const {
+  resolve,
+  load,
+  getFormat,
+  getSource,
+  transformSource,
+} = await createLoader(hbsLoader);

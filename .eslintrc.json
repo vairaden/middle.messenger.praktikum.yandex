@@ -9,6 +9,7 @@
   "parser": "@typescript-eslint/parser",
   "plugins": [ "@typescript-eslint" ],
   "rules": {
+    "no-new": "off",
     "no-useless-constructor": "warn",
     "default-case": "warn",
     "no-constructor-return": "off",
