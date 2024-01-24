@@ -19,7 +19,7 @@ let AuthController: typeof authController;
 
 describe('AuthController', async () => {
   beforeEach(async () => {
-    AuthController = (await esmock('./Authcontroller', {
+    AuthController = (await esmock('./AuthController', {
       '../../api/AuthApi/AuthApi.ts': {
         default: new class {
           read = mockFunctions.read;
