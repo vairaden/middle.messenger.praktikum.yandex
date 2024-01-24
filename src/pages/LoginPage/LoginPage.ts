@@ -4,7 +4,7 @@ import Button from '../../components/Button/Button.ts';
 import { checkLogin, checkPassword } from '../../lib/validators.ts';
 import FormInput from '../../components/FormInput/FormInput.ts';
 import Link from '../../components/Link/Link.ts';
-import AuthController from '../../controllers/AuthController.ts';
+import AuthController from '../../controllers/AuthController/AuthController.ts';
 import { SignupData } from '../../api/AuthApi/authApiTypes.ts';
 import './loginPage.pcss';
 

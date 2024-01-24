@@ -1,8 +1,8 @@
-import store from '../utils/Store/Store.ts';
-import router from '../utils/Router/Router.ts';
-import MessagesController from './MessagesController.ts';
-import AuthApi from '../api/AuthApi/AuthApi.ts';
-import { SigninData, SignupData } from '../api/AuthApi/authApiTypes.ts';
+import store from '../../utils/Store/Store.ts';
+import router from '../../utils/Router/Router.ts';
+import MessagesController from '../MessagesController.ts';
+import AuthApi from '../../api/AuthApi/AuthApi.ts';
+import { SigninData, SignupData } from '../../api/AuthApi/authApiTypes.ts';
 
 export class AuthController {
   private readonly api: typeof AuthApi;

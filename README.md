@@ -46,17 +46,19 @@ https://inspiring-sunshine-dd6aa5.netlify.app/
 - 1 Спринт - https://github.com/vairaden/middle.messenger.praktikum.yandex/pull/4
 - 2 Спринт - https://github.com/vairaden/middle.messenger.praktikum.yandex/pull/5
 - 3 Спринт - https://github.com/vairaden/middle.messenger.praktikum.yandex/pull/6
+- 4 Спринт - https://github.com/vairaden/middle.messenger.praktikum.yandex/pull/7
 
 ## Запуск
 **Версия NodeJS: 18.18.2**
 
-- `npm run start` — production сборка проекта и запуск express сервера
-- `npm run build` — production сборка проекта
+- `npm run dev` - запуск проекта в режиме разработки
+- `npm run start` - production сборка проекта и запуск express сервера
+- `npm run preview` - запуск сервера vite
+- `npm run serve` - запуск express сервера
+- `npm run test` - запуск unit-тестов
+- `npm run build` - production сборка проекта
+- `npm run build:client` - сборка клиента
 - `npm run build:server` - сборка сервера
-- `npm run preview` — запуск сервера vite
-- `npm run dev` — запуск проекта в режиме разработки
-- `npm run serve` — запуск express сервера
 - `npm run lint:typescript` - линтинг typescript
 - `npm run lint` - линтинг
-- `npm run lint:fix` - линтинг с исправлением
-
+- `npm run lint-fix` - линтинг с исправлением

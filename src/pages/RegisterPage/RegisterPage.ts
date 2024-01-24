@@ -6,7 +6,7 @@ import {
 } from '../../lib/validators.ts';
 import Link from '../../components/Link/Link.ts';
 import Button from '../../components/Button/Button.ts';
-import AuthController from '../../controllers/AuthController.ts';
+import AuthController from '../../controllers/AuthController/AuthController.ts';
 import { SignupData } from '../../api/AuthApi/authApiTypes.ts';
 
 export default class RegisterPage extends Block {
