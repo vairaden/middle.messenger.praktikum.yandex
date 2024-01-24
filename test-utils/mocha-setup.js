@@ -7,3 +7,4 @@ const { window } = new JSDOM('<div id="app"></div>', {
 global.window = window;
 global.document = window.document;
 global.DocumentFragment = window.DocumentFragment;
+global.FormData = window.FormData;
