@@ -1,9 +1,9 @@
 import template from './chatItem.hbs';
-import Block from '../../components/Block';
-import { ChatInfo } from '../../api/ChatsApi/chatsApiTypes';
-import { BlockProps } from '../../types';
+import Block from '../Block/Block.ts';
+import { ChatInfo } from '../../api/ChatsApi/chatsApiTypes.ts';
+import { BlockProps } from '../../types/index.ts';
 import './chatItem.pcss';
-import getReadableTime from '../../lib/getReadableTime';
+import getReadableTime from '../../lib/getReadableTime.ts';
 
 interface Props extends BlockProps {
   chat: ChatInfo;

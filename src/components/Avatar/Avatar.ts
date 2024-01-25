@@ -1,6 +1,6 @@
-import Block from '../Block';
+import Block from '../Block/Block.ts';
 import template from './avatar.hbs';
-import { BlockProps } from '../../types';
+import { BlockProps } from '../../types/index.ts';
 import './avatar.pcss';
 
 interface Props extends BlockProps {

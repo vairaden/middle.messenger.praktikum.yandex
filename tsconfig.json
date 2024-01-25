@@ -5,7 +5,8 @@
     "strictNullChecks": true,
     "sourceMap": true,
     "types": [
-      "vite/client"
+      "vite/client",
+      "mocha"
     ],
     "target": "ESNext",
     "useDefineForClassFields": true,
@@ -24,7 +25,8 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "skipLibCheck": true,
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "allowImportingTsExtensions": true
   },
   "include": [
     "src"

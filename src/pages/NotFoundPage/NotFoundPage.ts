@@ -1,5 +1,5 @@
-import Block from '../../components/Block';
-import ErrorBanner from '../../blocks/ErrorBanner/ErrorBanner';
+import Block from '../../components/Block/Block.ts';
+import ErrorBanner from '../../blocks/ErrorBanner/ErrorBanner.ts';
 import template from './notFoundPage.hbs';
 
 export default class NotFoundPage extends Block {

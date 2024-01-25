@@ -1,15 +1,15 @@
 import template from './chatThread.hbs';
-import Block from '../../components/Block';
-import MessageBlock from '../../components/Message/Message';
-import { Message } from '../../controllers/MessagesController';
-import getReadableTime from '../../lib/getReadableTime';
-import { BlockProps } from '../../types';
+import Block from '../../components/Block/Block.ts';
+import MessageBlock from '../../components/Message/Message.ts';
+import { Message } from '../../controllers/MessagesController.ts';
+import getReadableTime from '../../lib/getReadableTime.ts';
+import { BlockProps } from '../../types/index.ts';
 import './chatThread.pcss';
-import { User } from '../../api/AuthApi/authApiTypes';
-import { ChatInfo } from '../../api/ChatsApi/chatsApiTypes';
-import Modal from '../Modal/Modal';
-import Button from '../../components/Button/Button';
-import ChatSettings from '../ChatSettings/ChatSettings';
+import { User } from '../../api/AuthApi/authApiTypes.ts';
+import { ChatInfo } from '../../api/ChatsApi/chatsApiTypes.ts';
+import Modal from '../Modal/Modal.ts';
+import Button from '../../components/Button/Button.ts';
+import ChatSettings from '../ChatSettings/ChatSettings.ts';
 
 interface Props extends BlockProps {
   selectedChat?: ChatInfo;

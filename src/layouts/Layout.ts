@@ -1,6 +1,6 @@
-import Block from '../components/Block';
+import Block from '../components/Block/Block.ts';
 import template from './layout.hbs';
-import Navbar from '../blocks/Navbar/Navbar';
+import Navbar from '../blocks/Navbar/Navbar.ts';
 
 interface Props {
   Page: Block;

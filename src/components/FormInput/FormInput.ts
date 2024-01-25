@@ -1,7 +1,7 @@
-import Block from '../Block';
+import Block from '../Block/Block.ts';
 import template from './formInput.hbs';
-import Input from '../Input/Input';
-import { BlockProps } from '../../types';
+import Input from '../Input/Input.ts';
+import { BlockProps } from '../../types/index.ts';
 import './formInput.pcss';
 
 interface Props extends BlockProps {

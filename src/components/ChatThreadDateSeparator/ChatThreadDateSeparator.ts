@@ -1,5 +1,5 @@
 import template from './chatThreadDateSeparator.hbs';
-import Block from '../Block';
+import Block from '../Block/Block.ts';
 
 export default class ChatThreadDateSeparator extends Block {
   render() {

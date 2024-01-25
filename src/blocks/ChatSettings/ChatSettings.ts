@@ -1,15 +1,15 @@
-import Block from '../../components/Block';
+import Block from '../../components/Block/Block.ts';
 import template from './chatSettings.hbs';
-import { BlockProps } from '../../types';
-import Button from '../../components/Button/Button';
-import Link from '../../components/Link/Link';
-import ChatsController from '../../controllers/ChatsController';
-import { withStore } from '../../utils/Store';
+import { BlockProps } from '../../types/index.ts';
+import Button from '../../components/Button/Button.ts';
+import Link from '../../components/Link/Link.ts';
+import ChatsController from '../../controllers/ChatsController.ts';
 import './chatSettings.pcss';
-import UserList from '../../components/UserList/UserList';
-import { User } from '../../api/AuthApi/authApiTypes';
-import AddUserForm from '../../components/AddUserForm/AddUserForm';
-import ChageChatAvatarFrom from '../../components/ChangeChatAvatarForm/ChageChatAvatarFrom';
+import UserList from '../../components/UserList/UserList.ts';
+import { User } from '../../api/AuthApi/authApiTypes.ts';
+import AddUserForm from '../../components/AddUserForm/AddUserForm.ts';
+import ChageChatAvatarFrom from '../../components/ChangeChatAvatarForm/ChageChatAvatarFrom.ts';
+import withStore from '../../hooks/withStore/withStore.ts';
 
 interface Props extends BlockProps {
   onCancel: () => void;

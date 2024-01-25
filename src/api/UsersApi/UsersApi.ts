@@ -1,6 +1,6 @@
-import BaseAPI from '../BaseAPI';
-import { User } from '../AuthApi/authApiTypes';
-import { ChangePasswordData, ChangeProfileData } from './usersApiTypes';
+import BaseAPI from '../BaseAPI.ts';
+import { User } from '../AuthApi/authApiTypes.ts';
+import { ChangePasswordData, ChangeProfileData } from './usersApiTypes.ts';
 
 export class UsersApi extends BaseAPI {
   constructor() {

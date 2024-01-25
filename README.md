@@ -3,7 +3,7 @@
 ## Описание
 Проектная работа по написанию веб мессенджера на шаблонизаторе Handlebars
 
-## Подходящие данные для форм:
+## Подходящие данные для форм
 **Имя/Фамилия** — латиница или кириллица, первая буква должна быть заглавной, без пробелов и без цифр, нет спецсимволов (допустим только дефис).
 
 **Логин** — от 3 до 20 символов, латиница, может содержать цифры, но не состоять из них, без пробелов, без спецсимволов (допустимы дефис и нижнее подчёркивание).
@@ -46,17 +46,19 @@ https://inspiring-sunshine-dd6aa5.netlify.app/
 - 1 Спринт - https://github.com/vairaden/middle.messenger.praktikum.yandex/pull/4
 - 2 Спринт - https://github.com/vairaden/middle.messenger.praktikum.yandex/pull/5
 - 3 Спринт - https://github.com/vairaden/middle.messenger.praktikum.yandex/pull/6
+- 4 Спринт - https://github.com/vairaden/middle.messenger.praktikum.yandex/pull/7
 
 ## Запуск
 **Версия NodeJS: 18.18.2**
 
-- `npm run start` — production сборка проекта и запуск express сервера
-- `npm run build` — production сборка проекта
+- `npm run dev` - запуск проекта в режиме разработки
+- `npm run start` - production сборка проекта и запуск express сервера
+- `npm run preview` - запуск сервера vite
+- `npm run serve` - запуск express сервера
+- `npm run test` - запуск unit-тестов
+- `npm run build` - production сборка проекта
+- `npm run build:client` - сборка клиента
 - `npm run build:server` - сборка сервера
-- `npm run preview` — запуск сервера vite
-- `npm run dev` — запуск проекта в режиме разработки
-- `npm run serve` — запуск express сервера
 - `npm run lint:typescript` - линтинг typescript
 - `npm run lint` - линтинг
-- `npm run lint:fix` - линтинг с исправлением
-
+- `npm run lint-fix` - линтинг с исправлением

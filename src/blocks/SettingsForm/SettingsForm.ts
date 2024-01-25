@@ -1,8 +1,8 @@
 import template from './settingsForm.hbs';
-import Block from '../../components/Block';
-import { BlockProps } from '../../types';
-import Button from '../../components/Button/Button';
-import FormInput from '../../components/FormInput/FormInput';
+import Block from '../../components/Block/Block.ts';
+import { BlockProps } from '../../types/index.ts';
+import Button from '../../components/Button/Button.ts';
+import FormInput from '../../components/FormInput/FormInput.ts';
 import './settingsForm.pcss';
 
 interface Props extends BlockProps {
